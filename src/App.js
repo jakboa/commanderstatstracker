@@ -1,7 +1,9 @@
-import { Children } from 'react';
+import React from 'react';
 import './App.css';
 import Root from './components/Root';
 import PlayerStats from './components/Player';
+import PlayerCommanderStats from './components/PlayerCommanderStats';
+
 import GameResults from './components/GameResults';
 
 import { Route, createRoutesFromElements, RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -29,7 +31,13 @@ const routes = [
     children: [
       {
         path: 'playerstats',
-        element: <PlayerStats />
+        element: <PlayerStats />,
+        children: [
+          {
+            path: ':commanders',
+            element: <PlayerCommanderStats />
+          }
+        ]
       },
       {
         path: 'gameresults',

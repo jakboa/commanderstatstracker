@@ -1,6 +1,3 @@
-import { command } from "yargs";
-
-
 
 
 export const gameInfo = [
@@ -10,30 +7,32 @@ export const gameInfo = [
 
         Group_name: 'B_Boys',
 
-        player_1:  { 
-            nickName: 'Mr. Music',
-            commander: 'Heliod',
-            placement: 1 
-        },
+        players: [  
+            { 
+                nickName: 'Mr_Music',
+                commander: 'Heliod',
+                placement: 1 
+            },
 
-        player_2: {
-            nickName: 'Mr. Stats',
-            commander:'Wilhelt',
-            placement: 2
-        },
+            {
+                nickName: 'Mr. Stats',
+                commander:'Wilhelt',
+                placement: 2
+            },
 
-        player_3: {
-            nickName: 'Mr. Keys',
-            commander: 'Gitrog',
-            placement: 2
-        },
+            {
+                nickName: 'Mr. Keys',
+                commander: 'Gitrog',
+                placement: 2
+            },
+            {
+                nickName: 'Mr. Foto',
+                commander: 'Golos',
+                placement: 2,
+            }
+        ],
 
-        player_4: {
-            nickName: 'Mr. Foto',
-            commander: 'Golos',
-            placement: 2,
-        },
-        year: 2024
+        year: 2022
     },
 
     {
@@ -41,46 +40,65 @@ export const gameInfo = [
 
         Group_name: 'B_Boys',
 
-        player_1: 'Mr. Music',
-        player_1_Commander: 'Heliod',
-        player_1_placement: 1,
+        players: [  
+            { 
+                nickName: 'Mr. Stats',
+                commander: 'Sheblob',
+                placement: 3 
+            },
 
-        player_2: 'Mr. Stats',
-        player_2_Commander: 'Wilhelt',
-        player_2_placement: 2,
+            {
+                nickName: 'Mr. Keys',
+                commander: 'Kenrith',
+                placement: 3
+            },
 
-        player_3: 'Mr. Keys',
-        player_3_Commander: 'Gitrog',
-        player_3_placement: 2,
+            {
+                nickName: 'Mr. Foto',
+                commander: 'Krenko',
+                placement: 1
+            },
 
-        player_4: 'Mr. Foto',
-        player_4_Commander: 'Golos',
-        player_4_placement: 2, 
+            {
+                nickName: 'Mr. Music',
+                commander: 'Yusri',
+                placement: 2,
+            }
+        ],
 
-        year: 2024
+        year: 2023
     },
 
     {
         Match_id: 3,
 
-        Group_name: 'B_Boys',
+        Group_name: 'A_Boys',
 
-        player_1: 'Mr. Music',
-        player_1_Commander: 'Heliod',
-        player_1_placement: 1,
+        players : [ 
+            { 
+                nickName: 'Mr. Foto',
+                commander: 'Freyalise',
+                placement: 2
+            },
 
-        player_2: 'Mr. Stats',
-        player_2_Commander: 'Wilhelt',
-        player_2_placement: 2,
+            {
+                nickName: 'Mr. Keys',
+                commander:'Oloro',
+                placement: 3
+            },
 
-        player_3: 'Mr. Keys',
-        player_3_Commander: 'Gitrog',
-        player_3_placement: 2,
+            {
+                nickName: 'Mr. Stats',
+                commander: 'Animar',
+                placement: 4
+            },
 
-        player_4: 'Mr. Foto',
-        player_4_Commander: 'Golos',
-        player_4_placement: 2,
-
+            {
+                nickName: 'Mr. Music',
+                commander: 'Raffin',
+                placement: 1,
+            },
+        ],
         year: 2024
     },
 
