@@ -14,7 +14,6 @@ export default function PlayerCommanderStats() {
         }
     }))
     commandersPlayed = [...new Set(commandersPlayed)]
-    console.log(commandersPlayed);
 
     return (
         <div>

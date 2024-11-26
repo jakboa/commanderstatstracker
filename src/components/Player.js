@@ -12,7 +12,6 @@ export default function PlayerStats() {
             playersFound.push( player.nickName)
         ))
     playersFound = [...new Set(playersFound)]
-    console.log(playersFound);
 
     return (
         <div className="playerstats">
