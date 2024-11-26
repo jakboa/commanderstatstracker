@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from "react";
-import { useSearchParams } from "react-router-dom";
+//import { useSearchParams } from "react-router-dom";
 
 import SearchHandler from "./SearchHandler";
 
 
 export default function Commanders() {
     
-    const [searchParams, setSearchParams] = useSearchParams();
+    //const [searchParams, setSearchParams] = useSearchParams();
     const [commanderSearch, setCommanderSearch] = useState("");
     const [commandersFound, setCommandersFound] = useState(SearchHandler.getAllCommanders)
 

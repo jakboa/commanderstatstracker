@@ -9,7 +9,7 @@ export const gameInfo = [
 
         players: [  
             { 
-                nickName: 'Mr_Music',
+                nickName: 'Mr. Music',
                 commander: 'Heliod',
                 placement: 1 
             },
@@ -82,7 +82,7 @@ export const gameInfo = [
             },
 
             {
-                nickName: 'Mr. Keys',
+                nickName: 'Mr. Macho',
                 commander:'Oloro',
                 placement: 3
             },
@@ -94,7 +94,7 @@ export const gameInfo = [
             },
 
             {
-                nickName: 'Mr. Music',
+                nickName: 'Mr. Muffin',
                 commander: 'Raffin',
                 placement: 1,
             },

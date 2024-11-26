@@ -8,6 +8,7 @@ const allCommanders = gameInfo.map(
     )).flat();
 
 
+
 const SearchHandler = {
 
     findCommander: (search) => {
@@ -18,15 +19,34 @@ const SearchHandler = {
             commander.toLowerCase().includes(search.toLowerCase()) 
         )
         return filterCommanders;
+    },
 
-    }, 
     getAllCommanders: () => {
         return allCommanders;
+    },
+
+    getAllGroups: () => {
+        // Find and store every single Group name.
+        let allGroups = gameInfo.map(match => match.Group_name);
+        // Use Set to remove all the duplicates.
+        allGroups = [...new Set(allGroups)];
+        return allGroups;
+    }, 
+
+    getAllPlayers: () => {
+        let allPlayers = gameInfo.map(match =>  
+            match.players.map( player => 
+                player.nickName)
+            ).flat();
+        allPlayers = [...new Set(allPlayers)]
+        
+        return allPlayers;
     }
 
 
-
 }
+
+//console.log(SearchHandler.getAllPlayers());
 
 
 export default SearchHandler;

@@ -1,0 +1,22 @@
+.homepage {
+    border: solid black 5px;
+    
+}
+
+.homepage_groups {
+    border: solid blue 3px;
+    background-color: aqua;
+}
+
+
+
+.homepage_players {
+    border: solid red 3px;
+    background-color: greenyellow;
+}
+
+
+.homepage_commanders {
+    border: solid green 3px;
+    background-color: moccasin;
+}

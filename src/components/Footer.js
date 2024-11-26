@@ -17,10 +17,15 @@ export default function Footer() {
     const goForward = () => {
         navigate(1);
     };
-    
+
+    const goHome = () => {
+        navigate('/');
+    };
+
     return (
         <div className="footer">
             <Button onClick={ goBack } >BACK</Button>
+            <Button onClick={ goHome } >Homepage</Button>
             <Button onClick={ goForward } >FORWARD</Button>
         </div>
     )
