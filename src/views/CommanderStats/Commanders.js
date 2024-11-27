@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 //import { useSearchParams } from "react-router-dom";
 
-import SearchHandler from "./SearchHandler";
+import SearchHandler from "../../components/SearchHandler";
 
 
 export default function Commanders() {
@@ -12,10 +12,11 @@ export default function Commanders() {
 
 
 
-    // Update the 
+    // Update the Search
     const findCommanderHandler = (event) => {
         setCommanderSearch(event.target.value);
     }
+    
     // Needs to use useEffect in order for it to update, otherwise
     // it will always be one render behind!
     useEffect(()=>{

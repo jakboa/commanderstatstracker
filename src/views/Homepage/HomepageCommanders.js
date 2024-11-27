@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import HomepageCommanderSingle from "./HomepageCommandersSingle";
-import SearchHandler from "../SearchHandler";
 
-export default function HomepageCommanders() {
-    const [commanders] = useState(SearchHandler.getAllCommanders);
+
+export default function HomepageCommanders( { commanders } ) {
+    
 
     return (
         <div className="homepage_commanders">

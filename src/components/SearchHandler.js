@@ -25,14 +25,6 @@ const SearchHandler = {
         return allCommanders;
     },
 
-    getAllGroups: () => {
-        // Find and store every single Group name.
-        let allGroups = gameInfo.map(match => match.Group_name);
-        // Use Set to remove all the duplicates.
-        allGroups = [...new Set(allGroups)];
-        return allGroups;
-    }, 
-
     getAllPlayers: () => {
         let allPlayers = gameInfo.map(match =>  
             match.players.map( player => 
@@ -41,12 +33,23 @@ const SearchHandler = {
         allPlayers = [...new Set(allPlayers)]
         
         return allPlayers;
+    },
+
+    getAllGroups: () => {
+        // Find and store every single Group name.
+        let allGroups = {};
+        gameInfo.forEach(match => {
+            let groupName = match.Group_name;
+            if (!allGroups[groupName]){
+                return  allGroups[groupName] = [ match.players.map(players => players.nickName) ]
+            };
+        });
+        // Use Set to remove all the duplicates.
+        //allGroups = [...new Set(allGroups)];
+        allGroups = Object.entries(allGroups);
+        return allGroups;
     }
-
-
 }
-
-//console.log(SearchHandler.getAllPlayers());
 
 
 export default SearchHandler;

@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import HomepagePlayersSingle from "./HomepagePlayersSingle";
-import SearchHandler from "../SearchHandler";
 
-export default function HomepagePlayers() {
-    const [players] = useState(SearchHandler.getAllPlayers);
 
+export default function HomepagePlayers( { players } ) {
 
     return (
         <div className="homepage_players">
