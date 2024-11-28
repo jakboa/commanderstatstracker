@@ -48,6 +48,12 @@ const SearchHandler = {
         //allGroups = [...new Set(allGroups)];
         allGroups = Object.entries(allGroups);
         return allGroups;
+    }, 
+
+    getOneGroup: (groupToFind) => {
+        gameInfo.forEach( match => {
+
+        });
     }
 }
 

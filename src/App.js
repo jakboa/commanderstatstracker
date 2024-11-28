@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Here I put alle the imports from different part of the application.
 import Root from './components/Root';
@@ -11,6 +12,8 @@ import PlayerCommanderStats from './components/PlayerCommanderStats';
 import GameResults from './components/GameResults';
 import Commanders from './views/CommanderStats/Commanders';
 import Homepage from './views/Homepage/Homepage';
+import GroupStats from './views/GroupStats/GroupStats';
+
 
 const routes = [
   {
@@ -20,6 +23,10 @@ const routes = [
       {
         index: true,
         element: <Homepage />
+      },
+      {
+        path: 'groupstats/:groupname',
+        element: <GroupStats />
       },
       {
         path: 'gameresults',
