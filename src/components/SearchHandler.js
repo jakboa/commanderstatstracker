@@ -51,15 +51,14 @@ const SearchHandler = {
     }, 
 
     getOneGroup: (groupToFind) => {
-        gameInfo.forEach( match => {
-
-        });
+        const groupInfo = gameInfo.filter( match => match.Group_name === groupToFind);
+        return groupInfo;
     }
 }
 
 
 export default SearchHandler;
 
-
+console.log(SearchHandler.getOneGroup('B_Boys'));
 
 

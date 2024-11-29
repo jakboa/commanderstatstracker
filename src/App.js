@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Root from './components/Root';
 import PlayerStats from './components/Player';
 import PlayerCommanderStats from './components/PlayerCommanderStats';
-import GameResults from './components/GameResults';
 import Commanders from './views/CommanderStats/Commanders';
 import Homepage from './views/Homepage/Homepage';
 import GroupStats from './views/GroupStats/GroupStats';
@@ -28,11 +27,6 @@ const routes = [
         path: 'groupstats/:groupname',
         element: <GroupStats />
       },
-      {
-        path: 'gameresults',
-        element: <GameResults />
-      },
-
       {
         path: 'playerstats',
         element: <PlayerStats />,
