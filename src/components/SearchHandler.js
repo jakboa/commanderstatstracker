@@ -59,6 +59,6 @@ const SearchHandler = {
 
 export default SearchHandler;
 
-console.log(SearchHandler.getOneGroup('B_Boys'));
+//console.log(SearchHandler.getOneGroup('B_Boys'));
 
 
