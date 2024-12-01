@@ -12,7 +12,6 @@ export default function Root() {
         <div>
             <h1>Hello!</h1>
             {/* THIS (NavLink) gives class so i can css that shit, very nice! */ }
-            <NavLink to="/gameresults">Nav GAME</NavLink><br/>
             <NavLink to="/playerstats">NAV STATS</NavLink><br />
             <NavLink to="/commanders">NAV COMMANDERS</NavLink>
             <p>This works.</p>

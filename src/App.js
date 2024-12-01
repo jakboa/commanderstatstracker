@@ -7,8 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Here I put alle the imports from different part of the application.
 import Root from './components/Root';
-import PlayerStats from './components/Player';
-import PlayerCommanderStats from './components/PlayerCommanderStats';
+import PlayerStats from './views/PlayerStats/Player';
 import Commanders from './views/CommanderStats/Commanders';
 import Homepage from './views/Homepage/Homepage';
 import GroupStats from './views/GroupStats/GroupStats';
@@ -28,16 +27,9 @@ const routes = [
         element: <GroupStats />
       },
       {
-        path: 'playerstats',
+        path: 'playerstats/:playerName',
         element: <PlayerStats />,
-        children: [
-          {
-            path: ':commanders',
-            element: <PlayerCommanderStats />
-          }
-        ]
       },
-
       {
         path: 'commanders',
         element: <Commanders />

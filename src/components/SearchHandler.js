@@ -53,12 +53,17 @@ const SearchHandler = {
     getOneGroup: (groupToFind) => {
         const groupInfo = gameInfo.filter( match => match.Group_name === groupToFind);
         return groupInfo;
+    },
+
+    getSinglePlayerStats: (playerToFind) => {
+        const playerInfo = gameInfo.filter( match => match.players.some(player => player.nickName  === playerToFind));
+        return playerInfo;
     }
 }
 
 
 export default SearchHandler;
 
-//console.log(SearchHandler.getOneGroup('B_Boys'));
+//console.log(SearchHandler.getSinglePlayerStats('Mr. Music'));
 
 

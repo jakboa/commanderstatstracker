@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 
@@ -6,7 +7,7 @@ export default function HomepagePlayersSingle( { name } ) {
 
     return (
         <div>
-            <p>{name}</p>
+            <Link to={`/playerstats/${name}`}>{name}</Link>
         </div>
     );
 };
