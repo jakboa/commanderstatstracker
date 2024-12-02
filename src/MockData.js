@@ -27,7 +27,7 @@ export const gameInfo = [
             },
             {
                 nickName: 'Mr. Foto',
-                commander: 'Golos',
+                commander: 'Oloro',
                 placement: 2,
             }
         ],

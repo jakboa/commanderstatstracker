@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 export default function HomepageCommandersSingle( { name } ) {
 
     return (
-        <p>{name}</p>
+        <Link to={`/commanders/${name}`}>{name}</Link>
     );
 };

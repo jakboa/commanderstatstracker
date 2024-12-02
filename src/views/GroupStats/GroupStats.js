@@ -14,14 +14,7 @@ export default function GroupStats() {
     return (
         <Container>
             <p>Her er groupStats for {groupname}!</p>
-            { group.map(match => {
-                return (
-                    <MatchInfoBox matchDetails={match} />
-                )
-            })
-
-            }
-
+            <MatchInfoBox matchDetails={group} />
             <p>Total amount of games so far: {group.length}</p>
         </Container>
     );

@@ -6,16 +6,22 @@ import Row from 'react-bootstrap/Row';
 
 export default function MatchInfoBox( { matchDetails } ) {
 
-    matchDetails.players.sort((a, b) => a.placement - b.placement);
-    console.log(matchDetails);
+    // Here is sort the order in the match so that first place is displayed first and so on.
+    // I use .forEach because I want to modify the original. Could be smart to use .map, need more research.
+    matchDetails.forEach(match => match.players.sort((a, b) => a.placement - b.placement));
 
     return (
-        <Row>
-        { matchDetails.players.map(results => {
-            return (
-                <MatchInfoSingle matchData={results} />
-            )})
-            }
-        </Row>
+        <>
+            { matchDetails.map(match => {
+                return (
+                    <Row>
+                    { match.players.map(results => {
+                        return (
+                            <MatchInfoSingle matchData={results} />
+                        )})
+                        }
+                    </Row>
+            )})}
+        </>
     );
 };

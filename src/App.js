@@ -11,6 +11,7 @@ import PlayerStats from './views/PlayerStats/Player';
 import Commanders from './views/CommanderStats/Commanders';
 import Homepage from './views/Homepage/Homepage';
 import GroupStats from './views/GroupStats/GroupStats';
+import SingleCommanderStats from './views/CommanderStats/SingleCommanderStats';
 
 
 const routes = [
@@ -33,6 +34,10 @@ const routes = [
       {
         path: 'commanders',
         element: <Commanders />
+      },
+      {
+        path: 'commanders/:commanderName',
+        element: <SingleCommanderStats />
       }
     ] 
   }

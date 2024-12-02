@@ -58,6 +58,10 @@ const SearchHandler = {
     getSinglePlayerStats: (playerToFind) => {
         const playerInfo = gameInfo.filter( match => match.players.some(player => player.nickName  === playerToFind));
         return playerInfo;
+    },
+    getSingleCommanderStats: (commanderToFind) => {
+        const commanderInfo = gameInfo.filter( match => match.players.some(player => player.commander === commanderToFind));
+        return commanderInfo;
     }
 }
 

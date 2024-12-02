@@ -16,17 +16,9 @@ export default function PlayerStats() {
         <div className="playerstats">
             <p>This is stats for {playerName}!</p>
             <Container>
-            { playerInfo.map(match => {
-                return (
-                    <MatchInfoBox matchDetails={match} />
-                )
-            })
-
-            }
-
-            <p>Total amount of games so far: {playerInfo.length}</p>
-        </Container>
-
+                <MatchInfoBox matchDetails={playerInfo} />
+                <p>Total amount of games so far: {playerInfo.length}</p>
+            </Container>
         </div>
     )
 }
