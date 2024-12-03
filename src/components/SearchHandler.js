@@ -62,12 +62,32 @@ const SearchHandler = {
     getSingleCommanderStats: (commanderToFind) => {
         const commanderInfo = gameInfo.filter( match => match.players.some(player => player.commander === commanderToFind));
         return commanderInfo;
+    },
+    getGroupStats:(group) => {
+        const groupStats = {};
+        group[0].players.forEach(player => {
+            let name = player.nickName;
+            return groupStats[name] = {
+                "1":0,
+                "2":0,
+                "3":0,
+                "4":0
+            }
+        });
+        group.forEach(match =>  match.players.forEach(player => {
+            let name = player.nickName;
+            let placement = player.placement.toString();
+            
+            return groupStats[name][placement] = +1;
+        } ))
+        console.log(groupStats);
+        return groupStats;
     }
 }
 
 
 export default SearchHandler;
 
-//console.log(SearchHandler.getSinglePlayerStats('Mr. Music'));
+//console.log(SearchHandler.getGroupStats(gameInfo));
 
 
