@@ -6,6 +6,8 @@ import HomepageCommanders from "./HomepageCommanders";
 
 import SearchHandler from '../../components/SearchHandler';
 
+import Container from "react-bootstrap/Container";
+
 export default function Homepage() {
 
     // Gets all Groups, Players and Commanders so user can 
@@ -17,13 +19,14 @@ export default function Homepage() {
 
     return (
         <div className="homepage">
-
-            <HomepageGroups commanderGroups={ commanderGroups } />
+            <Container >
+                <HomepageGroups commanderGroups={ commanderGroups } />
             
-            <HomepagePlayers players={players} />
+                <HomepagePlayers players={players} />
 
-            <HomepageCommanders commanders={ commanders } />
+                <HomepageCommanders commanders={ commanders } />
             
+            </Container>
         </div>
     );
 }

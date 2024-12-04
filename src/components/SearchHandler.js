@@ -80,7 +80,6 @@ const SearchHandler = {
             
             return groupStats[name][placement] = +1;
         } ))
-        console.log(groupStats);
         return groupStats;
     }
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import MatchInfoSingle from "./MatchInfoSingle";
+import "./MatchInfoBox.css";
 
 import Row from 'react-bootstrap/Row';
-
 
 export default function MatchInfoBox( { matchDetails } ) {
 
@@ -14,7 +14,7 @@ export default function MatchInfoBox( { matchDetails } ) {
         <>
             { matchDetails.map(match => {
                 return (
-                    <Row>
+                    <Row className="MatchBox">
                     { match.players.map(results => {
                         return (
                             <MatchInfoSingle matchData={results} />

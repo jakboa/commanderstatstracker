@@ -14,7 +14,7 @@ export default function HomepageSingleGroup( {groupName, groupPlayers} ) {
     };
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card>
             <Card.Body>
                 <Card.Title>{groupName}</Card.Title>
                 {groupPlayers.map(player => {

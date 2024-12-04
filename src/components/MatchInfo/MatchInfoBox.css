@@ -1,0 +1,33 @@
+.MatchBox {
+    margin: 10px;
+    border: solid black 3px;
+}
+
+.matchPlayer {
+    background-color: aqua;
+}
+
+.playerBox {
+    border: solid black 2px;
+}
+
+.matchPic {
+    /* This makes it so the images do not get fucky with their aspect ratio, I think...*/
+    object-fit: cover;
+    
+}
+
+.matchNickname {
+
+    background-color: grey;
+
+}
+
+.matchCommander {
+    background-color: blanchedalmond;
+}
+
+.matchPlacement {
+    background-color: rebeccapurple;
+}
+
