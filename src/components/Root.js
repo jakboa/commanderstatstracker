@@ -12,7 +12,7 @@ import Footer from "./Footer";
 export default function Root() {
     
     return (
-        <div>
+        <div >
             <h1>Hello!</h1>
             {/* THIS (NavLink) gives class so i can css that shit, very nice! */ }
             <p>This works.</p>

@@ -6,7 +6,7 @@ import HomepageCommanders from "./HomepageCommanders";
 
 import SearchHandler from '../../components/SearchHandler';
 
-import Container from "react-bootstrap/Container";
+//import Container from "react-bootstrap/Container";
 
 export default function Homepage() {
 
@@ -18,15 +18,14 @@ export default function Homepage() {
 
 
     return (
-        <div className="homepage">
-            <Container >
+        
+            <div className="container-fluid homepage" >
                 <HomepageGroups commanderGroups={ commanderGroups } />
             
                 <HomepagePlayers players={players} />
 
                 <HomepageCommanders commanders={ commanders } />
             
-            </Container>
-        </div>
+            </div>
     );
 }

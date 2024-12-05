@@ -14,10 +14,10 @@ import matchFourthPlacePicture from '../../utils/matchFourthPlacePicture.png'
 
 export default function MatchInfoSingle( { matchData } ) {
 
-    const pictures = [matchFirstPlacePicture,matchSecondPlacePicture,matchThirdPlacePicture,matchFourthPlacePicture]
+    const pictures = [ matchFirstPlacePicture, matchSecondPlacePicture, matchThirdPlacePicture, matchFourthPlacePicture ]
 
     return (
-        <Row className="matchPlayer d-flex align-items-center fs-4 text-center" >
+        <Row className=" d-flex align-items-center fs-4 text-center">
             <Col >
                 <Image src={pictures[matchData.placement-1]} thumbnail className="matchPic playerBox" /> </Col>
             
