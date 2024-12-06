@@ -81,6 +81,18 @@ const SearchHandler = {
             return groupStats[name][placement] = +1;
         } ))
         return groupStats;
+    },
+
+    getPlayerResults: (playerName, playerMatches) => {
+        const playerResults = [0,0,0,0];
+        playerMatches.forEach(match => {
+            match.players.forEach(player => {
+                if (player.nickName === playerName) {
+                    playerResults[player.placement-1] = +1;
+                }
+            })
+        })
+        return playerResults;
     }
 }
 
