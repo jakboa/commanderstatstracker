@@ -8,7 +8,6 @@ export default function GroupScore( { scoreInfo } ) {
     const groupStats = SearchHandler.getGroupStats(scoreInfo);
 
 
-
     return (
         <>
             { Object.entries(groupStats).map(([key,value]) => {

@@ -93,6 +93,18 @@ const SearchHandler = {
             })
         })
         return playerResults;
+    },
+
+    getCommanderResults: (commanderName, commanderMatches) => {
+        const commanderResults = [0,0,0,0];
+        commanderMatches.forEach(match => {
+            match.players.forEach(player => {
+                if (player.commander === commanderName) {
+                    commanderResults[player.placement-1] = +1;
+                }
+            })
+        })
+        return commanderResults;
     }
 }
 
