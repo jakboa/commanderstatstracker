@@ -13,7 +13,7 @@ export default function PlayerStats() {
 
     const playerInfo = SearchHandler.getSinglePlayerStats(playerName);
 
-    const [matchResultsForPlayer] = useState(SearchHandler.getPlayerResults(playerName,playerInfo));
+    const [matchResultsForPlayer] = useState(SearchHandler.getEntityResults(playerName,playerInfo));
 
     const totalGames = playerInfo.length;
 

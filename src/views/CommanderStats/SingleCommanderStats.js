@@ -9,8 +9,8 @@ export default function SingleCommanderStats() {
 
     const { commanderName } = useParams();
     const commanderInfo = SearchHandler.getSingleCommanderStats(commanderName);
-    const [ matchResultsForCommander ] = useState(SearchHandler.getCommanderResults(commanderName,commanderInfo))
-
+    const [ matchResultsForCommander ] = useState(SearchHandler.getEntityResults(commanderName,commanderInfo))
+    
     return (
         <Container>
             <p>{commanderName}</p>

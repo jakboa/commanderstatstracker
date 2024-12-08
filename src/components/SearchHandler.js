@@ -65,6 +65,7 @@ const SearchHandler = {
     },
     getGroupStats:(group) => {
         const groupStats = {};
+        // Make a object with placements as keys for each player in the group
         group[0].players.forEach(player => {
             let name = player.nickName;
             return groupStats[name] = {
@@ -74,37 +75,44 @@ const SearchHandler = {
                 "4":0
             }
         });
+        // Itterate over the games and add placements to groupStats.
         group.forEach(match =>  match.players.forEach(player => {
             let name = player.nickName;
             let placement = player.placement.toString();
-            
             return groupStats[name][placement] = +1;
         } ))
         return groupStats;
     },
 
-    getPlayerResults: (playerName, playerMatches) => {
-        const playerResults = [0,0,0,0];
+    getEntityResults: (entityName, playerMatches) => {
+        const entityResults = [0,0,0,0];
         playerMatches.forEach(match => {
             match.players.forEach(player => {
-                if (player.nickName === playerName) {
-                    playerResults[player.placement-1] = +1;
+                if (player.nickName === entityName || player.commander === entityName) {
+                    entityResults[player.placement-1] = entityResults[player.placement-1] + 1;
+                    console.log(entityResults);
                 }
             })
         })
-        return playerResults;
+        return entityResults;
     },
 
-    getCommanderResults: (commanderName, commanderMatches) => {
-        const commanderResults = [0,0,0,0];
-        commanderMatches.forEach(match => {
+    getGroupInfo: (group) => {
+        const playerNicks = new Set();
+        const mostUsedCommanders = {};
+        //const bestCommander = {};
+        group.forEach(match => {
             match.players.forEach(player => {
-                if (player.commander === commanderName) {
-                    commanderResults[player.placement-1] = +1;
-                }
+                playerNicks.add(player.nickName);
+                let commander = player.commander;
+                //console.log(commander);
+                if (mostUsedCommanders[commander]){
+                    mostUsedCommanders[commander] = +1;
+                } else {mostUsedCommanders[commander] = 1;}
+                
             })
-        })
-        return commanderResults;
+        });
+        return {playerNicks, mostUsedCommanders};
     }
 }
 

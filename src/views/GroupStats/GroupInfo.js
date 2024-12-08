@@ -1,11 +1,15 @@
 import React from "react";
-
+import SearchHandler from "../../components/SearchHandler";
 
 
 
 export default function GroupInfo( { group } ) {
 
     console.log(group);
+
+    const test = SearchHandler.getGroupInfo(group);
+
+    console.log(test);
 
     return (
         <>
