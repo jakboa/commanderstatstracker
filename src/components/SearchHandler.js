@@ -79,7 +79,7 @@ const SearchHandler = {
         group.forEach(match =>  match.players.forEach(player => {
             let name = player.nickName;
             let placement = player.placement.toString();
-            return groupStats[name][placement] = +1;
+            return groupStats[name][placement] = groupStats[name][placement] +1;
         } ))
         return groupStats;
     },
@@ -98,21 +98,22 @@ const SearchHandler = {
     },
 
     getGroupInfo: (group) => {
-        const playerNicks = new Set();
+        const setPlayerNicks = new Set();
         const mostUsedCommanders = {};
         //const bestCommander = {};
         group.forEach(match => {
             match.players.forEach(player => {
-                playerNicks.add(player.nickName);
+                setPlayerNicks.add(player.nickName);
                 let commander = player.commander;
-                //console.log(commander);
                 if (mostUsedCommanders[commander]){
-                    mostUsedCommanders[commander] = +1;
+                    mostUsedCommanders[commander] = mostUsedCommanders[commander] +1;
                 } else {mostUsedCommanders[commander] = 1;}
                 
             })
         });
-        return {playerNicks, mostUsedCommanders};
+        const arrayPlayerNicks = [...setPlayerNicks]
+
+        return {arrayPlayerNicks, mostUsedCommanders};
     }
 }
 
