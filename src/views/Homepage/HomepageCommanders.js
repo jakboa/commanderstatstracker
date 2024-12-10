@@ -1,20 +1,24 @@
 import React from "react";
 import HomepageCommanderSingle from "./HomepageCommandersSingle";
 
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 export default function HomepageCommanders( { commanders } ) {
     
 
     return (
-        <div className="homepage_commanders">
+        <Row className="homepage_commanders">
             <p>Here I put Commanders!</p>
             { commanders.map(commander => {
                 return (
-                    <HomepageCommanderSingle name={ commander } />
+                    <Col>
+                        <HomepageCommanderSingle name={ commander } />
+                    </Col>
                 )
             })
             }
-        </div>
+        </Row>
     );
 
 };

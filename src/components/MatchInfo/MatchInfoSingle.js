@@ -2,8 +2,8 @@ import React from "react";
 
 import "./MatchInfoBox.css";
 
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Stack from 'react-bootstrap/Stack';
 
 import Image from 'react-bootstrap/Image';
 import matchFirstPlacePicture from '../../utils/matchFirstPlacePicture.png'
@@ -17,19 +17,17 @@ export default function MatchInfoSingle( { matchData } ) {
     const pictures = [ matchFirstPlacePicture, matchSecondPlacePicture, matchThirdPlacePicture, matchFourthPlacePicture ]
 
     return (
-        <Row className=" d-flex align-items-center fs-4 text-center">
-            <Col >
-                <Image src={pictures[matchData.placement-1]} thumbnail className="matchPic playerBox" /> </Col>
+        <Col className=" d-flex align-items-center fs-4 text-center">
+            <Stack direction="horizontal" >
+                <Image src={pictures[matchData.placement-1]} thumbnail className="matchPic playerBox" />
             
-            <Col >
-                <p className="matchNickname playerBox">{matchData.nickName}</p> </Col>
+                <p className="matchNickname playerBox">{matchData.nickName}</p>
 
-            <Col >
-                <p className="matchCommander playerBox">{matchData.commander}</p> </Col>
-
-            <Col >
-                <p className="matchPlacement playerBox">{matchData.placement}</p> </Col>
-        </Row>
+                <p className="matchCommander playerBox">{matchData.commander}</p>
+            
+                <p className="matchPlacement playerBox">{matchData.placement}</p>
+            </Stack>
+        </Col>
     );
 };
 
