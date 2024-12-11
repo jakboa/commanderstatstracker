@@ -133,6 +133,38 @@ export const gameInfo = [
         ],
 
         year: 2024
+    },
+    {
+        Match_id: 4,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Mr. Music',
+                commander: 'Saruman',
+                placement: 1 
+            },
+
+            {
+                nickName: 'Mr. Stats',
+                commander:'Wilhelt',
+                placement: 2
+            },
+
+            {
+                nickName: 'Mr. Keys',
+                commander: 'Light-Paws',
+                placement: 2
+            },
+            {
+                nickName: 'Mr. Foto',
+                commander: 'Ol00000oro',
+                placement: 2,
+            }
+        ],
+
+        year: 2024
     }
 
 ];

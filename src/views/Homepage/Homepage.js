@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 //import './homepage.css';
 import HomepageGroups from "./HomepageGroups";
 import HomepagePlayers from "./HomepagePlayers";
@@ -14,17 +14,33 @@ export default function Homepage() {
     // quickly find the information they want.
     const [commanderGroups] = useState(SearchHandler.getAllGroups);
     const [players] = useState(SearchHandler.getAllPlayers);
+    
     const [commanders] = useState(SearchHandler.getAllCommanders);
+    const [searchCommanders,setSearchCommanders] = useState(commanders);
+    const [searchTextCommanders,setSearchTextCommanders] = useState("");
 
+    // Handles Search for Commander
+    const handleCommanderSearch = (e) => {
+        setSearchTextCommanders(e.target.value);
+    };
+    // useEffect to make sure it updates the search.
+    useEffect(()=>{
+        setSearchCommanders(SearchHandler.findCommander(searchTextCommanders))
+    },[searchTextCommanders])
 
     return (
         
             <Container fluid className="homepage" >
+                
                 <HomepageGroups commanderGroups={ commanderGroups } />
             
                 <HomepagePlayers players={players} />
-
-                <HomepageCommanders commanders={ commanders } />
+                
+                <HomepageCommanders  
+                    commanders={ commanders } 
+                    handleCommanderSearch={ handleCommanderSearch } 
+                    searchTextCommanders={ searchTextCommanders }
+                    searchCommanders={ searchCommanders } />
             
             </Container>
     );

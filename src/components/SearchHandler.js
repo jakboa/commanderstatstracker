@@ -22,6 +22,7 @@ const SearchHandler = {
     },
 
     getAllCommanders: () => {
+        console.log(allCommanders);
         return allCommanders;
     },
 

@@ -7,11 +7,11 @@ import Row from "react-bootstrap/Row";
 export default function HomepagePlayers( { players } ) {
 
     return (
-        <Row className="homepage_players">
+        <Row className="d-flex text-center homepage_players">
             <p>Here I put Players!</p>
             { players.map(player => {
                 return (
-                    <Col>
+                    <Col className=" m-3 homepage_commanders_single">
                         <HomepagePlayersSingle name={player} />
                         
                     </Col>
