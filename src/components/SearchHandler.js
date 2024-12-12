@@ -7,7 +7,14 @@ const allCommanders = gameInfo.map(
         playedCommander => playedCommander.commander
     )).flat();
 
-
+// Use new Set to remove duplicates and Array.from
+// to make it into a Array again. Big O should be 
+// around O(n*m) so it is fine for now, but will look into this later!
+// OBS: CHECK FLATMAP perhaps?
+const allPlayers = Array.from(new Set(gameInfo.map(
+    match => match.players.map(
+        player => player.nickName
+    )).flat()))    
 
 const SearchHandler = {
 
@@ -21,8 +28,13 @@ const SearchHandler = {
         return filterCommanders;
     },
 
+    findPlayer: (playerToFind) => {
+        const playerInfo = allPlayers.filter(player => player.toLowerCase().includes(playerToFind.toLowerCase()));
+        return playerInfo;
+        
+    },
+
     getAllCommanders: () => {
-        console.log(allCommanders);
         return allCommanders;
     },
 
@@ -121,6 +133,8 @@ const SearchHandler = {
 
 export default SearchHandler;
 
-//console.log(SearchHandler.getGroupStats(gameInfo));
+//console.log(SearchHandler.findPlayer("Music"));
+
+
 
 

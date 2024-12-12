@@ -3,16 +3,21 @@
 }
 
 .homepage_groups {
-    border: solid blue 3px;
     background-color: aqua;
 }
 
 
 
 .homepage_players {
-    border: solid red 3px;
-    background-color: greenyellow;
+    background-color: grey;
 }
+
+.homepage_players_single {
+    min-width: 20rem;
+    border: solid black 1px;
+    background-color: whitesmoke;
+}
+
 
 
 .homepage_commanders {
