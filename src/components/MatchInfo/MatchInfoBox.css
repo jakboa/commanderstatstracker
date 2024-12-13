@@ -1,5 +1,4 @@
 .MatchBox {
-    margin: 10px;
     border: solid black 3px;
 }
 
@@ -9,6 +8,7 @@
 
 .playerBox {
     border: solid black 2px;
+
 }
 
 .matchPic {
@@ -30,4 +30,3 @@
 .matchPlacement {
     background-color: rebeccapurple;
 }
-

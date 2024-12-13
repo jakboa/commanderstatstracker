@@ -14,7 +14,7 @@ export default function MatchInfoBox( { matchDetails } ) {
         <>
             { matchDetails.map(match => {
                 return (
-                    <Row className="">
+                    <Row className="my-3 p-1 border">
                     { match.players.map(results => {
                         return (
                             <MatchInfoSingle matchData={results} />

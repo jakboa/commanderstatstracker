@@ -24,7 +24,7 @@ export default function GroupStats() {
                     <GroupInfo group={group} /> 
                 </Col>
                 <Col className="bordertest">
-                    <p>Her er groupStats for {groupname}!</p>
+                    <h1 className="text-center">Match Results for {groupname}</h1>
                     <MatchInfoBox matchDetails={group} />
                 </Col>
             </Row>
