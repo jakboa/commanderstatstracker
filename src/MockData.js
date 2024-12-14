@@ -66,7 +66,7 @@ export const gameInfo = [
             }
         ],
 
-        year: 2023
+        year: "2023"
     },
 
     {
@@ -142,7 +142,7 @@ export const gameInfo = [
         players: [  
             { 
                 nickName: 'Mr. Music',
-                commander: 'Saruman',
+                commander: 'Oviya Pashiri, Sage Lifecrafter',
                 placement: 1 
             },
 
@@ -159,12 +159,12 @@ export const gameInfo = [
             },
             {
                 nickName: 'Mr. Foto',
-                commander: 'Ol00000oro',
+                commander: 'Asmoranomardicadaistinaculdacar',
                 placement: 2,
             }
         ],
 
-        year: 2024
+        year: "2024"
     }
 
 ];

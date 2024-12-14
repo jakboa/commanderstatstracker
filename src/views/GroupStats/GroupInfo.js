@@ -7,7 +7,7 @@ export default function GroupInfo( { group } ) {
 
     const groupInfo = SearchHandler.getGroupInfo(group);
 
-    console.log(groupInfo);
+    //console.log(groupInfo);
 
     return (
         <>

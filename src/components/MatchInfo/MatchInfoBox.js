@@ -4,6 +4,7 @@ import "./MatchInfoBox.css";
 
 import Row from 'react-bootstrap/Row';
 
+
 export default function MatchInfoBox( { matchDetails } ) {
 
     // Here is sort the order in the match so that first place is displayed first and so on.
@@ -14,7 +15,7 @@ export default function MatchInfoBox( { matchDetails } ) {
         <>
             { matchDetails.map(match => {
                 return (
-                    <Row className="my-3 p-1 border">
+                    <Row className=" mb-3 border">
                     { match.players.map(results => {
                         return (
                             <MatchInfoSingle matchData={results} />

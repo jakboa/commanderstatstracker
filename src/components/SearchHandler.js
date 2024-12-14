@@ -124,16 +124,24 @@ const SearchHandler = {
                 
             })
         });
-        const arrayPlayerNicks = [...setPlayerNicks]
+        const arrayPlayerNicks = [...setPlayerNicks];
 
         return {arrayPlayerNicks, mostUsedCommanders};
+    }, 
+
+    getEntityMatchesForYear: (matches, year) =>{
+        if (year === "allGames") {
+            return matches;
+        };
+        const yearGames = matches.filter((match) => match.year.toString() === year.toString());
+        return yearGames;
     }
 }
 
 
 export default SearchHandler;
 
-//console.log(SearchHandler.findPlayer("Music"));
+//console.log(SearchHandler.getEntityMatchesForYear(gameInfo,20));
 
 
 

@@ -2,31 +2,42 @@
     border: solid black 3px;
 }
 
-.matchPlayer {
-    background-color: aqua;
+.matchplayerCol {
+    padding: 0;
+
 }
+
+
+.matchplayerStack {
+    padding: 0 !important;
+}
+
 
 .playerBox {
     border: solid black 2px;
-
+    margin: 0;
 }
 
 .matchPic {
     /* This makes it so the images do not get fucky with their aspect ratio, I think...*/
     object-fit: cover;
-    
+    width: 8%;
 }
 
 .matchNickname {
 
     background-color: grey;
+    width: 40%;
 
 }
 
 .matchCommander {
     background-color: blanchedalmond;
+    width: 50%;
+
 }
 
 .matchPlacement {
     background-color: rebeccapurple;
+    width: 5%;
 }
