@@ -27,5 +27,7 @@
 
 .homepage_commanders_single {
     border: solid black 3px;
-    background-color: moccasin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

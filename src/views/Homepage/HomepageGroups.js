@@ -10,7 +10,7 @@ export default function HomepageGroups( { commanderGroups } ) {
 
     return (
         <>
-            <Row className="pb-3 text-center homepage_groups">
+            <Row className="pb-3 text-center">
                 <Col md={12}>
                 <h1>Information about Groups!</h1> </Col>
                 <Col md={12}>
@@ -18,7 +18,7 @@ export default function HomepageGroups( { commanderGroups } ) {
                     <Form.Control></Form.Control>
                 </Col>
             </Row>
-            <Row className="pb-3 homepage_groups">
+            <Row className="pb-3">
                 {commanderGroups.map(group => {
                     return (
                         <Col>

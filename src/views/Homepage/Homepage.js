@@ -5,7 +5,7 @@ import HomepagePlayers from "./HomepagePlayers";
 import HomepageCommanders from "./HomepageCommanders";
 import SearchHandler from '../../components/SearchHandler';
 
-import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 export default function Homepage() {
 
@@ -46,7 +46,7 @@ export default function Homepage() {
 
     return (
         
-            <Container fluid className="homepage" >
+            <Row fluid className="homepage d-flex justify-content-center aling-items-center" >
                 
                 <HomepageGroups commanderGroups={ commanderGroups } />
                 
@@ -62,6 +62,6 @@ export default function Homepage() {
                     searchTextCommanders={ searchTextCommanders }
                     searchCommanders={ searchCommanders } />
             
-            </Container>
+            </Row>
     );
 }

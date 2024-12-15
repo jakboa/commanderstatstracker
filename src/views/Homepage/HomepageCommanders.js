@@ -20,7 +20,7 @@ export default function HomepageCommanders( { commanders, searchCommanders, hand
                 </Col>
             </Row>
 
-            <Row className="d-flex flex-nowrap overflow-x-scroll justify-content-center text-center" >
+            <Row className="d-flex flex-nowrap overflow-x-scroll" >
                     {
                         !searchTextCommanders ? commanders.map(commander => {
                             return (

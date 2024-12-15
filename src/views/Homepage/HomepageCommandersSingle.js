@@ -5,6 +5,6 @@ import { Link } from "react-router-dom";
 export default function HomepageCommandersSingle( { name } ) {
 
     return (
-        <Link to={`/commanders/${name}`}>{name}</Link>
+        <Link to={`/commanders/${name}`} className="text-break">{name}</Link>
     );
 };
