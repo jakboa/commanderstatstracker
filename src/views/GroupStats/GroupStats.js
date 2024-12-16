@@ -53,7 +53,9 @@ export default function GroupStats() {
                     <Tab eventKey="2023" title="2023">Matches played in 2023:</Tab>
                     <Tab eventKey="2022" title="2022">Matches played in 2022:</Tab>
                 </Tabs>
+                
                 <MatchInfoBox matchDetails={filteredGroup} />
+            
             </Col>
 
         </Row>

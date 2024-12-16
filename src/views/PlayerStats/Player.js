@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import SearchHandler from "../../components/SearchHandler";
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
 import EntityScore from "../../components/EntityScore";
+import LineChart from "../../components/charts/LineChart";
 
 import { Container } from "react-bootstrap";
 
@@ -24,6 +25,7 @@ export default function PlayerStats() {
                 <MatchInfoBox matchDetails={playerInfo} />
                 <p>Total amount of games so far: {totalGames}</p>
                 <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
+                <LineChart entityName={ playerName } entityMatches={ playerInfo } />
             </Container>
         </div>
     )

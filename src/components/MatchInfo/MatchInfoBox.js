@@ -3,6 +3,7 @@ import MatchInfoSingle from "./MatchInfoSingle";
 import "./MatchInfoBox.css";
 
 import Row from 'react-bootstrap/Row';
+import { Col } from "react-bootstrap";
 
 
 export default function MatchInfoBox( { matchDetails } ) {
@@ -12,17 +13,17 @@ export default function MatchInfoBox( { matchDetails } ) {
     matchDetails.forEach(match => match.players.sort((a, b) => a.placement - b.placement));
 
     return (
-        <>
+        <Row>
             { matchDetails.map(match => {
                 return (
-                    <Row className=" mb-3 border">
+                    <Col md={6} className=" mb-3 border">
                     { match.players.map(results => {
                         return (
                             <MatchInfoSingle matchData={results} />
                         )})
                         }
-                    </Row>
+                    </Col>
             )})}
-        </>
+        </Row>
     );
 };

@@ -103,7 +103,6 @@ const SearchHandler = {
             match.players.forEach(player => {
                 if (player.nickName === entityName || player.commander === entityName) {
                     entityResults[player.placement-1] = entityResults[player.placement-1] + 1;
-                    console.log(entityResults);
                 }
             })
         })
@@ -135,6 +134,14 @@ const SearchHandler = {
         };
         const yearGames = matches.filter((match) => match.year.toString() === year.toString());
         return yearGames;
+    },
+    getLineChartData: (entityName, matches) =>{
+        const entityResults = matches.map(match => {
+            const player = match.players.find(player => player.nickName === entityName || player.commander === entityName);
+            return player.placement;
+            }
+        )
+        return entityResults;
     }
 }
 
@@ -143,6 +150,6 @@ export default SearchHandler;
 
 //console.log(SearchHandler.getEntityMatchesForYear(gameInfo,20));
 
-
+//console.log(SearchHandler.getLineChartData("Mr. Stats",gameInfo));
 
 
