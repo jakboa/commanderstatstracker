@@ -4,6 +4,7 @@ import SearchHandler from "../../components/SearchHandler";
 import Container  from "react-bootstrap/Container";
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
 import EntityScore from "../../components/EntityScore";
+import LineChart from "../../components/charts/LineChart";
 
 export default function SingleCommanderStats() {
 
@@ -16,6 +17,7 @@ export default function SingleCommanderStats() {
             <p>{commanderName}</p>
             <MatchInfoBox matchDetails={ commanderInfo } />
             <EntityScore results={ matchResultsForCommander } totalGames={ commanderInfo.length } />
+            <LineChart entityName={ commanderName } entityMatches={ commanderInfo } />
         </Container>
 
     )

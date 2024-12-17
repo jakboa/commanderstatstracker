@@ -4,6 +4,7 @@ import SearchHandler from "../../components/SearchHandler";
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
 import GroupScore from "./GroupScore";
 import GroupInfo from "./GroupInfo";
+import GroupLineChart from "./GroupLineChart";
 import "./GroupPage.css";
 
 import Row from 'react-bootstrap/Row';
@@ -57,7 +58,9 @@ export default function GroupStats() {
                 <MatchInfoBox matchDetails={filteredGroup} />
             
             </Col>
-
+            <Col>
+                <GroupLineChart entityName={ groupname } entityMatches={ filteredGroup } />
+            </Col>
         </Row>
     );
 };

@@ -142,13 +142,28 @@ const SearchHandler = {
             }
         )
         return entityResults;
-    }
+    },
+    getGroupLineChartData:(group) => {
+        const groupStatsLineData = {};
+        // Make a object with placements as keys for each player in the group
+        group[0].players.forEach(player => {
+            let name = player.nickName;
+            return groupStatsLineData[name] = []
+        });
+        // Itterate over the games and add placements to groupStatsLineData.
+        group.forEach(match =>  match.players.forEach(player => {
+            let name = player.nickName;
+            let placement = player.placement;
+            return groupStatsLineData[name].push(placement);
+        } ))
+        return groupStatsLineData;
+    },
 }
 
 
 export default SearchHandler;
 
-//console.log(SearchHandler.getEntityMatchesForYear(gameInfo,20));
+//console.log(SearchHandler.getGroupLineChartData(gameInfo));
 
 //console.log(SearchHandler.getLineChartData("Mr. Stats",gameInfo));
 

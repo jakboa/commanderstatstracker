@@ -1,5 +1,5 @@
 import React from "react";
-import SearchHandler from "../SearchHandler";
+import SearchHandler from "../../components/SearchHandler";
 
 
 import { Line } from 'react-chartjs-2';
@@ -25,7 +25,7 @@ Chartjs.register(
 );
 
 
-export default function LineChart( {entityName,entityMatches} ) {
+export default function GroupLineChart( { entityName, entityMatches } ) {
 
     const options = {
         responsive: true,
@@ -51,18 +51,39 @@ export default function LineChart( {entityName,entityMatches} ) {
         }
       };
 
-      const results = SearchHandler.getLineChartData(entityName, entityMatches);
+      const results = SearchHandler.getGroupLineChartData(entityMatches);
       const labels = []
-      for (let i = 1; i <= results.length; i++) {
+      for (let i = 1; i <= Object.keys(entityMatches).length; i++) {
         labels.push(`Game: ${i}`)
+        
       }
 
-      const data = { labels, datasets:[ {
+      const data = { labels, datasets:[ 
+        {
         label: entityName,
-        data: results,
+        data: results["Mr. Foto"],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)'
-      }]};
+      },
+      {
+        label: entityName,
+        data: results["Mr. Music"],
+        borderColor: 'rgb(4, 174, 16)',
+        backgroundColor: 'rgba(3, 107, 15, 0.5)'
+      },
+      {
+        label: entityName,
+        data: results["Mr. Foto"],
+        borderColor: 'rgb(48, 23, 233)',
+        backgroundColor: 'rgba(6, 24, 115, 0.5)'
+      },
+      {
+        label: entityName,
+        data: results["Mr. Stats"],
+        borderColor: 'rgb(203, 236, 70)',
+        backgroundColor: 'rgba(188, 243, 7, 0.5)'
+      },
+    ]};
 
 
     return (
