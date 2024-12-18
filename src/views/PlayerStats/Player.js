@@ -4,6 +4,7 @@ import SearchHandler from "../../components/SearchHandler";
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
 import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
+import DoughnutChart from "../../components/charts/DoughnutChart";
 
 import { Container } from "react-bootstrap";
 
@@ -26,6 +27,7 @@ export default function PlayerStats() {
                 <p>Total amount of games so far: {totalGames}</p>
                 <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
                 <LineChart entityName={ playerName } entityMatches={ playerInfo } />
+                <DoughnutChart /> 
             </Container>
         </div>
     )
