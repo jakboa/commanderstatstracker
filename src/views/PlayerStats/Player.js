@@ -6,7 +6,8 @@ import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
 import DoughnutChart from "../../components/charts/DoughnutChart";
 
-import { Container } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 
 export default function PlayerStats() {
@@ -20,15 +21,37 @@ export default function PlayerStats() {
     const totalGames = playerInfo.length;
 
     return (
-        <div className="playerstats">
-            <p>This is stats for {playerName}!</p>
-            <Container>
+        <Row className="playerstats">
+            <Col md={12}>
+                <h1>This is stats for {playerName}!</h1>
+            </Col>
+
+            <Col md={3} className="border border-4 border-black">
+                <p>Here is picture of avatar</p>
+                <p>Here are some facts?</p>
+            </Col>
+
+            <Col >
+                <Row>
+                    <Col>
+                        <p>Total amount of games so far: {totalGames}</p>
+                        <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
+                    </Col>
+                    <Col>
+                        <DoughnutChart /> 
+                    </Col>
+                    <Col md={12}>
+                        <LineChart entityName={ playerName } entityMatches={ playerInfo } />
+                    </Col>
+                </Row>
+            </Col>
+            <Col md={12}>
                 <MatchInfoBox matchDetails={playerInfo} />
-                <p>Total amount of games so far: {totalGames}</p>
-                <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
-                <LineChart entityName={ playerName } entityMatches={ playerInfo } />
-                <DoughnutChart /> 
-            </Container>
-        </div>
+            </Col>
+
+                
+
+
+        </Row>
     )
 }
