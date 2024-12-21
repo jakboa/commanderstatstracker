@@ -9,10 +9,10 @@ export default function HomepageCommanders( { commanders, searchCommanders, hand
 
     return (
         <>
-            <Row className=" pb-3 text-center" >
+            <Row className="pb-3 text-center">
                 <Col md={12}>
                     <h1>Find Commander.</h1> </Col>
-                <Col md={12} className="d-flex justify-content-center">
+                <Col md={12} className="d-flex justify-content-center mb-3">
                     <Form>
                         <Form.Label>Search For Commander:</Form.Label>
                         <Form.Control onChange={ handleCommanderSearch }></Form.Control>
@@ -24,14 +24,14 @@ export default function HomepageCommanders( { commanders, searchCommanders, hand
                     {
                         !searchTextCommanders ? commanders.map(commander => {
                             return (
-                                <Col md={1} className="homepage_commanders_single">
+                                <Col md={2} className="homepage_commanders_single">
                                     <HomepageCommanderSingle name={ commander } />
                                 </Col>
                             )})
                          :
                          searchCommanders.map(commander => {
                             return (
-                                <Col md={1} className="homepage_commanders_single">
+                                <Col md={2} className="homepage_commanders_single">
                                     <HomepageCommanderSingle name={ commander } />
                                 </Col>
                             )})   

@@ -1,5 +1,3 @@
-
-
 import { gameInfo } from "../MockData"
 
 const allCommanders = gameInfo.map(
@@ -16,6 +14,9 @@ const allPlayers = Array.from(new Set(gameInfo.map(
         player => player.nickName
     )).flat()))    
 
+const allGroups = Array.from(new Set(gameInfo.map(
+    match => match.Group_name).flat()))   
+
 const SearchHandler = {
 
     findCommander: (search) => {
@@ -31,6 +32,12 @@ const SearchHandler = {
     findPlayer: (playerToFind) => {
         const playerInfo = allPlayers.filter(player => player.toLowerCase().includes(playerToFind.toLowerCase()));
         return playerInfo;
+        
+    },
+
+    findGroup: (groupToFind) => {
+        const filterGroup = allGroups.filter(group => group.toLowerCase().includes(groupToFind.toLowerCase()));
+        return filterGroup;
         
     },
 

@@ -16,7 +16,7 @@ import Col  from "react-bootstrap/Col";
 export default function Root() {
     
     return (
-        <Container fluid className="RCon bg-body-secondary">
+        <Container fluid className="RCon">
             <Row>
                 <Col>
                     <Header />

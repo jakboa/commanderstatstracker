@@ -26,8 +26,8 @@
 }
 
 .homepage_commanders_single {
-    border: solid black 3px;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
+    text-align: center;
 }

@@ -14,6 +14,22 @@ import GroupStats from './views/GroupStats/GroupStats';
 import SingleCommanderStats from './views/CommanderStats/SingleCommanderStats';
 
 
+/*
+POTENTIAL COLOR PALLETE:
+
+ #0B0C10
+
+ #1F2833
+
+ #C5C6C7
+
+ #66FCF1
+
+ #45A29E
+
+*/
+
+
 const routes = [
   {
     path: '/',
