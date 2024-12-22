@@ -41,3 +41,26 @@
     background-color: rebeccapurple;
     width: 5%;
 }
+
+
+.result-1 {
+    background-color: gold;
+}
+
+.result-2 {
+    background-color: silver;
+}
+
+.result-3 {
+    background-color: chocolate;
+}
+
+.result-4 {
+    background-color: brown;
+}
+
+.getFocus {
+    font-size: large;
+    text-transform: uppercase;
+    text-decoration: underline;
+}

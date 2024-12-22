@@ -28,8 +28,6 @@ export default function Homepage() {
     // Handles Search for Groups
     const handleGroupSearch = (e) => {
         setSearchTextGroups(e.target.value);
-        console.log(commanderGroups)
-        console.log(searchGroup)
     };
     // useEffect to make sure it updates the search.
     useEffect(() =>{

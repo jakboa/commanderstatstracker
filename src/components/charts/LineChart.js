@@ -1,6 +1,8 @@
 import React from "react";
 import SearchHandler from "../SearchHandler";
 
+import "./Charts.css";
+
 
 import { Line } from 'react-chartjs-2';
 import {
@@ -28,7 +30,7 @@ Chartjs.register(
 export default function LineChart( {entityName,entityMatches} ) {
 
     const options = {
-        responsive: true,
+        responsive: false,
         plugins: {
           legend: {
             position: 'top',
@@ -66,7 +68,7 @@ export default function LineChart( {entityName,entityMatches} ) {
 
 
     return (
-        < Line options={ options } data={data} />
+        < Line options={ options } data={data} className="lineChart bg-light-subtle" />
     );
 };
 

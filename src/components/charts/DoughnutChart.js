@@ -3,6 +3,8 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
+import "./Charts.css";
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
@@ -34,5 +36,5 @@ const data = {
   ],
 };
 
-  return <Doughnut data={data} />;
+  return <Doughnut data={data} className="doughnutChart bg-light-subtle" />;
 }

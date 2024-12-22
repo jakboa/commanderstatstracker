@@ -6,6 +6,8 @@ import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
 import DoughnutChart from "../../components/charts/DoughnutChart";
 
+import "./PlayerStats.css"
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
@@ -46,7 +48,7 @@ export default function PlayerStats() {
                 </Row>
             </Col>
             <Col md={12}>
-                <MatchInfoBox matchDetails={playerInfo} />
+                <MatchInfoBox matchDetails={playerInfo} focus={ playerName } />
             </Col>
 
                 

@@ -18,7 +18,7 @@ export default function HomepageCommandersSingle( { name } ) {
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>12 Games 3 wins</Card.Text>
-                <Button variant="info" onClick={handleCommanderClick}>Check Commander</Button>
+                <Button onClick={handleCommanderClick}>Check Commander</Button>
             </Card.Body>
         </Card>
 

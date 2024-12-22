@@ -6,6 +6,8 @@ import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
 import DoughnutChart from "../../components/charts/DoughnutChart";
 
+import "./CommanderStats.css"
+
 import Col  from "react-bootstrap/Col";
 import Row  from "react-bootstrap/Row";
 
@@ -17,9 +19,9 @@ export default function SingleCommanderStats() {
     const [ matchResultsForCommander ] = useState(SearchHandler.getEntityResults(commanderName,commanderInfo))
     
     return (
-        <Row>
+        <Row className="singleCommanderPage">
             <Col md={12}>
-                <p>{commanderName}</p>
+                <h1>{commanderName}</h1>
             </Col>
             <Col md={4} >
                 <p>Her er commander info.</p>
@@ -27,19 +29,21 @@ export default function SingleCommanderStats() {
             </Col>
             <Col md={8}>
                 <Row className="border border-4 border-black">
-                    <Col md={3} className="border border-5 border-white bg-light-subtle p-3 m-3 rounded-5">
+                    <Col md={4} className="d-flex">
                         <EntityScore results={ matchResultsForCommander } totalGames={ commanderInfo.length } />
                     </Col>
-                    <Col md={8} className="border border-5 border-white bg-light-subtle p-3 m-3 rounded-5">
+                    <Col md={8} >
                         <DoughnutChart />
                     </Col>
-                    <Col md={11} className="border border-5 border-white bg-light-subtle p-3 m-3 rounded-5">
+                </Row>
+                <Row className="border border-4 border-black" style={{height:"300px"}} >
+                    <Col className="h-75 border d-flex align-items-stretch justify-content-center" >
                         <LineChart entityName={ commanderName } entityMatches={ commanderInfo } />
                     </Col>
                 </Row>
             </Col>
             <Col md={12} className="border border-5 border-black round-end">
-                <MatchInfoBox matchDetails={ commanderInfo } />
+                <MatchInfoBox matchDetails={ commanderInfo } focus={ commanderName } />
             </Col>
         </Row>
 

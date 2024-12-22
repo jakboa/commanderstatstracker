@@ -11,20 +11,23 @@ import matchThirdPlacePicture from '../../utils/matchThirdPlacePicture.png'
 import matchFourthPlacePicture from '../../utils/matchFourthPlacePicture.png'
 
 
-export default function MatchInfoSingle( { matchData } ) {
+export default function MatchInfoSingle( { matchData, show } ) {
 
     const pictures = [ matchFirstPlacePicture, matchSecondPlacePicture, matchThirdPlacePicture, matchFourthPlacePicture ]
 
+    const placementID = `result-${matchData.placement}`;
+    console.log(show);
+
     return (
 
-            <Stack direction="horizontal" className="p-3 matchplayerStack align-items-stretch" >
+            <Stack direction="horizontal" className={`${show === matchData.nickName ? "getFocus" : show === matchData.commander ? "getFocus" :  ""} p-3 matchplayerStack align-items-stretch`} >
                 <Image src={pictures[matchData.placement-1]} className="matchPic playerBox" />
 
-                <p className="d-flex justify-content-center align-items-center  matchPlacement playerBox">{matchData.placement}</p>
+                <p className={`${placementID} d-flex justify-content-center align-items-center  matchPlacement playerBox`}>{matchData.placement}</p>
             
-                <p className="d-flex justify-content-center align-items-center matchNickname playerBox">{matchData.nickName}</p>
+                <p className={`${placementID} d-flex justify-content-center align-items-center matchNickname playerBox`}>{matchData.nickName}</p>
 
-                <p className="d-flex justify-content-center align-items-center text-break matchCommander playerBox">{matchData.commander}</p>
+                <p className={`${placementID} d-flex justify-content-center align-items-center text-break matchCommander playerBox`}>{matchData.commander}</p>
 
             </Stack>
         

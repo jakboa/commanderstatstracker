@@ -1,0 +1,9 @@
+.doughnutChart {
+    border: solid white 3px;
+    border-radius: 2rem;
+}
+
+.lineChart {
+    border: solid white 3px;
+    border-radius: 1rem;
+}
