@@ -1,18 +1,20 @@
-.homepage {
-    border: solid black 5px;
-}
 
-.homepage_groups {
-    background-color: aqua;
+.homepageGroups {
+    background-color: whitesmoke;
 }
 
 
-
-.homepage_players {
-    background-color: grey;
+.homepagePlayers {
+    background-color: #73B3FA;
 }
 
-.homepage_players_single {
+.homepageCommanders {
+    background-color: whitesmoke;
+}
+
+
+
+.homepagePlayerSingle {
     min-width: 20rem;
     border: solid black 1px;
     background-color: whitesmoke;
@@ -20,10 +22,7 @@
 
 
 
-.homepage_commanders {
-    border: solid green 3px;
-    background-color: moccasin;
-}
+
 
 .homepage_commanders_single {
     display: flex;

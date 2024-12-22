@@ -1,3 +1,8 @@
-.RCon {
-    background-color: #E2F1E7;
+.RootContainer {
+    background-color: whitesmoke;
+}
+
+.header {
+    background-color: #2D14A3;
+    color: aliceblue;
 }

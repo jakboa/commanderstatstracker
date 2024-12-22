@@ -33,8 +33,8 @@ export default function Homepage() {
     };
     // useEffect to make sure it updates the search.
     useEffect(() =>{
-        setSearchGroup(SearchHandler.findGroup(searchTextGroups))
-    },[searchTextGroups])
+        setSearchGroup(SearchHandler.findGroup(searchTextGroups,commanderGroups))
+    },[searchTextGroups,commanderGroups])
 
 
 
@@ -48,7 +48,6 @@ export default function Homepage() {
 
 
 
-
     // Handles Search for Commander
     const handleCommanderSearch = (e) => {
         setSearchTextCommanders(e.target.value);
@@ -59,8 +58,8 @@ export default function Homepage() {
 
     return (
         
-            <Row fluid className="homepage d-flex justify-content-center aling-items-center" >
-                <Col md={12}>
+            <Row fluid className="d-flex justify-content-center aling-items-center" >
+                <Col md={12} className="homepageGroups">
                     <HomepageGroups 
                         commanderGroups={ commanderGroups }
                         handleGroupSearch={ handleGroupSearch }
@@ -68,14 +67,14 @@ export default function Homepage() {
                         searchTextGroups={ searchTextGroups } />
                 </Col>
 
-                <Col md={12}>
+                <Col md={12} className="homepagePlayers">
                     <HomepagePlayers 
                         players={players}
                         handlePlayerSearch={ handlePlayerSearch }
                         searchPlayers={ searchPlayers }
                         searchTextPlayers={ searchTextPlayers } />
                 </Col>
-                <Col md={12}>
+                <Col md={12} className="homepageCommanders">
                     <HomepageCommanders  
                         commanders={ commanders } 
                         handleCommanderSearch={ handleCommanderSearch } 

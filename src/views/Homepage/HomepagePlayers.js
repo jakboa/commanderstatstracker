@@ -9,7 +9,7 @@ export default function HomepagePlayers( { players, handlePlayerSearch, searchPl
 
     return (
         <>
-            <Row className="pb-3 text-center homepage_players">
+            <Row className="pb-3 text-center">
                 <Col md={12}> <h1>Find Stats about player:</h1> </Col>
                 <Col md={12} className="d-flex justify-content-center">
                     <Form>
@@ -18,14 +18,14 @@ export default function HomepagePlayers( { players, handlePlayerSearch, searchPl
                     </Form>
                 </Col>
             </Row>
-            <Row className="d-flex flex-nowrap overflow-x-scroll text-center homepage_players">
+            <Row className="d-flex flex-nowrap overflow-x-scroll text-center">
             {
                 // if searchbar is empty, then show every player 
                 !searchTextPlayers ? 
 
                 players.map(player => {
                     return (
-                        <Col md={1} className=" m-3 homepage_players_single">
+                        <Col md={1} className=" m-3 homepagePlayerSingle">
                             <HomepagePlayersSingle name={player} />
                             
                         </Col>
@@ -34,7 +34,7 @@ export default function HomepagePlayers( { players, handlePlayerSearch, searchPl
                 :
                 searchPlayers.map(player => {
                     return (
-                        <Col md={1} className=" m-3 homepage_players_single">
+                        <Col md={1} className=" m-3 homepagePlayerSingle">
                             <HomepagePlayersSingle name={player} />
                             
                         </Col>

@@ -14,8 +14,6 @@ const allPlayers = Array.from(new Set(gameInfo.map(
         player => player.nickName
     )).flat()))    
 
-const allGroups = Array.from(new Set(gameInfo.map(
-    match => match.Group_name).flat()))   
 
 const SearchHandler = {
 
@@ -35,8 +33,9 @@ const SearchHandler = {
         
     },
 
-    findGroup: (groupToFind) => {
-        const filterGroup = allGroups.filter(group => group.toLowerCase().includes(groupToFind.toLowerCase()));
+    findGroup: (groupToFind, groups) => {
+
+        const filterGroup = groups.filter(group => group[0].toLowerCase().includes(groupToFind.toLowerCase()));
         return filterGroup;
         
     },
@@ -174,4 +173,4 @@ export default SearchHandler;
 
 //console.log(SearchHandler.getLineChartData("Mr. Stats",gameInfo));
 
-
+console.log(SearchHandler.getAllGroups());

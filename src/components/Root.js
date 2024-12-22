@@ -16,12 +16,11 @@ import Col  from "react-bootstrap/Col";
 export default function Root() {
     
     return (
-        <Container fluid className="RCon">
+        <Container fluid className="RootContainer">
             <Row>
                 <Col>
                     <Header />
                 </Col>
-                {/* THIS (NavLink) gives class so i can css that shit, very nice! */ }
             </Row>
             <Outlet />
             <Footer />

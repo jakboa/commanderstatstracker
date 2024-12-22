@@ -16,16 +16,19 @@ import SingleCommanderStats from './views/CommanderStats/SingleCommanderStats';
 
 /*
 POTENTIAL COLOR PALLETE:
+ 
+Main
+ #344BF7
 
- #0B0C10
+ #5C34F7
 
- #1F2833
+ #41CBFA
 
- #C5C6C7
+ #9C34F7
 
- #66FCF1
+ #3489F7
 
- #45A29E
+ #8694F7
 
 */
 
