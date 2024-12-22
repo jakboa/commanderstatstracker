@@ -7,6 +7,9 @@ import Form from "react-bootstrap/Form"
 
 export default function HomepagePlayers( { players, handlePlayerSearch, searchPlayers, searchTextPlayers } ) {
 
+    // if searchbar is empty, then show every player 
+    const displayPlayers = !searchTextPlayers ? players : searchPlayers;
+
     return (
         <>
             <Row className="pb-3 text-center">
@@ -20,26 +23,17 @@ export default function HomepagePlayers( { players, handlePlayerSearch, searchPl
             </Row>
             <Row className="d-flex flex-nowrap overflow-x-scroll text-center">
             {
-                // if searchbar is empty, then show every player 
-                !searchTextPlayers ? 
-
-                players.map(player => {
+                
+                displayPlayers.length > 0 ?
+                displayPlayers.map(player => {
                     return (
                         <Col md={1} className=" m-3 homepagePlayerSingle">
                             <HomepagePlayersSingle name={player} />
                             
                         </Col>
-                    )
-                })
-                :
-                searchPlayers.map(player => {
-                    return (
-                        <Col md={1} className=" m-3 homepagePlayerSingle">
-                            <HomepagePlayersSingle name={player} />
-                            
-                        </Col>
-                    )
-                })
+                    )})
+                    :
+                    <p>No players found with that name!</p>                    
             }
             </Row>
         </>

@@ -8,34 +8,30 @@ import Form from "react-bootstrap/Form";
 
 export default function HomepageGroups( { commanderGroups, handleGroupSearch, searchGroup, searchTextGroups } ) {
 
-    console.log(commanderGroups)
-    console.log(searchGroup)
+    const displayGroup = !searchTextGroups ? commanderGroups : searchGroup;
 
     return (
         <>
             <Row className="pb-3 text-center">
-                <Col md={12}>
-                    <h1>Information about Groups!</h1> </Col>
+                <Col md={12}> <h1>Information about Groups!</h1> </Col>
                 <Col md={12} className="d-flex justify-content-center">
-                    <Form.Label>Search for Group:</Form.Label>
-                    <Form.Control onChange={ handleGroupSearch }></Form.Control>
+                    <Form>
+                        <Form.Label>Search for Group:</Form.Label>
+                        <Form.Control onChange={ handleGroupSearch }></Form.Control>
+                    </Form>
                 </Col>
             </Row>
-            <Row className="pb-3">
+            <Row className="pb-3 text-center">
                 {
-                    !searchTextGroups ? commanderGroups.map(group => {
-                        return (
-                            <Col className="border">
-                                <HomepageGroupSingle groupName={group[0]} groupPlayers={group[1]} />
-                            </Col>
-                        )})
-                    :
-                    searchGroup.map(group => {
+                    displayGroup.length > 0 ?
+                    displayGroup.map(group => {
                         return (
                             <Col className="border">
                                 <HomepageGroupSingle groupName={group[0]} groupPlayers={group[1]} />
                             </Col>
                     )})
+                    :
+                    <p>No Commanders found with that name!</p>
                 }
             </Row>
         </>

@@ -173,4 +173,4 @@ export default SearchHandler;
 
 //console.log(SearchHandler.getLineChartData("Mr. Stats",gameInfo));
 
-console.log(SearchHandler.getAllGroups());
+//console.log(SearchHandler.getAllGroups());

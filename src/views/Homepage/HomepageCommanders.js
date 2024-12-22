@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form";
 
 export default function HomepageCommanders( { commanders, searchCommanders, handleCommanderSearch, searchTextCommanders } ) {
 
+    const displayCommanders = !searchTextCommanders ? commanders : searchCommanders;
+
     return (
         <>
             <Row className="pb-3 text-center">
@@ -22,19 +24,15 @@ export default function HomepageCommanders( { commanders, searchCommanders, hand
 
             <Row className="d-flex flex-nowrap overflow-x-scroll" >
                     {
-                        !searchTextCommanders ? commanders.map(commander => {
+                        displayCommanders.length > 0 ?
+                        displayCommanders.map(commander => {
                             return (
                                 <Col md={2} className="homepage_commanders_single">
                                     <HomepageCommanderSingle name={ commander } />
                                 </Col>
-                            )})
-                         :
-                         searchCommanders.map(commander => {
-                            return (
-                                <Col md={2} className="homepage_commanders_single">
-                                    <HomepageCommanderSingle name={ commander } />
-                                </Col>
-                            )})   
+                            )}) 
+                        :
+                        <p className=" text-center">No Commanders found with that name, sorry!</p>
                     }
             </Row>
         </>
