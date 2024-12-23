@@ -40,7 +40,7 @@ export default function PlayerStats() {
                         <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
                     </Col>
                     <Col>
-                        <DoughnutChart /> 
+                        <DoughnutChart results={ matchResultsForPlayer } /> 
                     </Col>
                     <Col md={12}>
                         <LineChart entityName={ playerName } entityMatches={ playerInfo } />

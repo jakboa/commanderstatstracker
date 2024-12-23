@@ -13,7 +13,8 @@ export default function HomepageCommanders( { commanders, searchCommanders, hand
         <>
             <Row className="pb-3 text-center">
                 <Col md={12}>
-                    <h1>Find Commander.</h1> </Col>
+                    <h1>Find Commander.</h1> 
+                </Col>
                 <Col md={12} className="d-flex justify-content-center mb-3">
                     <Form>
                         <Form.Label>Search For Commander:</Form.Label>
@@ -22,18 +23,18 @@ export default function HomepageCommanders( { commanders, searchCommanders, hand
                 </Col>
             </Row>
 
-            <Row className="d-flex flex-nowrap overflow-x-scroll" >
-                    {
-                        displayCommanders.length > 0 ?
-                        displayCommanders.map(commander => {
-                            return (
-                                <Col md={2} className="homepage_commanders_single">
-                                    <HomepageCommanderSingle name={ commander } />
-                                </Col>
-                            )}) 
-                        :
-                        <p className=" text-center">No Commanders found with that name, sorry!</p>
-                    }
+            <Row className="flex-nowrap overflow-x-scroll text-center" >
+                {
+                    displayCommanders.length > 0 ?
+                    displayCommanders.map(commander => {
+                        return (
+                            <Col md={3} sm={4} className="d-flex justify-content-center ">
+                                <HomepageCommanderSingle name={ commander } />
+                            </Col>
+                        )}) 
+                    :
+                    <p>No Commanders found with that name, sorry!</p>
+                }
             </Row>
         </>
     );

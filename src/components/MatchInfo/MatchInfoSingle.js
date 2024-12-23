@@ -16,7 +16,6 @@ export default function MatchInfoSingle( { matchData, show } ) {
     const pictures = [ matchFirstPlacePicture, matchSecondPlacePicture, matchThirdPlacePicture, matchFourthPlacePicture ]
 
     const placementID = `result-${matchData.placement}`;
-    console.log(show);
 
     return (
 

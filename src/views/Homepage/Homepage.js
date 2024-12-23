@@ -56,7 +56,7 @@ export default function Homepage() {
 
     return (
         
-            <Row fluid className="d-flex justify-content-center aling-items-center" >
+            <Row className="d-flex justify-content-center aling-items-center" >
                 <Col md={12} className="homepageGroups">
                     <HomepageGroups 
                         commanderGroups={ commanderGroups }

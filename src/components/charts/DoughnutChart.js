@@ -8,7 +8,7 @@ import "./Charts.css";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
-export default function DoughnutChart() {
+export default function DoughnutChart( { results } ) {
 
   const options ={
     responsive: true,
@@ -16,28 +16,24 @@ export default function DoughnutChart() {
   } 
 
 const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  labels: ['First', 'Second', 'Third', 'Fourth'],
   datasets: [
     {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: '# of Results',
+      data: results,
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
+        'rgba(250, 243, 44, 0.69)',
+        'rgba(100, 112, 120, 0.86)',
+        'rgba(92, 67, 5, 0.83)',
+        'rgb(11, 31, 31)'
       ],
       borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
+        'rgba(250, 243, 44, 1)',
+        'rgba(100, 112, 120, 1)',
+        'rgba(92, 67, 5, 1)',
+        'rgba(11, 31, 31, 1)'
       ],
-      borderWidth: 1,
+      borderWidth: 2,
     },
   ],
 };

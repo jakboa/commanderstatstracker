@@ -1,9 +1,19 @@
 import { gameInfo } from "../MockData"
 
-const allCommanders = gameInfo.map(
+/* 
+const allCommanders2 = gameInfo.map(
     match => match.players.map(
         playedCommander => playedCommander.commander
     )).flat();
+*/
+
+const allCommanders = Array.from(new Set(gameInfo.map(
+    match => match.players.map(
+        playedCommander => playedCommander.commander
+    )).flat()));
+
+
+
 
 // Use new Set to remove duplicates and Array.from
 // to make it into a Array again. Big O should be 
@@ -12,7 +22,7 @@ const allCommanders = gameInfo.map(
 const allPlayers = Array.from(new Set(gameInfo.map(
     match => match.players.map(
         player => player.nickName
-    )).flat()))    
+    )).flat()));    
 
 
 const SearchHandler = {

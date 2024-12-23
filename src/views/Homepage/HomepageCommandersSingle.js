@@ -14,7 +14,7 @@ export default function HomepageCommandersSingle( { name } ) {
     };
 
     return (
-        <Card className="mb-2">
+        <Card className="mb-2" style={{ width:"15rem" }}>
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>12 Games 3 wins</Card.Text>

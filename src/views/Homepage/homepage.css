@@ -11,22 +11,3 @@
 .homepageCommanders {
     background-color: whitesmoke;
 }
-
-
-
-.homepagePlayerSingle {
-    min-width: 20rem;
-    border: solid black 1px;
-    background-color: whitesmoke;
-}
-
-
-
-
-
-.homepage_commanders_single {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    text-align: center;
-}

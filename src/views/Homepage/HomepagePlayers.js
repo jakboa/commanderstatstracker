@@ -13,28 +13,29 @@ export default function HomepagePlayers( { players, handlePlayerSearch, searchPl
     return (
         <>
             <Row className="pb-3 text-center">
-                <Col md={12}> <h1>Find Stats about player:</h1> </Col>
-                <Col md={12} className="d-flex justify-content-center">
+                <Col md={12}> 
+                    <h1>Find Stats about player:</h1> 
+                </Col>
+                <Col md={12} className="d-flex justify-content-center mb-3">
                     <Form>
                         <Form.Label>Search for player:</Form.Label>
                         <Form.Control onChange={ handlePlayerSearch }></Form.Control>
                     </Form>
                 </Col>
             </Row>
-            <Row className="d-flex flex-nowrap overflow-x-scroll text-center">
-            {
-                
-                displayPlayers.length > 0 ?
-                displayPlayers.map(player => {
-                    return (
-                        <Col md={1} className=" m-3 homepagePlayerSingle">
-                            <HomepagePlayersSingle name={player} />
-                            
-                        </Col>
-                    )})
+
+            <Row className="flex-nowrap overflow-x-scroll text-center">
+                {
+                    displayPlayers.length > 0 ?
+                    displayPlayers.map(player => {
+                        return (
+                            <Col md={3} sm={4} className="p-5">
+                                <HomepagePlayersSingle name={player} />
+                            </Col>
+                        )})
                     :
                     <p>No players found with that name!</p>                    
-            }
+                }
             </Row>
         </>
     );
