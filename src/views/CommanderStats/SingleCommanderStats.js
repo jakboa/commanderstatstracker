@@ -28,16 +28,16 @@ export default function SingleCommanderStats() {
                 <p>INSERT INFO HERE:</p>
             </Col>
             <Col md={8}>
-                <Row className="border border-4 border-black">
+                <Row className="m-3">
                     <Col md={4} className="d-flex">
                         <EntityScore results={ matchResultsForCommander } totalGames={ commanderInfo.length } />
                     </Col>
-                    <Col md={8} >
+                    <Col md={8} style={{height:"400px"}} >
                         <DoughnutChart />
                     </Col>
                 </Row>
-                <Row className="border border-4 border-black" style={{height:"300px"}} >
-                    <Col className="h-75 border d-flex align-items-stretch justify-content-center" >
+                <Row className="m-3" >
+                    <Col className=" d-flex align-items-stretch justify-content-center" style={{height:"400px"}}  >
                         <LineChart entityName={ commanderName } entityMatches={ commanderInfo } />
                     </Col>
                 </Row>

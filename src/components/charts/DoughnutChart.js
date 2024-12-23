@@ -9,6 +9,12 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export default function DoughnutChart() {
+
+  const options ={
+    responsive: true,
+    maintainAspectRatio: false,
+  } 
+
 const data = {
   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   datasets: [
@@ -36,5 +42,5 @@ const data = {
   ],
 };
 
-  return <Doughnut data={data} className="doughnutChart bg-light-subtle" />;
+  return <Doughnut options={ options } data={data} className="doughnutChart bg-light-subtle" />;
 }

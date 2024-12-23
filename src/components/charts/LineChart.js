@@ -30,7 +30,8 @@ Chartjs.register(
 export default function LineChart( {entityName,entityMatches} ) {
 
     const options = {
-        responsive: false,
+        responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             position: 'top',
