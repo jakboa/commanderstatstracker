@@ -29,6 +29,7 @@ export default function GroupLineChart( { entityName, entityMatches } ) {
 
     const options = {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             position: 'top',
@@ -61,25 +62,25 @@ export default function GroupLineChart( { entityName, entityMatches } ) {
       const data = { labels, datasets:[ 
         {
         label: entityName,
-        data: results["Mr. Foto"],
+        data: results["Graveyard Guru"],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)'
       },
       {
         label: entityName,
-        data: results["Mr. Music"],
+        data: results["Token Tyrant"],
         borderColor: 'rgb(4, 174, 16)',
         backgroundColor: 'rgba(3, 107, 15, 0.5)'
       },
       {
         label: entityName,
-        data: results["Mr. Foto"],
+        data: results["Lifegain Legend"],
         borderColor: 'rgb(48, 23, 233)',
         backgroundColor: 'rgba(6, 24, 115, 0.5)'
       },
       {
         label: entityName,
-        data: results["Mr. Stats"],
+        data: results["Planeswalker Pete"],
         borderColor: 'rgb(203, 236, 70)',
         backgroundColor: 'rgba(188, 243, 7, 0.5)'
       },
@@ -87,7 +88,7 @@ export default function GroupLineChart( { entityName, entityMatches } ) {
 
 
     return (
-        < Line options={ options } data={data} />
+        < Line options={ options } data={data} className="border border-white border-3 rounded bg-light-subtle" />
     );
 };
 

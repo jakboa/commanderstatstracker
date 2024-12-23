@@ -5,6 +5,7 @@ import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
 import GroupScore from "./GroupScore";
 import GroupInfo from "./GroupInfo";
 import GroupLineChart from "./GroupLineChart";
+import GroupDoughnutChart from "./GroupDoughnutChart";
 import "./GroupPage.css";
 
 import Row from 'react-bootstrap/Row';
@@ -32,18 +33,28 @@ export default function GroupStats() {
                 <GroupInfo group={group} /> 
             </Col>
 
-
-
-
-            {/* Here i put Graphs and stuff */}
             <Col ms={10} className="text-center">
-                <p>Total amount of games so far: {group.length}</p>
-                <p>This is the stats so far:</p>
-                <GroupScore scoreInfo={group} />
+                <Row className="">
+                    <Col md={6}>
+                        <p>Total amount of games so far: {group.length}</p>
+                        <p>This is the stats so far:</p>
+                        <GroupScore scoreInfo={group} />
+                    </Col>
+                    <Col md={8} style={{height:"20rem"}}>
+                        <GroupDoughnutChart results={group} />
+                    </Col>
+                </Row>
+                
+                <Row >
+                    <Col className=" d-flex align-items-stretch justify-content-center" style={{height:"13rem"}} >
+                        <GroupLineChart entityName={ groupname } entityMatches={ filteredGroup } />
+                    </Col>
+                </Row>
+
             </Col>
 
             <Col md={12} className="border-top border-3 border-black matchInsert groupMatches">
-                <h1 className="text-center">Match Results for {groupname}</h1>
+                <h1 className="text-center  mt-4">Match Results for {groupname}</h1>
                 <Tabs
                     defaultActiveKey="allGames"
                     transition={true}
@@ -57,9 +68,6 @@ export default function GroupStats() {
                 
                 <MatchInfoBox matchDetails={filteredGroup} />
             
-            </Col>
-            <Col>
-                <GroupLineChart entityName={ groupname } entityMatches={ filteredGroup } />
             </Col>
         </Row>
     );

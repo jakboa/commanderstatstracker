@@ -212,7 +212,7 @@ export const gameInfo = [
             { 
                 nickName: 'Token Tyrant',
                 commander: 'Scion of the Ur-Dragon',
-                placement: 1 
+                placement: 4 
             },
 
             {
@@ -677,7 +677,7 @@ export const gameInfo = [
             {
                 nickName: 'Lifegain Legend',
                 commander: 'Galea',
-                placement: 1
+                placement: 2
             },
             {
                 nickName: 'Planeswalker Pete',

@@ -3,12 +3,12 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-import "./Charts.css";
+//import "./Charts.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
-export default function DoughnutChart( { results } ) {
+export default function GroupDoughnutChart( { results } ) {
 
   const options ={
     responsive: true,
@@ -22,16 +22,16 @@ const data = {
       label: '# of Results',
       data: results,
       backgroundColor: [
-        'rgba(250, 243, 44, 0.69)',
-        'rgba(100, 112, 120, 0.86)',
-        'rgba(92, 67, 5, 0.83)',
-        'rgb(11, 31, 31)'
+        '#AAFABA' ,
+        '#FAE6AA',
+        '#AAB8FA',
+        '#AAFAB9'
       ],
       borderColor: [
-        'rgb(0, 0, 0)',
-        'rgb(0, 0, 0)',
-        'rgb(0, 0, 0)',
-        'rgb(0, 0, 0)'
+        '#AAFABA',
+        '#FAE6AA',
+        '#AAB8FA',
+        '#AAFAB9'
       ],
       borderWidth: 2,
     },

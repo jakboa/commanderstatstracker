@@ -19,31 +19,40 @@ export default function SingleCommanderStats() {
     const commanderInfo = SearchHandler.getSingleCommanderStats(commanderName);
     const [ matchResultsForCommander ] = useState(SearchHandler.getEntityResults(commanderName,commanderInfo))
 
+
     return (
         <Row className="singleCommanderPage">
-            <Col md={12} className="bg-light" style={{height:"5rem"}}  >
+            {/* Name and Banner */}
+            <Col md={12} className="bg-info-subtle" style={{height:"5rem"}}  >
                 <h1>{commanderName}</h1>
             </Col>
-            <Col md={3} className=" d-flex justify-content-center text-center">
+
+            {/* Small InfoBox */}
+            <Col md={3} className="d-flex justify-content-center text-center ">
                 <SingleCommanderInfoWindow />
             </Col>
 
+            {/* Graphs and Info */}
             <Col md={9}>
                 <Row className="m-3">
                     <Col md={4} className="d-flex flex-column text-center">
-                        <p className="bg-light border rounded">Played an amount of X times!</p>
+                        <p className="bg-light border rounded">Played a total of {commanderInfo.length} times!</p>
                         <EntityScore results={ matchResultsForCommander } totalGames={ commanderInfo.length } />
                     </Col>
                     <Col md={8} style={{height:"20rem"}} >
                         <DoughnutChart results={ matchResultsForCommander } />
                     </Col>
                 </Row>
+
+                {/* Line Chart */}
                 <Row className="m-3" >
                     <Col className=" d-flex align-items-stretch justify-content-center" style={{height:"13rem"}}  >
                         <LineChart entityName={ commanderName } entityMatches={ commanderInfo } />
                     </Col>
                 </Row>
             </Col>
+
+            {/* Games Played and Results */}
             <Col md={12} className="border border-5 border-black round-end">
                 <MatchInfoBox matchDetails={ commanderInfo } focus={ commanderName } />
             </Col>
