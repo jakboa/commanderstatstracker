@@ -26,33 +26,51 @@ export default function GroupStats() {
     },[group,year]);
 
     return (
-        <Row className="bordertest groupPage">
+        <Row className="groupPage">
 
-            <Col md={2} className="border-end border-3 border-black groupFacts">
-                <p>Her er groupINFO:</p>
-                <GroupInfo group={group} /> 
+            {/* BANNER */}
+            <Col md={12} className="bg-info-subtle" style={{height:"5rem"}}>
+                <h1>{groupname}</h1>
             </Col>
 
+            {/* INFOBOX */}
+            <Col md={2} className="d-flex">
+                <Row className="d-flex flex-column text-center">
+                    <Col>
+                        <p className="bg-light border border-white rounded m-2">Her er groupINFO:</p>
+                    </Col>
+                    <Col>
+                        <GroupInfo group={group} />
+                    </Col>
+                </Row> 
+            </Col>
+
+            {/* STATS AND GRAPHS */}
             <Col ms={10} className="text-center">
-                <Row className="">
-                    <Col md={6}>
-                        <p>Total amount of games so far: {group.length}</p>
-                        <p>This is the stats so far:</p>
+                <Row>
+                    
+                    {/* STATS */}
+                    <Col md={6} className="d-flex flex-column">
+                        <p className="border bg-light rounded m-2">Total amount of games so far: {group.length}</p>
                         <GroupScore scoreInfo={group} />
                     </Col>
-                    <Col md={8} style={{height:"20rem"}}>
+
+                    {/* DOUGHNUT */}
+                    <Col md={6} style={{height:"22rem"}}>
                         <GroupDoughnutChart results={group} />
                     </Col>
                 </Row>
                 
-                <Row >
-                    <Col className=" d-flex align-items-stretch justify-content-center" style={{height:"13rem"}} >
+                {/* LINECHART */}
+                <Row>
+                    <Col className="d-flex" style={{height:"15rem"}} >
                         <GroupLineChart entityName={ groupname } entityMatches={ filteredGroup } />
                     </Col>
                 </Row>
 
             </Col>
 
+            {/* GAMES PLAYED */}            
             <Col md={12} className="border-top border-3 border-black matchInsert groupMatches">
                 <h1 className="text-center  mt-4">Match Results for {groupname}</h1>
                 <Tabs

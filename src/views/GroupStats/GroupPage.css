@@ -2,10 +2,13 @@
     border: solid black 3px;
 }
 
-/*
-.matchInsert{
-    
+.groupPage {
+    background-color: #5BACEB;
 }
 
-*/
+.GroupDoughnutChart {
+    border: solid white 3px;
+    border-radius: 2rem;
+}
+
 

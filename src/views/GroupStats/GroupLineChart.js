@@ -88,7 +88,7 @@ export default function GroupLineChart( { entityName, entityMatches } ) {
 
 
     return (
-        < Line options={ options } data={data} className="border border-white border-3 rounded bg-light-subtle" />
+        < Line options={ options } data={data} className="border border-white border-3 rounded bg-light-subtle m-2" />
     );
 };
 

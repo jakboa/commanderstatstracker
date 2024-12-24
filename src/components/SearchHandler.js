@@ -1,11 +1,7 @@
+
 import { gameInfo } from "../MockData"
 
-/* 
-const allCommanders2 = gameInfo.map(
-    match => match.players.map(
-        playedCommander => playedCommander.commander
-    )).flat();
-*/
+
 
 const allCommanders = Array.from(new Set(gameInfo.map(
     match => match.players.map(

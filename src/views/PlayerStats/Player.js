@@ -24,35 +24,48 @@ export default function PlayerStats() {
 
     return (
         <Row className="playerstats">
-            <Col md={12}>
+
+            {/* BANNER */}
+            <Col md={12} className="bg-info-subtle" style={{height:"5rem"}}>
                 <h1>This is stats for {playerName}!</h1>
             </Col>
 
-            <Col md={3} className="border border-4 border-black">
-                <p>Here is picture of avatar</p>
-                <p>Here are some facts?</p>
+            {/* INFO */}
+            <Col md={3} className="d-flex justify-content-center border border-black">
+                <div className="border border-3 bg-light text-center m-2">
+                    <p>Here is picture of avatar</p>
+                    <p>Here are some facts?</p>
+                </div>
             </Col>
 
-            <Col >
+            {/* STATS & GRAPH */}
+            <Col className="text-center">
                 <Row>
+
+                    {/* STATS */}
                     <Col>
-                        <p>Total amount of games so far: {totalGames}</p>
+                        <p className="border border-white rounded bg-light m-2">Total amount of games so far: {totalGames}</p>
                         <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
                     </Col>
+
+                    {/* DOUGHNUT */}
                     <Col>
                         <DoughnutChart results={ matchResultsForPlayer } /> 
                     </Col>
-                    <Col md={12}>
+                </Row>
+                
+                <Row>
+                    {/* LINECHART */}
+                    <Col>
                         <LineChart entityName={ playerName } entityMatches={ playerInfo } />
                     </Col>
                 </Row>
             </Col>
+
+            {/* MATCHES */}
             <Col md={12}>
                 <MatchInfoBox matchDetails={playerInfo} focus={ playerName } />
             </Col>
-
-                
-
 
         </Row>
     )
