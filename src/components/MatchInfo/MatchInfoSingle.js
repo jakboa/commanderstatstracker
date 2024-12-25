@@ -18,18 +18,16 @@ export default function MatchInfoSingle( { matchData, show } ) {
     const placementID = `result-${matchData.placement}`;
 
     return (
-
-            <Stack direction="horizontal" className={`${show === matchData.nickName ? "getFocus" : show === matchData.commander ? "getFocus" :  ""} p-3 matchplayerStack align-items-stretch`} >
+            <Stack direction="horizontal" className={`${show === matchData.nickName ? "getFocus" : show === matchData.commander ? "getFocus" :  ""} p-3 matchplayerStack align-items-stretch fw-semibold`} >
                 <Image src={pictures[matchData.placement-1]} className="matchPic playerBox" />
 
-                <p className={`${placementID} d-flex justify-content-center align-items-center  matchPlacement playerBox`}>{matchData.placement}</p>
+                <p className={`${placementID} fs-1 d-flex justify-content-center align-items-center matchPlacement playerBox`}>{matchData.placement}</p>
             
-                <p className={`${placementID} d-flex justify-content-center align-items-center matchNickname playerBox`}>{matchData.nickName}</p>
+                <p className={`${placementID} fs-4 border-end d-flex justify-content-center align-items-center matchNickname playerBox`}>{matchData.nickName}</p>
 
-                <p className={`${placementID} d-flex justify-content-center align-items-center text-break matchCommander playerBox`}>{matchData.commander}</p>
+                <p className={`${placementID} fs-5 d-flex justify-content-center align-items-center text-break matchCommander playerBox`}>{matchData.commander}</p>
 
             </Stack>
-        
     );
 };
 

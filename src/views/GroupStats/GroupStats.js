@@ -16,10 +16,11 @@ import Tabs from 'react-bootstrap/Tabs';
 export default function GroupStats() {
 
     const { groupname } = useParams();
-    const [year, setYear] = useState('allGames');
+    const [year, setYear] = useState('allMatches');
 
     const [group] = useState(SearchHandler.getOneGroup(groupname));
     const [filteredGroup, setFilteredGroup] = useState(group);
+    
 
     useEffect(()=>{
         setFilteredGroup(SearchHandler.getEntityMatchesForYear(group,year))
@@ -74,11 +75,11 @@ export default function GroupStats() {
             <Col md={12} className="border-top border-3 border-black matchInsert groupMatches">
                 <h1 className="text-center  mt-4">Match Results for {groupname}</h1>
                 <Tabs
-                    defaultActiveKey="allGames"
+                    defaultActiveKey="allMatches"
                     transition={true}
                     onSelect={(k) => {setYear(k)}}
                     className="mb-3">
-                    <Tab eventKey="allGames" title="All Games">All matches this group has played:</Tab>
+                    <Tab eventKey="allMatches" title="All Games">All matches this group has played:</Tab>
                     <Tab eventKey="2024" title="2024">Matches played in 2024:</Tab>
                     <Tab eventKey="2023" title="2023">Matches played in 2023:</Tab>
                     <Tab eventKey="2022" title="2022">Matches played in 2022:</Tab>

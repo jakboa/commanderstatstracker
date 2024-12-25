@@ -141,12 +141,13 @@ const SearchHandler = {
     }, 
 
     getEntityMatchesForYear: (matches, year) =>{
-        if (year === "allGames") {
+        if (year === "allMatches") {
             return matches;
         };
         const yearGames = matches.filter((match) => match.year.toString() === year.toString());
         return yearGames;
     },
+
     getLineChartData: (entityName, matches) =>{
         const entityResults = matches.map(match => {
             const player = match.players.find(player => player.nickName === entityName || player.commander === entityName);
@@ -179,4 +180,3 @@ export default SearchHandler;
 
 //console.log(SearchHandler.getLineChartData("Mr. Stats",gameInfo));
 
-//console.log(SearchHandler.getAllGroups());

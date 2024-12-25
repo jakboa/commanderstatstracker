@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SearchHandler from "../../components/SearchHandler";
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
 import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
 import DoughnutChart from "../../components/charts/DoughnutChart";
+import YearSelector from "../../components/YearSelector";
 
 import "./PlayerStats.css"
 
@@ -18,21 +19,38 @@ export default function PlayerStats() {
 
     const playerInfo = SearchHandler.getSinglePlayerStats(playerName);
 
-    const [matchResultsForPlayer] = useState(SearchHandler.getEntityResults(playerName,playerInfo));
+    const [totalGames, setTotalGames] = useState(playerInfo.length);
 
-    const totalGames = playerInfo.length;
+    const [year,setYear] = useState("allMatches")
+    const [filteredMatches, setFilteredMatches] = useState(SearchHandler.getEntityMatchesForYear(playerInfo,year))
+    const [matchResultsForPlayer,setMatchResultsForPlayer ] = useState(SearchHandler.getEntityResults(playerName,playerInfo));
+    
+
+    const handleFilterMatches = (e) =>{
+        setYear(e);
+    };
+    useEffect(() =>{
+        setFilteredMatches(SearchHandler.getEntityMatchesForYear(playerInfo,year));
+    },[playerInfo,year])
+
+    useEffect(() =>{
+        setMatchResultsForPlayer(SearchHandler.getEntityResults(playerName,filteredMatches));
+        setTotalGames(filteredMatches.length);
+    },[filteredMatches,playerName])
 
     return (
         <Row className="playerstats">
 
             {/* BANNER */}
-            <Col md={12} className="bg-info-subtle" style={{height:"5rem"}}>
+            <Col md={12} className="d-inline-flex bg-info-subtle" style={{height:"5rem"}}>
                 <h1>This is stats for {playerName}!</h1>
+                <YearSelector years={year}  handleFilterMatches={handleFilterMatches} />
+                <p>{year}</p>
             </Col>
 
             {/* INFO */}
-            <Col md={3} className="d-flex justify-content-center border border-black">
-                <div className="border border-3 bg-light text-center m-2">
+            <Col md={3} className="d-flex justify-content-center">
+                <div className="p-2 border border-white border-3 rounded-4 bg-light text-center m-2 w-100">
                     <p>Here is picture of avatar</p>
                     <p>Here are some facts?</p>
                 </div>
@@ -40,31 +58,34 @@ export default function PlayerStats() {
 
             {/* STATS & GRAPH */}
             <Col className="text-center">
-                <Row>
+                <Row className=" my-2">
 
                     {/* STATS */}
                     <Col>
-                        <p className="border border-white rounded bg-light m-2">Total amount of games so far: {totalGames}</p>
-                        <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
+                        <div className="d-flex flex-column h-100">
+                            <p className="border border-white rounded bg-light">Total amount of games so far: {filteredMatches.length}</p>
+                            <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
+                        </div>
                     </Col>
 
                     {/* DOUGHNUT */}
-                    <Col>
+                    <Col md={7} style={{height:"22rem"}}>
                         <DoughnutChart results={ matchResultsForPlayer } /> 
                     </Col>
                 </Row>
                 
-                <Row>
-                    {/* LINECHART */}
+                {/* LINECHART */}
+                <Row className=" my-2">
                     <Col>
-                        <LineChart entityName={ playerName } entityMatches={ playerInfo } />
+                        <LineChart entityName={ playerName } entityMatches={ filteredMatches } />
                     </Col>
                 </Row>
             </Col>
 
             {/* MATCHES */}
-            <Col md={12}>
-                <MatchInfoBox matchDetails={playerInfo} focus={ playerName } />
+            <Col md={12} className="border-top border-black">
+                <h1 className="text-center m-3">This is the matches for {playerName}</h1>
+                <MatchInfoBox matchDetails={filteredMatches} focus={ playerName } />
             </Col>
 
         </Row>

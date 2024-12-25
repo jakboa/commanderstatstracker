@@ -14,7 +14,7 @@
 
 
 .playerBox {
-    border: solid black 2px;
+
     margin: 0;
 }
 
@@ -44,19 +44,19 @@
 
 
 .result-1 {
-    background-color: gold;
+    background-color: #EFFA82;
 }
 
 .result-2 {
-    background-color: silver;
+    background-color: #C5C7FF;
 }
 
 .result-3 {
-    background-color: chocolate;
+    background-color: #9597BF;
 }
 
 .result-4 {
-    background-color: brown;
+    background-color: #AAA076;
 }
 
 .getFocus {
