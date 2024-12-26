@@ -19,7 +19,7 @@ export default function HomepagePlayers( { players, handlePlayerSearch, searchPl
                 <Col md={12} className="d-flex justify-content-center mb-3">
                     <Form>
                         <Form.Label>Search for player:</Form.Label>
-                        <Form.Control onChange={ handlePlayerSearch }></Form.Control>
+                        <Form.Control value={ searchTextPlayers } onChange={ handlePlayerSearch }></Form.Control>
                     </Form>
                 </Col>
             </Row>

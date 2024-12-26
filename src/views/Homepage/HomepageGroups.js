@@ -17,7 +17,7 @@ export default function HomepageGroups( { commanderGroups, handleGroupSearch, se
                 <Col md={12} className="d-flex justify-content-center">
                     <Form>
                         <Form.Label>Search for Group:</Form.Label>
-                        <Form.Control onChange={ handleGroupSearch }></Form.Control>
+                        <Form.Control value={ searchTextGroups } onChange={ handleGroupSearch }></Form.Control>
                     </Form>
                 </Col>
             </Row>

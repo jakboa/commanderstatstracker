@@ -18,7 +18,7 @@ export default function HomepageCommanders( { commanders, searchCommanders, hand
                 <Col md={12} className="d-flex justify-content-center mb-3">
                     <Form>
                         <Form.Label>Search For Commander:</Form.Label>
-                        <Form.Control onChange={ handleCommanderSearch }></Form.Control>
+                        <Form.Control value={ searchTextCommanders } onChange={ handleCommanderSearch }></Form.Control>
                     </Form>
                 </Col>
             </Row>

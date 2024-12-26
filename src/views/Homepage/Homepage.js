@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useReducer } from "react";
 //import './homepage.css';
 import HomepageGroups from "./HomepageGroups";
 import HomepagePlayers from "./HomepagePlayers";
@@ -8,76 +8,131 @@ import SearchHandler from '../../components/SearchHandler';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+
+
+const initalHomepage = {
+    group:{
+        playGroups: SearchHandler.getAllGroups(),
+        searchGroup: SearchHandler.getAllGroups(),
+        searchTextGroups: ""
+    },
+    player:{
+        players: SearchHandler.getAllPlayers(),
+        searchPlayers: SearchHandler.getAllPlayers(),
+        searchTextPlayers: ""
+    },
+    commander:{
+        commanders: SearchHandler.getAllCommanders(),
+        searchCommanders: SearchHandler.getAllCommanders(),
+        searchTextCommanders: ""
+    }
+
+};
+
+const reducer = (state, action) =>  {
+    switch (action.type) {
+        case "searchGroup":
+            const groupText = action.search;
+            return { ...state, 
+                group: {
+                    ...state.group,
+                    searchTextGroups: groupText,
+                    searchGroup: SearchHandler.findGroup(groupText, state.group.playGroups)
+                } }
+
+
+        case "searchPlayer":
+            const playerText = action.search;
+            return { ...state, 
+                player: {
+                    ...state.player,
+                    searchTextPlayers: playerText,
+                    searchPlayers: SearchHandler.findPlayer(playerText, state.player.players)
+                } }
+
+        case "searchCommander":
+            const commanderText = action.search;
+            return { ...state, 
+                commander: {
+                    ...state.commander,
+                    searchTextCommanders: commanderText,
+                    searchCommanders: SearchHandler.findCommander(commanderText, state.commander.commanders)
+                } }
+
+        case "removeSearch":
+            const remove = action.search;
+            return { ...state, 
+                group: {
+                    ...state.group,
+                    searchTextGroups: remove,
+                    searchGroup: SearchHandler.findGroup(remove, state.group.playGroups)
+                },
+                player: {
+                    ...state.player,
+                    searchTextPlayers: remove,
+                    searchPlayers: SearchHandler.findPlayer(remove, state.player.players)
+                },
+                commander: {
+                    ...state.commander,
+                    searchTextCommanders: remove,
+                    searchCommanders: SearchHandler.findCommander(remove, state.commander.commanders)
+                }
+            
+            }
+                
+        default:
+            return state;
+    };
+};
+
+
 export default function Homepage() {
 
-    // Gets all Groups, Players and Commanders so user can 
-    // quickly find the information they want.
-    const [commanderGroups] = useState(SearchHandler.getAllGroups);
-    const [searchGroup, setSearchGroup] = useState(commanderGroups);
-    const [searchTextGroups, setSearchTextGroups] = useState("");
-    
-    const [players] = useState(SearchHandler.getAllPlayers);
-    const [searchPlayers, setSearchPlayers] = useState(players);
-    const [searchTextPlayers, setSearchTextPlayers] = useState("");
-
-    const [commanders] = useState(SearchHandler.getAllCommanders);
-    const [searchCommanders,setSearchCommanders] = useState(commanders);
-    const [searchTextCommanders,setSearchTextCommanders] = useState("");
+    const [homepage, dispatch] = useReducer(reducer, initalHomepage);
 
 
-    // Handles Search for Groups
     const handleGroupSearch = (e) => {
-        setSearchTextGroups(e.target.value);
+        dispatch( { type:"searchGroup", search: e.target.value } );
     };
-    // useEffect to make sure it updates the search.
-    useEffect(() =>{
-        setSearchGroup(SearchHandler.findGroup(searchTextGroups,commanderGroups))
-    },[searchTextGroups,commanderGroups])
 
-
-
-    // Handles Search for Player
     const handlePlayerSearch = (e) => {
-        setSearchTextPlayers(e.target.value);
+        dispatch( { type:"searchPlayer", search: e.target.value } );
     };
-    useEffect(() =>{
-        setSearchPlayers(SearchHandler.findPlayer(searchTextPlayers))
-    },[searchTextPlayers])
 
-
-
-    // Handles Search for Commander
     const handleCommanderSearch = (e) => {
-        setSearchTextCommanders(e.target.value);
+        dispatch( { type:"searchCommander", search: e.target.value } );
     };
-    useEffect(()=>{
-        setSearchCommanders(SearchHandler.findCommander(searchTextCommanders))
-    },[searchTextCommanders])
+
+    const handleClearSearch = () => {
+        dispatch( { type:"removeSearch", search: "" } );
+    };
+
 
     return (
         
             <Row className="d-flex justify-content-center aling-items-center" >
                 <Col md={12} className="homepageGroups">
+                <button onClick={handleClearSearch}>Clear Searches</button>
                     <HomepageGroups 
-                        commanderGroups={ commanderGroups }
+                        commanderGroups={ homepage.group.playGroups }
                         handleGroupSearch={ handleGroupSearch }
-                        searchGroup={ searchGroup }
-                        searchTextGroups={ searchTextGroups } />
+                        searchGroup={ homepage.group.searchGroup }
+                        searchTextGroups={ homepage.group.searchTextGroups } />
                 </Col>
 
                 <Col md={12} className="homepagePlayers">
                     <HomepagePlayers 
-                        players={players}
+                        players={homepage.player.players}
                         handlePlayerSearch={ handlePlayerSearch }
-                        searchPlayers={ searchPlayers }
-                        searchTextPlayers={ searchTextPlayers } />
+                        searchPlayers={ homepage.player.searchPlayers }
+                        searchTextPlayers={ homepage.player.searchTextPlayers } />
                 </Col>
                 <Col md={12} className="homepageCommanders">
                     <HomepageCommanders  
-                        commanders={ commanders } 
+                        commanders={ homepage.commander.commanders } 
                         handleCommanderSearch={ handleCommanderSearch } 
-                        searchTextCommanders={ searchTextCommanders }
-                        searchCommanders={ searchCommanders } />
+                        searchTextCommanders={ homepage.commander.searchTextCommanders }
+                        searchCommanders={ homepage.commander.searchCommanders } />
                 </Col>
             </Row>
     );

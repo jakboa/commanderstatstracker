@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { useParams } from "react-router-dom";
 import SearchHandler from "../../components/SearchHandler";
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
