@@ -171,12 +171,15 @@ const SearchHandler = {
         } ))
         return groupStatsLineData;
     },
+
+    getYears:(matches) => {
+        const years = Array.from(new Set(matches.map(
+            match => match.year
+            )));
+        return years; 
+    }
 }
 
 
 export default SearchHandler;
-
-//console.log(SearchHandler.getGroupLineChartData(gameInfo));
-
-//console.log(SearchHandler.getLineChartData("Mr. Stats",gameInfo));
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import SearchHandler from "../../components/SearchHandler";
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
@@ -15,28 +15,24 @@ import Col from "react-bootstrap/Col";
 
 export default function PlayerStats() {
 
-    const { playerName } = useParams();
+    // useStates
+    const [year,setYear] = useState("allMatches");
 
-    const playerInfo = SearchHandler.getSinglePlayerStats(playerName);
+    // Derived Values
+    const { playerName } = useParams(); 
 
-    const [totalGames, setTotalGames] = useState(playerInfo.length);
+    const playerInfo = SearchHandler.getSinglePlayerStats(playerName); 
+   
+    const filteredMatches = SearchHandler.getEntityMatchesForYear(playerInfo,year);
 
-    const [year,setYear] = useState("allMatches")
-    const [filteredMatches, setFilteredMatches] = useState(SearchHandler.getEntityMatchesForYear(playerInfo,year))
-    const [matchResultsForPlayer,setMatchResultsForPlayer ] = useState(SearchHandler.getEntityResults(playerName,playerInfo));
-    
+    const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,playerInfo);
+   
+    const totalGames = filteredMatches.length; 
 
+    // Functions
     const handleFilterMatches = (e) =>{
         setYear(e);
     };
-    useEffect(() =>{
-        setFilteredMatches(SearchHandler.getEntityMatchesForYear(playerInfo,year));
-    },[playerInfo,year])
-
-    useEffect(() =>{
-        setMatchResultsForPlayer(SearchHandler.getEntityResults(playerName,filteredMatches));
-        setTotalGames(filteredMatches.length);
-    },[filteredMatches,playerName])
 
     return (
         <Row className="playerstats">
@@ -44,8 +40,7 @@ export default function PlayerStats() {
             {/* BANNER */}
             <Col md={12} className="d-inline-flex bg-info-subtle" style={{height:"5rem"}}>
                 <h1>This is stats for {playerName}!</h1>
-                <YearSelector years={year}  handleFilterMatches={handleFilterMatches} />
-                <p>{year}</p>
+                <YearSelector  matches={ playerInfo } handleFilterMatches={handleFilterMatches} />
             </Col>
 
             {/* INFO */}

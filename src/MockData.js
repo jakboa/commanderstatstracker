@@ -32,7 +32,7 @@ export const gameInfo = [
             }
         ],
 
-        year: 2022
+        year: "2022"
     },
 
     {
@@ -99,7 +99,7 @@ export const gameInfo = [
                 placement: 1,
             },
         ],
-        year: 2024
+        year: "2024"
     },
 
     {
@@ -132,7 +132,7 @@ export const gameInfo = [
             }
         ],
 
-        year: 2024
+        year: "2024"
     },
     {
         Match_id: 5,
