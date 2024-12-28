@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import SearchHandler from "../../components/SearchHandler";
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
@@ -6,6 +6,8 @@ import GroupScore from "./GroupScore";
 import GroupInfo from "./GroupInfo";
 import GroupLineChart from "./GroupLineChart";
 import GroupDoughnutChart from "./GroupDoughnutChart";
+import YearSelector from "../../components/YearSelector";
+
 import "./GroupPage.css";
 
 import Row from 'react-bootstrap/Row';
@@ -15,16 +17,22 @@ import Tabs from 'react-bootstrap/Tabs';
 
 export default function GroupStats() {
 
-    const { groupname } = useParams();
+    // useStates
     const [year, setYear] = useState('allMatches');
 
-    const [group] = useState(SearchHandler.getOneGroup(groupname));
-    const [filteredGroup, setFilteredGroup] = useState(group);
-    
+    // Derived Values
+    const { groupname } = useParams();
+    const group = SearchHandler.getOneGroup(groupname);
+    const filteredGroup = SearchHandler.getEntityMatchesForYear(group, year);
 
-    useEffect(()=>{
-        setFilteredGroup(SearchHandler.getEntityMatchesForYear(group,year))
-    },[group,year]);
+    const totalGames = filteredGroup.length; 
+
+
+    // Functions
+    const handleFilterMatches = (e) =>{
+        setYear(e);
+    };
+
 
     return (
         <Row className="groupPage">
@@ -32,6 +40,7 @@ export default function GroupStats() {
             {/* BANNER */}
             <Col md={12} className="bg-info-subtle" style={{height:"5rem"}}>
                 <h1>{groupname}</h1>
+                <YearSelector matches={ group } handleFilterMatches={handleFilterMatches} />
             </Col>
 
             {/* INFOBOX */}
@@ -52,13 +61,13 @@ export default function GroupStats() {
                     
                     {/* STATS */}
                     <Col md={6} className="d-flex flex-column">
-                        <p className="border bg-light rounded m-2">Total amount of games so far: {group.length}</p>
-                        <GroupScore scoreInfo={group} />
+                        <p className="border bg-light rounded m-2">Total amount of games so far: {totalGames}</p>
+                        <GroupScore scoreInfo={ filteredGroup } />
                     </Col>
 
                     {/* DOUGHNUT */}
                     <Col md={6} style={{height:"22rem"}}>
-                        <GroupDoughnutChart results={group} />
+                        <GroupDoughnutChart results={ filteredGroup } />
                     </Col>
                 </Row>
                 

@@ -6,6 +6,7 @@ import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
 import DoughnutChart from "../../components/charts/DoughnutChart";
 import SingleCommanderInfoWindow from "./SingleCommanderInfoWindow";
+import YearSelector from "../../components/YearSelector";
 
 import "./CommanderStats.css"
 
@@ -15,9 +16,22 @@ import Row  from "react-bootstrap/Row";
 
 export default function SingleCommanderStats() {
 
+    // useStates 
+    const [year, setYear] = useState("allMatches");
+
+    // Derived Values
     const { commanderName } = useParams();
+
     const commanderInfo = SearchHandler.getSingleCommanderStats(commanderName);
-    const [ matchResultsForCommander ] = useState(SearchHandler.getEntityResults(commanderName,commanderInfo))
+    const filteredMatches = SearchHandler.getEntityMatchesForYear(commanderInfo,year);
+    const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,commanderInfo);
+   
+    const totalGames = filteredMatches.length; 
+
+    // Functions
+    const handleFilterMatches = (e) =>{
+        setYear(e);
+    };
 
 
     return (
@@ -25,6 +39,7 @@ export default function SingleCommanderStats() {
             {/* Name and Banner */}
             <Col md={12} className="bg-info-subtle" style={{height:"5rem"}}  >
                 <h1>{commanderName}</h1>
+                <YearSelector matches={ commanderInfo } handleFilterMatches={handleFilterMatches} />
             </Col>
 
             {/* Small InfoBox */}
@@ -36,8 +51,8 @@ export default function SingleCommanderStats() {
             <Col md={9}>
                 <Row className="m-3">
                     <Col md={4} className="d-flex flex-column text-center">
-                        <p className="bg-light border rounded">Played a total of {commanderInfo.length} times!</p>
-                        <EntityScore results={ matchResultsForCommander } totalGames={ commanderInfo.length } />
+                        <p className="bg-light border rounded">Played a total of { totalGames } times!</p>
+                        <EntityScore results={ matchResultsForCommander } totalGames={ totalGames } />
                     </Col>
                     <Col md={8} style={{height:"20rem"}} >
                         <DoughnutChart results={ matchResultsForCommander } />

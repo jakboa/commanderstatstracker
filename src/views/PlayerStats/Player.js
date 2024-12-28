@@ -22,9 +22,7 @@ export default function PlayerStats() {
     const { playerName } = useParams(); 
 
     const playerInfo = SearchHandler.getSinglePlayerStats(playerName); 
-   
     const filteredMatches = SearchHandler.getEntityMatchesForYear(playerInfo,year);
-
     const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,playerInfo);
    
     const totalGames = filteredMatches.length; 
@@ -58,7 +56,7 @@ export default function PlayerStats() {
                     {/* STATS */}
                     <Col>
                         <div className="d-flex flex-column h-100">
-                            <p className="border border-white rounded bg-light">Total amount of games so far: {filteredMatches.length}</p>
+                            <p className="border border-white rounded bg-light">Total amount of games so far: {totalGames}</p>
                             <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
                         </div>
                     </Col>
@@ -80,7 +78,7 @@ export default function PlayerStats() {
             {/* MATCHES */}
             <Col md={12} className="border-top border-black">
                 <h1 className="text-center m-3">This is the matches for {playerName}</h1>
-                <MatchInfoBox matchDetails={filteredMatches} focus={ playerName } />
+                <MatchInfoBox matchDetails={ filteredMatches } focus={ playerName } />
             </Col>
 
         </Row>
