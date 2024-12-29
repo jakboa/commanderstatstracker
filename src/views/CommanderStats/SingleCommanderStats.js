@@ -38,8 +38,16 @@ export default function SingleCommanderStats() {
         <Row className="singleCommanderPage">
             {/* Name and Banner */}
             <Col md={12} className="bg-info-subtle" style={{height:"5rem"}}  >
-                <h1>{commanderName}</h1>
-                <YearSelector matches={ commanderInfo } handleFilterMatches={handleFilterMatches} />
+                <Row className="h-100">
+                    <Col>
+                        <h1>{commanderName}</h1>
+                    </Col>
+                    <Col className="d-flex justify-content-end align-items-end">
+                        <div>
+                        <YearSelector matches={ commanderInfo } handleFilterMatches={handleFilterMatches} />
+                        </div>
+                    </Col>
+                </Row>
             </Col>
 
             {/* Small InfoBox */}

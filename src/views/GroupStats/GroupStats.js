@@ -38,9 +38,18 @@ export default function GroupStats() {
         <Row className="groupPage">
 
             {/* BANNER */}
-            <Col md={12} className="bg-info-subtle" style={{height:"5rem"}}>
-                <h1>{groupname}</h1>
-                <YearSelector matches={ group } handleFilterMatches={handleFilterMatches} />
+            <Col md={12} className="bg-info-subtle" style={{height:"7rem"}}>
+            <Row className="h-100 border">
+                <Col>
+                    <h1>{groupname}</h1>
+                </Col>
+                <Col className="d-flex justify-content-end align-items-end">
+                    <div >
+                        <YearSelector matches={ group } handleFilterMatches={handleFilterMatches} />
+                    </div>
+                </Col>
+                
+            </Row>
             </Col>
 
             {/* INFOBOX */}

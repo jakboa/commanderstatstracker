@@ -6,6 +6,7 @@ import SearchHandler from "../../components/SearchHandler";
 export default function GroupScore( { scoreInfo } ) {
 
     const groupStats = SearchHandler.getGroupStats(scoreInfo);
+    console.log(groupStats);
 
 
     return (

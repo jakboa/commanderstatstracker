@@ -84,10 +84,12 @@ const SearchHandler = {
         const playerInfo = gameInfo.filter( match => match.players.some(player => player.nickName  === playerToFind));
         return playerInfo;
     },
+    
     getSingleCommanderStats: (commanderToFind) => {
         const commanderInfo = gameInfo.filter( match => match.players.some(player => player.commander === commanderToFind));
         return commanderInfo;
     },
+
     getGroupStats:(group) => {
         const groupStats = {};
         // Make a object with placements as keys for each player in the group

@@ -36,9 +36,17 @@ export default function PlayerStats() {
         <Row className="playerstats">
 
             {/* BANNER */}
-            <Col md={12} className="d-inline-flex bg-info-subtle" style={{height:"5rem"}}>
-                <h1>This is stats for {playerName}!</h1>
-                <YearSelector  matches={ playerInfo } handleFilterMatches={handleFilterMatches} />
+            <Col md={12} className="p-0 bg-info-subtle" style={{height:"7rem"}}>
+                <Row className="h-100 w-100">
+                    <Col md={6} className="d-flex align-items-center">
+                        <h1 className="">Stats for {playerName}</h1>
+                    </Col>
+                    <Col md={6} className="d-flex justify-content-end align-items-end">
+                        <div >
+                            <YearSelector  matches={ playerInfo } handleFilterMatches={handleFilterMatches} />
+                        </div>
+                    </Col>
+                </Row>
             </Col>
 
             {/* INFO */}

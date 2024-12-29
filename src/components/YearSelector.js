@@ -19,8 +19,7 @@ export default function YearSelector( { matches, handleFilterMatches } ) {
         <Tabs 
             defaultActiveKey="allMatches"
             onSelect={(e)=>{handleFilterMatches(e)}}
-            id="YearResults"
-            className="mb-3">
+            id="YearResults">
 
             <Tab eventKey="allMatches" title="All Results"></Tab>
             
