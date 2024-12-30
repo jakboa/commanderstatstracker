@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 
-export default function HomepageCommandersSingle( { name } ) {
+export default function HomepageCommandersSingle( { name, results } ) {
 
     const navigate = useNavigate();
 
@@ -13,11 +13,12 @@ export default function HomepageCommandersSingle( { name } ) {
         navigate(`commanders/${name}`)
     };
 
+
     return (
         <Card className="mb-2" style={{ width:"15rem" }}>
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
-                <Card.Text>12 Games 3 wins</Card.Text>
+                <Card.Text>{results.first} Wins {results.games} Games </Card.Text>
                 <Button onClick={handleCommanderClick}>Check Commander</Button>
             </Card.Body>
         </Card>

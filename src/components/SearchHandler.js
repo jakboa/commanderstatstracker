@@ -179,9 +179,40 @@ const SearchHandler = {
             match => match.year
             )));
         return years; 
+    },
+    getEntityCardInfo: () =>{
+        const entityResults = {};
+        gameInfo.forEach(match=> {
+            match.players.forEach(player => {
+
+                // Create a new key, value pair if not in object.
+                if (!entityResults[player.nickName]) {
+                    entityResults[player.nickName] = { first:0, games:0}
+                } 
+
+                if (!entityResults[player.commander]) {
+                    entityResults[player.commander] = { first:0, games:0}
+                } 
+
+                // If entity has won, increment by 1.
+                if (player.placement === 1) {
+                    entityResults[player.nickName].first += 1;
+                    entityResults[player.commander].first += 1;
+                }
+                // Finaly increment the times the entity has played in a match.
+                entityResults[player.nickName].games += 1;
+                entityResults[player.commander].games += 1;
+            })
+        })
+        return entityResults;
     }
+
 }
 
-
 export default SearchHandler;
+
+
+
+//console.log(SearchHandler.getEntityCardInfo());
+
 

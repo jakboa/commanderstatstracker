@@ -25,7 +25,8 @@ const initalHomepage = {
         commanders: SearchHandler.getAllCommanders(),
         searchCommanders: SearchHandler.getAllCommanders(),
         searchTextCommanders: ""
-    }
+    },
+    results: SearchHandler.getEntityCardInfo()
 
 };
 
@@ -125,14 +126,16 @@ export default function Homepage() {
                         players={homepage.player.players}
                         handlePlayerSearch={ handlePlayerSearch }
                         searchPlayers={ homepage.player.searchPlayers }
-                        searchTextPlayers={ homepage.player.searchTextPlayers } />
+                        searchTextPlayers={ homepage.player.searchTextPlayers }
+                        results={ homepage.results } />
                 </Col>
                 <Col md={12} className="homepageCommanders">
                     <HomepageCommanders  
                         commanders={ homepage.commander.commanders } 
                         handleCommanderSearch={ handleCommanderSearch } 
                         searchTextCommanders={ homepage.commander.searchTextCommanders }
-                        searchCommanders={ homepage.commander.searchCommanders } />
+                        searchCommanders={ homepage.commander.searchCommanders }
+                        results={ homepage.results } />
                 </Col>
             </Row>
     );

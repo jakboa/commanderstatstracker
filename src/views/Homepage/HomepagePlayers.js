@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form"
 
-export default function HomepagePlayers( { players, handlePlayerSearch, searchPlayers, searchTextPlayers } ) {
+export default function HomepagePlayers( { players, handlePlayerSearch, searchPlayers, searchTextPlayers, results } ) {
 
     // if searchbar is empty, then show every player 
     const displayPlayers = !searchTextPlayers ? players : searchPlayers;
@@ -30,7 +30,7 @@ export default function HomepagePlayers( { players, handlePlayerSearch, searchPl
                     displayPlayers.map(player => {
                         return (
                             <Col md={3} sm={4} className="p-5">
-                                <HomepagePlayersSingle name={player} />
+                                <HomepagePlayersSingle name={player} results={ results[player] } />
                             </Col>
                         )})
                     :

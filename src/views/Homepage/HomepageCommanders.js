@@ -5,9 +5,13 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 
-export default function HomepageCommanders( { commanders, searchCommanders, handleCommanderSearch, searchTextCommanders } ) {
+export default function HomepageCommanders( { commanders, searchCommanders, handleCommanderSearch, searchTextCommanders, results } ) {
 
     const displayCommanders = !searchTextCommanders ? commanders : searchCommanders;
+    
+
+    
+    //console.log(displayCommanders);
 
     return (
         <>
@@ -29,7 +33,7 @@ export default function HomepageCommanders( { commanders, searchCommanders, hand
                     displayCommanders.map(commander => {
                         return (
                             <Col md={3} sm={4} className="d-flex justify-content-center ">
-                                <HomepageCommanderSingle name={ commander } />
+                                <HomepageCommanderSingle name={ commander } results={ results[commander] } />
                             </Col>
                         )}) 
                     :
