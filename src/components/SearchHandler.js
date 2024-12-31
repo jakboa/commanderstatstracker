@@ -160,18 +160,26 @@ const SearchHandler = {
     },
     getGroupLineChartData:(group) => {
         const groupStatsLineData = {};
+        
         // Make a object with placements as keys for each player in the group
         group[0].players.forEach(player => {
             let name = player.nickName;
             return groupStatsLineData[name] = []
         });
+
         // Itterate over the games and add placements to groupStatsLineData.
         group.forEach(match =>  match.players.forEach(player => {
             let name = player.nickName;
             let placement = player.placement;
             return groupStatsLineData[name].push(placement);
-        } ))
-        return groupStatsLineData;
+        } ));
+
+        const groupStatsLineDataArray = Object.entries(groupStatsLineData).map(([key, value]) => ({
+            player:key,
+            results:value
+        }))
+        groupStatsLineDataArray.sort((a, b) => a.player.localeCompare(b.player));
+        return groupStatsLineDataArray;
     },
 
     getYears:(matches) => {
@@ -214,5 +222,6 @@ export default SearchHandler;
 
 
 //console.log(SearchHandler.getEntityCardInfo());
+
 
 

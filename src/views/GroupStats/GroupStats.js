@@ -27,7 +27,6 @@ export default function GroupStats() {
 
     const totalGames = filteredGroup.length; 
 
-
     // Functions
     const handleFilterMatches = (e) =>{
         setYear(e);

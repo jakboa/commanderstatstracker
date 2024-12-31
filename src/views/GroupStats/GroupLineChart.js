@@ -52,35 +52,37 @@ export default function GroupLineChart( { entityName, entityMatches } ) {
         }
       };
 
-      const results = SearchHandler.getGroupLineChartData(entityMatches);
-      const labels = []
+      const results = SearchHandler.getGroupLineChartData(entityMatches).sort();
+      
+      const labels = [];
       for (let i = 1; i <= Object.keys(entityMatches).length; i++) {
-        labels.push(`Game: ${i}`)
+        labels.push(`Game: ${i}`);
         
-      }
+      };
+      
 
       const data = { labels, datasets:[ 
         {
-        label: entityName,
-        data: results["Graveyard Guru"],
+        label: results[0].player,
+        data: results[0].results,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)'
       },
       {
-        label: entityName,
-        data: results["Token Tyrant"],
+        label: results[1].player,
+        data: results[1].results,
         borderColor: 'rgb(4, 174, 16)',
         backgroundColor: 'rgba(3, 107, 15, 0.5)'
       },
       {
-        label: entityName,
-        data: results["Lifegain Legend"],
+        label: results[2].player,
+        data: results[2].results,
         borderColor: 'rgb(48, 23, 233)',
         backgroundColor: 'rgba(6, 24, 115, 0.5)'
       },
       {
-        label: entityName,
-        data: results["Planeswalker Pete"],
+        label: results[3].player,
+        data: results[3].results,
         borderColor: 'rgb(203, 236, 70)',
         backgroundColor: 'rgba(188, 243, 7, 0.5)'
       },

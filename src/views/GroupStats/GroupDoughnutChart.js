@@ -27,7 +27,7 @@ export default function GroupDoughnutChart( { results } ) {
   } 
 
 const data = {
-  labels: players,
+  labels: players.sort(),
   datasets: [
     {
       label: '# of Results',

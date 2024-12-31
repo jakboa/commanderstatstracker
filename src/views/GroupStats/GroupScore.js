@@ -6,8 +6,6 @@ import SearchHandler from "../../components/SearchHandler";
 export default function GroupScore( { scoreInfo } ) {
 
     const groupStats = SearchHandler.getGroupStats(scoreInfo);
-    console.log(groupStats);
-
 
     return (
         <div className="d-flex-inline flex-grow-1 border border-white rounded m-2 bg-light">
