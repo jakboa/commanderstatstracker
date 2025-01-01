@@ -33,16 +33,17 @@ const data = {
       label: '# of Results',
       data: placements,
       backgroundColor: [
-        '#A4EBBE' ,
-        '#EBDEA4',
         '#EBA7A4',
-        '#A4A5EB'
+        '#A4EBBE' ,
+        '#A4A5EB',
+        '#EBDEA4'
       ],
       borderColor: [
-        '#A4EBBE',
-        '#EBDEA4',
         '#EBA7A4',
-        '#A4A5EB'
+        '#A4EBBE',
+        '#A4A5EB',
+        '#EBDEA4'
+
       ],
       borderWidth: 2,
     },

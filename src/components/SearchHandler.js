@@ -213,6 +213,23 @@ const SearchHandler = {
             })
         })
         return entityResults;
+    },
+
+    getCommanderCardsByPlayer: (allMatches, findPlayer) => {
+        const commanderResults = {};
+        allMatches.forEach(match => {
+            const player = match.players.find(player => player.nickName === findPlayer);
+            if (!commanderResults[player.commander])
+                commanderResults[player.commander] = { first:0, games:0};
+            
+            if (player.placement === 1){
+                    commanderResults[player.commander].first += 1;
+                };
+
+            commanderResults[player.commander].games += 1;
+        });
+        const arrayCommanderResults = Object.entries(commanderResults);
+        return arrayCommanderResults;
     }
 
 }

@@ -6,6 +6,7 @@ import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
 import DoughnutChart from "../../components/charts/DoughnutChart";
 import YearSelector from "../../components/YearSelector";
+import CommanderCardContainer from "../../components/commanderCard/CommanderCardContainer";
 
 import "./PlayerStats.css"
 
@@ -24,6 +25,7 @@ export default function PlayerStats() {
     const playerInfo = SearchHandler.getSinglePlayerStats(playerName); 
     const filteredMatches = SearchHandler.getEntityMatchesForYear(playerInfo,year);
     const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,playerInfo);
+    const commanderCardInfo = SearchHandler.getCommanderCardsByPlayer(filteredMatches,playerName);
    
     const totalGames = filteredMatches.length; 
 
@@ -81,6 +83,11 @@ export default function PlayerStats() {
                         <LineChart entityName={ playerName } entityMatches={ filteredMatches } />
                     </Col>
                 </Row>
+            </Col>
+
+            {/* COMMANDERS */}
+            <Col md={12}>
+                <CommanderCardContainer commanderCardInfo={ commanderCardInfo } />
             </Col>
 
             {/* MATCHES */}
