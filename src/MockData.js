@@ -22,7 +22,7 @@ export const gameInfo = [
 
             {
                 nickName: 'Mr. Winner',
-                commander: 'Gitrog',
+                commander: 'The Gitrog Monster',
                 placement: 2
             },
             {

@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import SearchHandler from "../../components/SearchHandler";
+import ScryFallAPIConnector from "../../utils/api/ScryFallAPIConnector";
+
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
 import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
@@ -18,6 +21,7 @@ export default function SingleCommanderStats() {
 
     // useStates 
     const [year, setYear] = useState("allMatches");
+    const [cardData, setCardData] = useState({});
 
     // Derived Values
     const { commanderName } = useParams();
@@ -33,6 +37,14 @@ export default function SingleCommanderStats() {
         setYear(e);
     };
 
+    useEffect(()=> {
+        const fetchCommanderData = async () => {
+            const data = await ScryFallAPIConnector.getSingleCommanderData(commanderName);
+            setCardData(data);
+        };
+        fetchCommanderData();
+    }
+    ,[commanderName])
 
     return (
         <Row className="singleCommanderPage">
@@ -52,7 +64,7 @@ export default function SingleCommanderStats() {
 
             {/* Small InfoBox */}
             <Col md={3} className="d-flex justify-content-center text-center ">
-                <SingleCommanderInfoWindow />
+                <SingleCommanderInfoWindow cardData={ cardData } />
             </Col>
 
             {/* Graphs and Info */}

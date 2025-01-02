@@ -1,6 +1,8 @@
 import React from "react";
 import HomepageCommanderSingle from "./HomepageCommandersSingle";
 
+
+
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
@@ -8,10 +10,6 @@ import Form from "react-bootstrap/Form";
 export default function HomepageCommanders( { commanders, searchCommanders, handleCommanderSearch, searchTextCommanders, results } ) {
 
     const displayCommanders = !searchTextCommanders ? commanders : searchCommanders;
-    
-
-    
-    //console.log(displayCommanders);
 
     return (
         <>
