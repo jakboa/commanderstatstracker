@@ -16,23 +16,22 @@ export default function HomepageGroups( { commanderGroups, handleGroupSearch, se
 
     useEffect(()=>{
         const getRandoCard = async() => {
-        const data = await ScryFallAPIConnector.fetchRandomCardData() 
-        setRandoCard(data);
-        setLoading(false);
+            const data = await ScryFallAPIConnector.fetchRandomCardData() 
+            setRandoCard(data);
+            setLoading(false);
         }
 
         getRandoCard();
     },
     [])
 
-    console.log(randoCard);
 
     return (
         <>
             <Row>
                 <Col>
                 
-                    <p>API TESTING BELOW:</p>
+                    <p>API TESTING ZONE:</p>
                     { loading ? 
                         (<p>...loading</p>)
                         :
@@ -44,7 +43,7 @@ export default function HomepageGroups( { commanderGroups, handleGroupSearch, se
                             </>
                         )
                     }
-                    <p>API TESTING ABOVE:</p>
+                    <p>API TESTING ZONE:</p>
                 </Col>
             </Row>
             

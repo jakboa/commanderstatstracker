@@ -54,6 +54,32 @@ const ScryFallAPIConnector = {
             }
             console.log(result);
             return result
+        },
+        getGroupCommanderData: async (commanderList) => {
+            let result ={}
+            const commandersToSearch = commanderList.map(commander => {
+                return {"name":commander[0]}
+            })
+            try {
+                const response = await fetch(`${BASE_URL}/cards/collection`,{
+                    method: "POST",
+                    body: JSON.stringify({"identifiers":commandersToSearch}),
+                    headers: {
+                        "Accept": "*/*",
+                        "Content-Type": "application/json"
+                    }
+                });
+    
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                };                
+                result = await response.json();
+
+            } catch (error) {
+                console.log(error);
+            }
+            console.log(result);
+            return result
         }
 
 };

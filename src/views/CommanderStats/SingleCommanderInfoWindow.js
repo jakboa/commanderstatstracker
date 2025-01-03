@@ -19,12 +19,8 @@ export default function SingleCommanderInfoWindow( { cardData } ) {
                         <Image src={ cardData.image_uris.normal } alt="Commander Card" fluid />
                     )
                 }
-                <p>Hello!</p>
-                <p>TEST More thext to thes this out</p>
-                <p>INSERT:</p>
-                <p>1. Players that play this commander. Order this by amount of times.</p>
-
-
+                <p>Hello</p>
+                <p>Hello</p>
             </Col>
         </Row>    
     )

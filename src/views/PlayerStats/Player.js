@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import SearchHandler from "../../components/SearchHandler";
+import ScryFallAPIConnector from "../../utils/api/ScryFallAPIConnector";
+
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
 import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
@@ -18,6 +21,8 @@ export default function PlayerStats() {
 
     // useStates
     const [year,setYear] = useState("allMatches");
+    const [commanderData, setCommanderData] = useState({});
+    const [loading, setLoading] = useState(true);
 
     // Derived Values
     const { playerName } = useParams(); 
@@ -33,6 +38,16 @@ export default function PlayerStats() {
     const handleFilterMatches = (e) =>{
         setYear(e);
     };
+
+    useEffect(()=> {
+        const getCommanderInfo = async () => {
+            const data = await ScryFallAPIConnector.getGroupCommanderData(commanderCardInfo);
+            setCommanderData(data);
+            setLoading(false);
+        };
+
+        getCommanderInfo();
+    },[]);
 
     return (
         <Row className="playerstats">
@@ -87,7 +102,7 @@ export default function PlayerStats() {
 
             {/* COMMANDERS */}
             <Col md={12}>
-                <CommanderCardContainer commanderCardInfo={ commanderCardInfo } />
+                <CommanderCardContainer commanderCardInfo={ commanderCardInfo } commanderData={ commanderData } loading= { loading } />
             </Col>
 
             {/* MATCHES */}

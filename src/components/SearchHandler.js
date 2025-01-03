@@ -217,10 +217,13 @@ const SearchHandler = {
 
     getCommanderCardsByPlayer: (allMatches, findPlayer) => {
         const commanderResults = {};
+        let id = 0;
         allMatches.forEach(match => {
             const player = match.players.find(player => player.nickName === findPlayer);
-            if (!commanderResults[player.commander])
-                commanderResults[player.commander] = { first:0, games:0};
+            if (!commanderResults[player.commander]) {
+                commanderResults[player.commander] = { first:0, games:0, id:id};
+                id ++;
+            }
             
             if (player.placement === 1){
                     commanderResults[player.commander].first += 1;
