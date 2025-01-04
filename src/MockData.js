@@ -909,7 +909,7 @@ export const gameInfo = [
             {
                 nickName: 'Graveyard Guru',
                 commander:'Elminster',
-                placement: 2
+                placement: 1
             },
 
             {
@@ -920,7 +920,7 @@ export const gameInfo = [
             {
                 nickName: 'Planeswalker Pete',
                 commander: 'Ayara, First of Locthwain',
-                placement: 1
+                placement: 2
             }
         ],
 

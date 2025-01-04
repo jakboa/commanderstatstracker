@@ -39,6 +39,7 @@ export default function GroupLineChart( { entityName, entityMatches } ) {
             text: 'Player stats',
           },
         },
+
         scales: {
             y: {
                 type: "linear",

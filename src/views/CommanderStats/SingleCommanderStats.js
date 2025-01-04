@@ -81,7 +81,7 @@ export default function SingleCommanderStats() {
 
                 {/* Line Chart */}
                 <Row className="m-3" >
-                    <Col className=" d-flex align-items-stretch justify-content-center" style={{height:"13rem"}}  >
+                    <Col className="d-flex align-items-stretch justify-content-center" style={{height:"13rem"}}  >
                         <LineChart entityName={ commanderName } entityMatches={ commanderInfo } />
                     </Col>
                 </Row>

@@ -14,9 +14,11 @@ export default function GroupDoughnutChart( { results } ) {
 
   const displayResults = SearchHandler.getGroupStats(results);
 
+  console.log(displayResults);
+  
   const placements = [];
   const players = [];
-  for (const [player, result] of Object.entries(displayResults)) {
+  for (const [player, result] of Object.entries(displayResults).sort()) {
     players.push(player);
     placements.push(result[1])
   };

@@ -12,8 +12,6 @@ import "./GroupPage.css";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
 
 export default function GroupStats() {
 
@@ -31,7 +29,6 @@ export default function GroupStats() {
     const handleFilterMatches = (e) =>{
         setYear(e);
     };
-
 
     return (
         <Row className="groupPage">
@@ -69,8 +66,8 @@ export default function GroupStats() {
                     
                     {/* STATS */}
                     <Col md={6} className="d-flex flex-column">
-                        <p className="border bg-light rounded m-2">Total amount of games so far: {totalGames}</p>
-                        <GroupScore scoreInfo={ filteredGroup } />
+                        <p className="border bg-light rounded m-2">Total games: {totalGames}</p>
+                        <GroupScore scoreInfo={ filteredGroup } totalGames={totalGames} />
                     </Col>
 
                     {/* DOUGHNUT */}
@@ -90,18 +87,7 @@ export default function GroupStats() {
 
             {/* GAMES PLAYED */}            
             <Col md={12} className="border-top border-3 border-black matchInsert groupMatches">
-                <h1 className="text-center  mt-4">Match Results for {groupname}</h1>
-                <Tabs
-                    defaultActiveKey="allMatches"
-                    transition={true}
-                    onSelect={(k) => {setYear(k)}}
-                    className="mb-3">
-                    <Tab eventKey="allMatches" title="All Games">All matches this group has played:</Tab>
-                    <Tab eventKey="2024" title="2024">Matches played in 2024:</Tab>
-                    <Tab eventKey="2023" title="2023">Matches played in 2023:</Tab>
-                    <Tab eventKey="2022" title="2022">Matches played in 2022:</Tab>
-                </Tabs>
-                
+                <h1 className="text-center  mt-4">Match Results for {groupname}</h1>                
                 <MatchInfoBox matchDetails={filteredGroup} />
             
             </Col>

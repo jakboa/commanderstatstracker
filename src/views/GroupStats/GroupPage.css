@@ -12,3 +12,30 @@
 }
 
 
+.scoreText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    margin: 0px;
+    width: 25%;
+}
+
+.place0 {
+    background-color: #F5E663;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.place1 {
+    background-color: #CADBF5;
+
+}
+.place2 {
+    background-color: #78D1F5;
+}
+.place3 {
+    background-color: #78A9F4;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    
+}

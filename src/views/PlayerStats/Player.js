@@ -47,6 +47,11 @@ export default function PlayerStats() {
         };
 
         getCommanderInfo();
+
+
+    // I am disabling a warning here beacuse i want it to read the info once and
+    // I do not need it to update as that info is then stored somewhere else.
+    // eslint-disable-next-line
     },[]);
 
     return (
