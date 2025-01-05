@@ -22,19 +22,18 @@ export default function GroupScore( { scoreInfo, totalGames } ) {
         <div className="d-flex-inline flex-grow-1 border border-white rounded m-2 bg-light">
             <h1>Match Results:</h1>
             <div className="px-3">
-            { Object.entries(groupStats).sort(sortByWins).map(([key,value], index) => {
-                return (
-                    <div className="d-flex justify-content-center">
-                        <Stack direction="horizontal" className={`place${index} d-flex w-100`}>
-                            <p className="scoreText border-end fw-bold">{`${key}`}</p> 
-                            <p className="scoreText border-end fw-semibold">{`First: ${value[1]}`}</p> 
-                            <p className="scoreText border-end fw-medium">{`Second: ${value[2]}`}</p> 
-                            <p className="scoreText border-end">{`Third: ${value[3]}`}</p> 
-                            <p className="scoreText">{`Fourth: ${value[4]}`}</p>   
-                        </Stack>
-                    </div>
-                );
-            })} 
+                { Object.entries(groupStats).sort(sortByWins).map(([key,value], index) => {
+                    return (
+                            <Stack direction="horizontal" className={`place${index}`}>
+                                <p className="scoreText border-end fw-bold">{`${key}`}</p> 
+                                <p className="scoreText border-end fw-semibold">{`First: ${value[1]}`}</p> 
+                                <p className="scoreText border-end fw-medium">{`Second: ${value[2]}`}</p> 
+                                <p className="scoreText border-end">{`Third: ${value[3]}`}</p> 
+                                <p className="scoreText">{`Fourth: ${value[4]}`}</p>   
+                            </Stack>
+
+                    );
+                })} 
             </div>
             <p>Games Played: {totalGames}</p>
 

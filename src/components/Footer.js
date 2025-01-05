@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-
 // Here I import Bootstrap stuff
 import Button from 'react-bootstrap/Button';
 import Row from "react-bootstrap/Row";

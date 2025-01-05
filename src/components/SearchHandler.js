@@ -126,20 +126,43 @@ const SearchHandler = {
     getGroupInfo: (group) => {
         const setPlayerNicks = new Set();
         const mostUsedCommanders = {};
-        //const bestCommander = {};
+        const playerCommanders = {}
         group.forEach(match => {
             match.players.forEach(player => {
                 setPlayerNicks.add(player.nickName);
+                let playerNick = player.nickName;
                 let commander = player.commander;
-                if (mostUsedCommanders[commander]){
-                    mostUsedCommanders[commander] = mostUsedCommanders[commander] +1;
-                } else {mostUsedCommanders[commander] = 1;}
+                let placement = player.placement;
+                if (!mostUsedCommanders[commander]){
+                    mostUsedCommanders[commander] ={first:0, played:0};
+
+                };
+                if (placement === 1 ){
+                    mostUsedCommanders[commander].first++;
+                };
+                mostUsedCommanders[commander].played++;
                 
+                if (!playerCommanders[playerNick]) {
+                    playerCommanders[playerNick] ={};
+                };
+                if (!playerCommanders[playerNick][commander]) {
+                    playerCommanders[playerNick][commander] = 0;
+                };
+                playerCommanders[playerNick][commander]++;
+
+
             })
         });
+        
+        const countCommanders = Object.entries(playerCommanders).map(playerCount=> {
+            return [playerCount[0],Object.keys(playerCount[1]).length]
+        });
+        countCommanders.sort((a,b)=>{return b[1]-a[1]})
+        const sortedMostUsedCommanders = Object.entries(mostUsedCommanders).sort((a,b)=>{return b[1].first-a[1].first});
+        const sortedMostwinsCommander = Object.entries(mostUsedCommanders).sort((a,b)=>{return b[1].first-a[1].first});
         const arrayPlayerNicks = [...setPlayerNicks];
 
-        return {arrayPlayerNicks, mostUsedCommanders};
+        return {arrayPlayerNicks, sortedMostUsedCommanders, sortedMostwinsCommander, countCommanders};
     }, 
 
     getEntityMatchesForYear: (matches, year) =>{

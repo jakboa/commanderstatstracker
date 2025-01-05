@@ -13,7 +13,7 @@ export default function YearSelector( { matches, handleFilterMatches } ) {
     const activeButtons = SearchHandler.getYears(matches);
 
     // This is hardcoded now, I will change this when the structure is more clearer.
-    const yearDisplay = ["2020","2021","2022","2023","2024","2025"];
+    const yearDisplay = ["2021","2022","2023","2024","2025"];
 
     return(
         <Tabs 

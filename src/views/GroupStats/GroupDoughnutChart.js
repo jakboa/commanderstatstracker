@@ -13,8 +13,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function GroupDoughnutChart( { results } ) {
 
   const displayResults = SearchHandler.getGroupStats(results);
-
-  console.log(displayResults);
   
   const placements = [];
   const players = [];

@@ -49,29 +49,22 @@ export default function GroupStats() {
             </Col>
 
             {/* INFOBOX */}
-            <Col md={2} className="d-flex">
-                <Row className="d-flex flex-column text-center">
-                    <Col>
-                        <p className="bg-light border border-white rounded m-2">Her er groupINFO:</p>
-                    </Col>
-                    <Col>
-                        <GroupInfo group={group} />
-                    </Col>
-                </Row> 
+            <Col md={3} className="d-flex text-center">
+                <GroupInfo groupname={ groupname } group={ filteredGroup }  />
             </Col>
 
             {/* STATS AND GRAPHS */}
-            <Col ms={10} className="text-center">
+            <Col ms={9} className="text-center">
                 <Row>
                     
                     {/* STATS */}
-                    <Col md={6} className="d-flex flex-column">
-                        <p className="border bg-light rounded m-2">Total games: {totalGames}</p>
+                    <Col md={7} className="d-flex flex-column">
+                        <p className="border bg-light rounded m-2">Total games: {group.length}</p>
                         <GroupScore scoreInfo={ filteredGroup } totalGames={totalGames} />
                     </Col>
 
                     {/* DOUGHNUT */}
-                    <Col md={6} style={{height:"22rem"}}>
+                    <Col md={5} style={{height:"22rem"}}>
                         <GroupDoughnutChart results={ filteredGroup } />
                     </Col>
                 </Row>

@@ -21,20 +21,36 @@
     width: 25%;
 }
 
+
+
+/*
+Old color values:
+
+First Group score:
+#F5E663
+#CADBF5
+#78D1F5
+#78A9F4
+
+Other:
+
+*/
 .place0 {
-    background-color: #F5E663;
+
+    
+    background-color: #EFFA82;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 }
 .place1 {
-    background-color: #CADBF5;
+    background-color: #C5C7FF;
 
 }
 .place2 {
-    background-color: #78D1F5;
+    background-color: #9597BF;
 }
 .place3 {
-    background-color: #78A9F4;
+    background-color: #8183a6;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     
