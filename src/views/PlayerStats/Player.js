@@ -29,7 +29,7 @@ export default function PlayerStats() {
 
     const playerInfo = SearchHandler.getSinglePlayerStats(playerName); 
     const filteredMatches = SearchHandler.getEntityMatchesForYear(playerInfo,year);
-    const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,playerInfo);
+    const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,filteredMatches);
     const commanderCardInfo = SearchHandler.getCommanderCardsByPlayer(filteredMatches,playerName);
    
     const totalGames = filteredMatches.length; 
@@ -49,7 +49,7 @@ export default function PlayerStats() {
         getCommanderInfo();
 
 
-    // I am disabling a warning here beacuse i want it to read the info once and
+    // I am disabling a warning here because i want it to read the info once and
     // I do not need it to update as that info is then stored somewhere else.
     // eslint-disable-next-line
     },[]);
@@ -72,8 +72,8 @@ export default function PlayerStats() {
             </Col>
 
             {/* INFO */}
-            <Col md={3} className="d-flex justify-content-center">
-                <div className="p-2 border border-white border-3 rounded-4 bg-light text-center m-2 w-100">
+            <Col md={3} className="d-flex justify-content-center pe-0">
+                <div className="p-2 border border-white border-3 rounded-4 bg-light text-center my-2 w-100">
                     <p>Here is picture of avatar</p>
                     <p>Here are some facts?</p>
                 </div>
@@ -84,9 +84,9 @@ export default function PlayerStats() {
                 <Row className=" my-2">
 
                     {/* STATS */}
-                    <Col>
+                    <Col className="pe-0">
                         <div className="d-flex flex-column h-100">
-                            <p className="border border-white rounded bg-light">Total amount of games so far: {totalGames}</p>
+                            <p className="border border-white rounded-4 rounded bg-light">Total amount of games so far: {totalGames}</p>
                             <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
                         </div>
                     </Col>
@@ -115,7 +115,6 @@ export default function PlayerStats() {
                 <h1 className="text-center m-3">This is the matches for {playerName}</h1>
                 <MatchInfoBox matchDetails={ filteredMatches } focus={ playerName } />
             </Col>
-
         </Row>
     )
 }
