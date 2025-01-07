@@ -10,6 +10,7 @@ import LineChart from "../../components/charts/LineChart";
 import DoughnutChart from "../../components/charts/DoughnutChart";
 import YearSelector from "../../components/YearSelector";
 import CommanderCardContainer from "../../components/commanderCard/CommanderCardContainer";
+import PlayerInfoBox from "./PlayerInfoBox";
 
 import "./PlayerStats.css"
 
@@ -23,6 +24,7 @@ export default function PlayerStats() {
     const [year,setYear] = useState("allMatches");
     const [commanderData, setCommanderData] = useState({});
     const [loading, setLoading] = useState(true);
+    const [commanderStatsInfo, setCommanderStatsInfo] = useState([]);
 
     // Derived Values
     const { playerName } = useParams(); 
@@ -42,17 +44,21 @@ export default function PlayerStats() {
     useEffect(()=> {
         const getCommanderInfo = async () => {
             const data = await ScryFallAPIConnector.getGroupCommanderData(commanderCardInfo);
+            const commanderFacts = SearchHandler.getCommanderFactsForPlayer(data);
             setCommanderData(data);
             setLoading(false);
+            setCommanderStatsInfo(commanderFacts);
         };
 
         getCommanderInfo();
-
-
     // I am disabling a warning here because i want it to read the info once and
     // I do not need it to update as that info is then stored somewhere else.
     // eslint-disable-next-line
     },[]);
+
+    console.log(commanderData);
+    console.log(commanderStatsInfo);
+
 
     return (
         <Row className="playerstats">
@@ -74,8 +80,8 @@ export default function PlayerStats() {
             {/* INFO */}
             <Col md={3} className="d-flex justify-content-center pe-0">
                 <div className="p-2 border border-white border-3 rounded-4 bg-light text-center my-2 w-100">
-                    <p>Here is picture of avatar</p>
-                    <p>Here are some facts?</p>
+                    <h3>Here there will be facts:</h3>
+                    <PlayerInfoBox commanderStatsInfo={ commanderStatsInfo } loading={ loading } />
                 </div>
             </Col>
 
@@ -98,7 +104,7 @@ export default function PlayerStats() {
                 </Row>
                 
                 {/* LINECHART */}
-                <Row className=" my-2">
+                <Row className=" my-2" style={{height:"13rem"}}>
                     <Col>
                         <LineChart entityName={ playerName } entityMatches={ filteredMatches } />
                     </Col>

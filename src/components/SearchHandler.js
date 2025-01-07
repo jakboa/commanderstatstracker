@@ -256,6 +256,19 @@ const SearchHandler = {
         });
         const arrayCommanderResults = Object.entries(commanderResults);
         return arrayCommanderResults;
+    },
+    getCommanderFactsForPlayer: (commanderData) => {
+        const commanderFacts = []
+        commanderData.data.forEach(commander => {
+
+            //Get color identity:
+            //commanderFacts.push({color_identity});
+
+            // Get creature types:
+            const subtypes = commander.type_line.split(" — ")[1].split(" ");
+            commanderFacts.push({types:subtypes})
+        })
+        return commanderFacts;
     }
 
 }
