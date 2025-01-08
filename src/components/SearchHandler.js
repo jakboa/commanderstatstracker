@@ -257,17 +257,63 @@ const SearchHandler = {
         const arrayCommanderResults = Object.entries(commanderResults);
         return arrayCommanderResults;
     },
-    getCommanderFactsForPlayer: (commanderData) => {
+    getCommanderFactsForPlayer: (commanderData, cardToFind) => {
+
+        console.log(cardToFind);
+        const cardNames = new Set(cardToFind.map(name => name[0]))
+
+        const removeFromTypes = {"Legendary":"Legendary", "Creature":"Creature", "—":"—", "Sorcery":"Sorcery", "//":"//", "Enchantment":"Enchantment"};
+
         const commanderFacts = []
         commanderData.data.forEach(commander => {
+            const cardData = {};
 
-            //Get color identity:
-            //commanderFacts.push({color_identity});
+            // Get name:
+            if (!commander.card_faces) {
+                cardData.name = commander.name;
+            } else {
+                const foundName = commander.card_faces.filter(side => cardNames.has(side.name));
+                console.log(foundName)
+                cardData.name = foundName[0].name;
+            }
 
+            // Get cmc:
+            cardData.cmc = commander.cmc;
+
+            // Get color identity:
+            cardData.colorIdentity = commander.color_identity;
+            
             // Get creature types:
-            const subtypes = commander.type_line.split(" — ")[1].split(" ");
-            commanderFacts.push({types:subtypes})
+            let subtypes = [];
+            if (commander.type_line.includes("//")){
+                subtypes = commander.type_line.split(" ");
+                subtypes = subtypes.filter(word => !removeFromTypes[word])
+            } else {
+                subtypes = commander.type_line.split(" — ")[1].split(" ");
+            }
+            cardData.types = subtypes;
+
+            //
+            cardData.cardFound = true;
+
+            // Add the combined info about the card to the array
+            commanderFacts.push(cardData);
         })
+
+        // Take the list of cards without data 
+        // and add placeholder info.
+        commanderData.not_found.forEach(commander => {
+            const cardData = {};
+            cardData.name = commander.name;
+            cardData.cmc = null;
+            cardData.colorIdentity = [];
+            cardData.types = [];
+            cardData.cardFound = false;
+            cardData.image = "https://cards.scryfall.io/art_crop/front/0/3/036ef8c9-72ac-46ce-af07-83b79d736538.jpg?1562730661"
+        
+            commanderFacts.push(cardData);    
+        });
+        console.log(commanderFacts)
         return commanderFacts;
     }
 

@@ -44,7 +44,7 @@ export default function PlayerStats() {
     useEffect(()=> {
         const getCommanderInfo = async () => {
             const data = await ScryFallAPIConnector.getGroupCommanderData(commanderCardInfo);
-            const commanderFacts = SearchHandler.getCommanderFactsForPlayer(data);
+            const commanderFacts = SearchHandler.getCommanderFactsForPlayer(data, commanderCardInfo);
             setCommanderData(data);
             setLoading(false);
             setCommanderStatsInfo(commanderFacts);

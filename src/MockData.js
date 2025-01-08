@@ -166,8 +166,38 @@ export const gameInfo = [
 
         year: "2024"
     },
+    {
+        Match_id: 5.5,
 
+        Group_name: 'A_Boys',
 
+        players: [  
+            { 
+                nickName: 'Mr. Macho',
+                commander: 'Oviya Pashiri, Sage Lifecrafter',
+                placement: 1 
+            },
+
+            {
+                nickName: 'Mr. Winner',
+                commander:'Extus, Oriq Overlord',
+                placement: 2
+            },
+
+            {
+                nickName: 'Mr. Tryhard',
+                commander: 'Light-Paws',
+                placement: 2
+            },
+            {
+                nickName: 'Mr. DudeBro',
+                commander: 'Asmoranomardicadaistinaculdacar',
+                placement: 2,
+            }
+        ],
+
+        year: "2024"
+    },
 
 
 
