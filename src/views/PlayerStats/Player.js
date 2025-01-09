@@ -22,19 +22,26 @@ export default function PlayerStats() {
 
     // useStates
     const [year,setYear] = useState("allMatches");
-    const [commanderData, setCommanderData] = useState({});
     const [loading, setLoading] = useState(true);
     const [commanderStatsInfo, setCommanderStatsInfo] = useState([]);
 
     // Derived Values
     const { playerName } = useParams(); 
 
-    const playerInfo = SearchHandler.getSinglePlayerStats(playerName); 
-    const filteredMatches = SearchHandler.getEntityMatchesForYear(playerInfo,year);
+    const playerMatches = SearchHandler.getSinglePlayerStats(playerName); 
+    const filteredMatches = SearchHandler.getEntityMatchesForYear(playerMatches,year);
     const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,filteredMatches);
     const commanderCardInfo = SearchHandler.getCommanderCardsByPlayer(filteredMatches,playerName);
+    const filteredCommanderCards = commanderStatsInfo.filter(commander => 
+        commander.matchHistory[year]);
    
+    console.log("filteredCommanderCards")
+    console.log(filteredCommanderCards)
+
     const totalGames = filteredMatches.length; 
+
+
+
 
     // Functions
     const handleFilterMatches = (e) =>{
@@ -45,7 +52,6 @@ export default function PlayerStats() {
         const getCommanderInfo = async () => {
             const data = await ScryFallAPIConnector.getGroupCommanderData(commanderCardInfo);
             const commanderFacts = SearchHandler.getCommanderFactsForPlayer(data, commanderCardInfo);
-            setCommanderData(data);
             setLoading(false);
             setCommanderStatsInfo(commanderFacts);
         };
@@ -55,9 +61,6 @@ export default function PlayerStats() {
     // I do not need it to update as that info is then stored somewhere else.
     // eslint-disable-next-line
     },[]);
-
-    console.log(commanderData);
-    console.log(commanderStatsInfo);
 
 
     return (
@@ -71,7 +74,7 @@ export default function PlayerStats() {
                     </Col>
                     <Col md={6} className="d-flex justify-content-end align-items-end">
                         <div >
-                            <YearSelector  matches={ playerInfo } handleFilterMatches={handleFilterMatches} />
+                            <YearSelector  matches={ playerMatches } handleFilterMatches={handleFilterMatches} />
                         </div>
                     </Col>
                 </Row>
@@ -113,7 +116,7 @@ export default function PlayerStats() {
 
             {/* COMMANDERS */}
             <Col md={12}>
-                <CommanderCardContainer commanderCardInfo={ commanderCardInfo } commanderData={ commanderData } loading= { loading } />
+                <CommanderCardContainer commanderStatsInfo={ filteredCommanderCards } year={ year } loading= { loading } />
             </Col>
 
             {/* MATCHES */}

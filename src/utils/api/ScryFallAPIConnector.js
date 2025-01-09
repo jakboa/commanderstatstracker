@@ -57,8 +57,8 @@ const ScryFallAPIConnector = {
         },
         getGroupCommanderData: async (commanderList) => {
             let result ={}
-            const commandersToSearch = commanderList.map(commander => {
-                return {"name":commander[0]}
+            const commandersToSearch = Object.keys(commanderList).map(commander => {
+                return {"name":commander}
             })
             try {
                 const response = await fetch(`${BASE_URL}/cards/collection`,{

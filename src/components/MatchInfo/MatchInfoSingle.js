@@ -11,14 +11,14 @@ import matchThirdPlacePicture from '../../utils/matchThirdPlacePicture.png'
 import matchFourthPlacePicture from '../../utils/matchFourthPlacePicture.png'
 
 
-export default function MatchInfoSingle( { matchData, show } ) {
+export default function MatchInfoSingle( { matchData, show, index } ) {
 
     const pictures = [ matchFirstPlacePicture, matchSecondPlacePicture, matchThirdPlacePicture, matchFourthPlacePicture ]
 
     const placementID = `result-${matchData.placement}`;
 
     return (
-            <Stack direction="horizontal" className={`${show === matchData.nickName ? "getFocus" : show === matchData.commander ? "getFocus" :  ""} p-3 matchplayerStack align-items-stretch fw-semibold`} >
+            <Stack  direction="horizontal" className={`${show === matchData.nickName ? "getFocus" : show === matchData.commander ? "getFocus" :  ""} p-3 matchplayerStack align-items-stretch fw-semibold`} >
                 <Image src={pictures[matchData.placement-1]} className="matchPic playerBox" />
 
                 <p className={`${placementID} fs-1 d-flex justify-content-center align-items-center matchPlacement playerBox`}>{matchData.placement}</p>

@@ -16,13 +16,13 @@ export default function MatchInfoBox( { matchDetails, focus } ) {
 
     return (
         <Row>
-            { matchDetails.map(match => {
+            { matchDetails.map((match, index) => {
                 return (
-                    <Col md={6} className=" mb-3">
+                    <Col key={index} md={6} className=" mb-3">
                         <div className="border rounded-5 border-4 overflow-hidden">    
-                            { match.players.map(results => {
+                            { match.players.map((results, index) => {
                                 return (
-                                    <MatchInfoSingle matchData={results} show={ getFocus } />
+                                    <MatchInfoSingle matchData={results} show={getFocus} key={index} />
                                 )})
                             }
                         </div>

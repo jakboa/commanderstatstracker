@@ -12,7 +12,7 @@ export default function EntityScore( { results, totalGames } ) {
             <p>Match Results thus far:</p>
             { results.map((results, placement) => {
                 return (
-                    <p>You have gotten {placement+1}: {results} = {Math.round((results/totalGames)*100)}%</p>
+                    <p key={placement}>You have gotten {placement+1}: {results} = {Math.round((results/totalGames)*100)}%</p>
                 );
             })}
             

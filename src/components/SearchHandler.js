@@ -240,27 +240,33 @@ const SearchHandler = {
 
     getCommanderCardsByPlayer: (allMatches, findPlayer) => {
         const commanderResults = {};
-        let id = 0;
         allMatches.forEach(match => {
             const player = match.players.find(player => player.nickName === findPlayer);
             if (!commanderResults[player.commander]) {
-                commanderResults[player.commander] = { first:0, games:0, id:id};
-                id ++;
+                commanderResults[player.commander] = {"allMatches":{}} 
+                commanderResults[player.commander]["allMatches"] = { 1:0, 2:0,3:0, 4:0, games:0}; 
+                //commanderResults[player.commander] = { 1:0, 2:0,3:0, 4:0, games:0, yearsPlayed: new Set(["allMatches"])};    
             }
-            
-            if (player.placement === 1){
-                    commanderResults[player.commander].first += 1;
-                };
+            if (!commanderResults[player.commander][match.year]) {
+                commanderResults[player.commander][match.year] = { 1:0, 2:0,3:0, 4:0, games:0}; 
+                //commanderResults[player.commander] = { 1:0, 2:0,3:0, 4:0, games:0, yearsPlayed: new Set(["allMatches"])};    
+            }
 
-            commanderResults[player.commander].games += 1;
+
+            commanderResults[player.commander][match.year][player.placement] ++;
+            commanderResults[player.commander][match.year].games ++;
+            commanderResults[player.commander]["allMatches"][player.placement] ++; 
+            commanderResults[player.commander]["allMatches"].games ++; 
+            
+
         });
-        const arrayCommanderResults = Object.entries(commanderResults);
-        return arrayCommanderResults;
+        //const arrayCommanderResults = Object.entries(commanderResults);
+        return commanderResults;
     },
+
     getCommanderFactsForPlayer: (commanderData, cardToFind) => {
 
         console.log(cardToFind);
-        const cardNames = new Set(cardToFind.map(name => name[0]))
 
         const removeFromTypes = {"Legendary":"Legendary", "Creature":"Creature", "—":"—", "Sorcery":"Sorcery", "//":"//", "Enchantment":"Enchantment"};
 
@@ -268,13 +274,15 @@ const SearchHandler = {
         commanderData.data.forEach(commander => {
             const cardData = {};
 
-            // Get name:
+            // Get name & art:
             if (!commander.card_faces) {
                 cardData.name = commander.name;
+                cardData.image = commander.image_uris.art_crop;
             } else {
-                const foundName = commander.card_faces.filter(side => cardNames.has(side.name));
-                console.log(foundName)
-                cardData.name = foundName[0].name;
+                // If double sided card: Find the right side, then extract info.
+                const correctCardSide = commander.card_faces.filter(side => cardToFind[side.name]);
+                cardData.name = correctCardSide[0].name;
+                cardData.image = correctCardSide[0].image_uris.art_crop;
             }
 
             // Get cmc:
@@ -293,7 +301,10 @@ const SearchHandler = {
             }
             cardData.types = subtypes;
 
-            //
+            // Add match history for the card:
+            cardData.matchHistory = cardToFind[cardData.name];
+
+            // Add a boolean if the Card is found by Scryfall
             cardData.cardFound = true;
 
             // Add the combined info about the card to the array
@@ -308,9 +319,10 @@ const SearchHandler = {
             cardData.cmc = null;
             cardData.colorIdentity = [];
             cardData.types = [];
+            cardData.matchHistory = cardToFind[commander];
             cardData.cardFound = false;
             cardData.image = "https://cards.scryfall.io/art_crop/front/0/3/036ef8c9-72ac-46ce-af07-83b79d736538.jpg?1562730661"
-        
+
             commanderFacts.push(cardData);    
         });
         console.log(commanderFacts)

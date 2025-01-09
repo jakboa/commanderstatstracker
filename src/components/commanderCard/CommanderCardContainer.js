@@ -5,7 +5,7 @@ import CommanderCard from "./CommanderCard";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export default function CommanderCardContainer( { commanderCardInfo, commanderData, loading  } ) {
+export default function CommanderCardContainer( { commanderStatsInfo, year, loading  } ) {
 
     return (
         <Row>
@@ -13,10 +13,10 @@ export default function CommanderCardContainer( { commanderCardInfo, commanderDa
             { loading ? (
                 <p>...loading</p>
             ) : (
-                commanderCardInfo.map( commander => {
+                commanderStatsInfo.map( (commander,index) => {
                     return (
-                        <Col>
-                            <CommanderCard commander={ commander } commanderData= { commanderData } />
+                        <Col key={index}>
+                            <CommanderCard commander={ commander } year={ year } />
                         </Col>
                 )
             }))

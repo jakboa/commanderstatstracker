@@ -23,12 +23,12 @@ export default function YearSelector( { matches, handleFilterMatches } ) {
 
             <Tab eventKey="allMatches" title="All Results"></Tab>
             
-            {yearDisplay.map(yearButton => {
+            {yearDisplay.map((yearButton, index) => {
                 if(activeButtons.includes(yearButton)) {
-                    return <Tab eventKey={yearButton} title={yearButton}></Tab>
+                    return <Tab eventKey={yearButton} title={yearButton} key={index}></Tab>
                 } else {
                     return (
-                        <Tab eventKey={yearButton} title={yearButton} disabled></Tab>
+                        <Tab eventKey={yearButton} title={yearButton} key={index} disabled></Tab>
                     )
                 }
             })}
