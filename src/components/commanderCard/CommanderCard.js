@@ -12,13 +12,11 @@ export default function CommanderCard( { commander, year } ) {
         navigate(`/commanders/${e.target.value}`)
     }
 
-    console.log(commander);
-
     return (
-        <Card style={{width:"15rem"}}>
+        <Card >
             <Card.Img variant="top" src={commander.image} />
             <Card.Body>
-                <Card.Title>{commander.name}</Card.Title>
+                <Card.Title className="h-25 mb-3">{commander.name}</Card.Title>
                 <Card.Text>Victories:{commander.matchHistory[year][1]} <br />
                 Times played:{commander.matchHistory[year].games}</Card.Text>
                 <Button onClick={ commanderClick } value={commander.name}>Check Stats</Button>

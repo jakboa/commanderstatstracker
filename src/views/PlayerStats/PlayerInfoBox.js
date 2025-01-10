@@ -5,10 +5,10 @@ import React from "react";
 
 
 
-export default function PlayerInfoBox( { commanderStatsInfo, loading } ) {
+export default function PlayerInfoBox( { commanderData, loading } ) {
 
     const creatureCount = {};
-    commanderStatsInfo.forEach( commander => {
+    commanderData.forEach( commander => {
         commander.types.forEach(commanderTypes => {
             if (!creatureCount[commanderTypes]) {
                 creatureCount[commanderTypes] = 0

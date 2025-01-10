@@ -18,7 +18,10 @@ export default function MatchInfoBox( { matchDetails, focus } ) {
         <Row>
             { matchDetails.map((match, index) => {
                 return (
-                    <Col key={index} md={6} className=" mb-3">
+                    <Col key={index} md={6} className="mb-3">
+                        <div className="d-flex justify-content-center align-items-center mt-1">
+                            <p className="border border-bottom-0 border-4 rounded-top mb-0 px-2 fw-semibold bg-body-tertiary">Match nr. {index+1}</p>
+                        </div>
                         <div className="border rounded-5 border-4 overflow-hidden">    
                             { match.players.map((results, index) => {
                                 return (

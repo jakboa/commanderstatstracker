@@ -23,7 +23,7 @@ export default function PlayerStats() {
     // useStates
     const [year,setYear] = useState("allMatches");
     const [loading, setLoading] = useState(true);
-    const [commanderStatsInfo, setCommanderStatsInfo] = useState([]);
+    const [fullCommanderData, setFullCommanderData] = useState([]);
 
     // Derived Values
     const { playerName } = useParams(); 
@@ -31,16 +31,11 @@ export default function PlayerStats() {
     const playerMatches = SearchHandler.getSinglePlayerStats(playerName); 
     const filteredMatches = SearchHandler.getEntityMatchesForYear(playerMatches,year);
     const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,filteredMatches);
-    const commanderCardInfo = SearchHandler.getCommanderCardsByPlayer(filteredMatches,playerName);
-    const filteredCommanderCards = commanderStatsInfo.filter(commander => 
-        commander.matchHistory[year]);
-   
-    console.log("filteredCommanderCards")
-    console.log(filteredCommanderCards)
+    const databaseCommanderInfo = SearchHandler.getCommanderCardsByPlayer(filteredMatches,playerName);
+    const filteredCommanderCards = fullCommanderData.filter(commander => commander.matchHistory[year]);
+    const totalGamesFiltered = filteredMatches.length; 
 
-    const totalGames = filteredMatches.length; 
-
-
+console.log(matchResultsForPlayer)
 
 
     // Functions
@@ -50,10 +45,10 @@ export default function PlayerStats() {
 
     useEffect(()=> {
         const getCommanderInfo = async () => {
-            const data = await ScryFallAPIConnector.getGroupCommanderData(commanderCardInfo);
-            const commanderFacts = SearchHandler.getCommanderFactsForPlayer(data, commanderCardInfo);
+            const SrcyfallCommanderData = await ScryFallAPIConnector.getGroupCommanderData(databaseCommanderInfo);
+            const combinedDatabaseAndApiData = SearchHandler.getCommanderFactsForPlayer(SrcyfallCommanderData, databaseCommanderInfo);
             setLoading(false);
-            setCommanderStatsInfo(commanderFacts);
+            setFullCommanderData(combinedDatabaseAndApiData);
         };
 
         getCommanderInfo();
@@ -84,7 +79,7 @@ export default function PlayerStats() {
             <Col md={3} className="d-flex justify-content-center pe-0">
                 <div className="p-2 border border-white border-3 rounded-4 bg-light text-center my-2 w-100">
                     <h3>Here there will be facts:</h3>
-                    <PlayerInfoBox commanderStatsInfo={ commanderStatsInfo } loading={ loading } />
+                    <PlayerInfoBox commanderData={ fullCommanderData } loading={ loading } />
                 </div>
             </Col>
 
@@ -95,8 +90,8 @@ export default function PlayerStats() {
                     {/* STATS */}
                     <Col className="pe-0">
                         <div className="d-flex flex-column h-100">
-                            <p className="border border-white rounded-4 rounded bg-light">Total amount of games so far: {totalGames}</p>
-                            <EntityScore results={ matchResultsForPlayer } totalGames={ totalGames } />
+                            <p className="border border-white rounded-4 rounded bg-light">Total amount of games so far: {playerMatches.length}</p>
+                            <EntityScore matchResultsForEntity={ matchResultsForPlayer } totalGames={ totalGamesFiltered } />
                         </div>
                     </Col>
 
@@ -115,13 +110,18 @@ export default function PlayerStats() {
             </Col>
 
             {/* COMMANDERS */}
-            <Col md={12}>
-                <CommanderCardContainer commanderStatsInfo={ filteredCommanderCards } year={ year } loading= { loading } />
+            <Col md={12} className="border-top border-5 border-black py-3 bg-light ">
+                <div className="d-flex justify-content-center align-items-center mt-2">
+                    <h1 className="border border-bottom-0 border-black border-4 rounded-top mb-0 px-2 fw-semibold text-uppercase bg-info-subtle">{playerName}`s commanders</h1>
+                </div>
+                <div className="bg-info-subtle border border-black border-4 rounded-4 p-3">
+                    <CommanderCardContainer commanderStatsInfo={ filteredCommanderCards } year={ year } loading= { loading } />
+                </div>
             </Col>
 
             {/* MATCHES */}
-            <Col md={12} className="border-top border-black">
-                <h1 className="text-center m-3">This is the matches for {playerName}</h1>
+            <Col md={12} className="border-top border-5 border-black">
+                <h1 className="text-center m-3">Match results for {playerName}</h1>
                 <MatchInfoBox matchDetails={ filteredMatches } focus={ playerName } />
             </Col>
         </Row>

@@ -1595,6 +1595,105 @@ export const gameInfo = [
         ],
 
         year: "2023"
+    },
+
+
+
+    {
+        Match_id: 49,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 3
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Fblthp, Lost on the Range',
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Kykar, Wind's Fury",
+                placement: 1
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Hazezon, Shaper of Sand',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 50,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 1
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Fblthp, Lost on the Range',
+                placement: 3
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Animar, Soul of Elements",
+                placement: 3
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Ayara, First of Locthwain',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 51,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Clavileño, First of the Blessed',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Fblthp, Lost on the Range',
+                placement: 1
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Kona, Rescue Beastie",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Marwyn, the Nurturer',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
     }
 
 

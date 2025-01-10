@@ -1,1 +1,26 @@
 
+.entityScore1 {
+    background-color: #EFFA82;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 0.25rem;
+    
+}
+
+.entityScore2 {
+    background-color: #C5C7FF;
+    padding: 0.25rem;
+}
+
+.entityScore3 {
+    background-color: #9597BF;
+    padding: 0.25rem;
+}
+
+
+.entityScore4 {
+    background-color: #8183a6;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 0.25rem;
+}

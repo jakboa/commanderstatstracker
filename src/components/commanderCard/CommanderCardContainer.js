@@ -15,7 +15,7 @@ export default function CommanderCardContainer( { commanderStatsInfo, year, load
             ) : (
                 commanderStatsInfo.map( (commander,index) => {
                     return (
-                        <Col key={index}>
+                        <Col key={index} md={2} className=" d-flex p-2">
                             <CommanderCard commander={ commander } year={ year } />
                         </Col>
                 )
