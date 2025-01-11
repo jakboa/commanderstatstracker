@@ -11,11 +11,13 @@ import DoughnutChart from "../../components/charts/DoughnutChart";
 import YearSelector from "../../components/YearSelector";
 import CommanderCardContainer from "../../components/commanderCard/CommanderCardContainer";
 import PlayerInfoBox from "./PlayerInfoBox";
+import ColorBarchart from "./playerCharts/ColorBarchart";
 
 import "./PlayerStats.css"
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Accordion from 'react-bootstrap/Accordion';
 
 
 export default function PlayerStats() {
@@ -34,8 +36,6 @@ export default function PlayerStats() {
     const databaseCommanderInfo = SearchHandler.getCommanderCardsByPlayer(filteredMatches,playerName);
     const filteredCommanderCards = fullCommanderData.filter(commander => commander.matchHistory[year]);
     const totalGamesFiltered = filteredMatches.length; 
-
-console.log(matchResultsForPlayer)
 
 
     // Functions
@@ -107,6 +107,49 @@ console.log(matchResultsForPlayer)
                         <LineChart entityName={ playerName } entityMatches={ filteredMatches } />
                     </Col>
                 </Row>
+            </Col>
+            <Col md={12} className="mb-3">
+                <Accordion defaultActiveKey="0">
+                    <Accordion.Item eventKey="0">
+                        <Accordion.Header>Facts about your decks:</Accordion.Header>
+                        <Accordion.Body className="py-0">
+
+                            <Row className="border border-black">
+
+                                <Col md={6} className="border py-2 ps-0 pe-1">
+                                    <div className="border rounded-2">
+                                        <p>Words</p>
+                                    </div>
+                                </Col>
+
+                                <Col md={6} className="border py-2 ps-1 pe-0">
+                                    <div className="border rounded-2">
+                                        <p>Words</p>
+                                    </div>
+                                </Col>
+
+                                <Col md={12} className="border px-0">
+                                    <div className="border rounded-2 ">
+                                        <ColorBarchart filteredCommanderCards={ filteredCommanderCards } loading={ loading } />
+                                    </div>
+                                </Col>
+
+                            </Row>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="1">
+                        <Accordion.Header>Other facts about your deck:</Accordion.Header>
+                        <Accordion.Body>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum.
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
             </Col>
 
             {/* COMMANDERS */}

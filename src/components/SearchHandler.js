@@ -266,8 +266,6 @@ const SearchHandler = {
 
     getCommanderFactsForPlayer: (commanderData, cardToFind) => {
 
-        console.log(cardToFind);
-
         const removeFromTypes = {"Legendary":"Legendary", "Creature":"Creature", "—":"—", "Sorcery":"Sorcery", "//":"//", "Enchantment":"Enchantment"};
 
         const commanderFacts = []
