@@ -32,11 +32,10 @@ export default function PlayerStats() {
 
     const playerMatches = SearchHandler.getSinglePlayerStats(playerName); 
     const filteredMatches = SearchHandler.getEntityMatchesForYear(playerMatches,year);
-    const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,filteredMatches);
+    const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,playerMatches);
     const databaseCommanderInfo = SearchHandler.getCommanderCardsByPlayer(filteredMatches,playerName);
     const filteredCommanderCards = fullCommanderData.filter(commander => commander.matchHistory[year]);
     const totalGamesFiltered = filteredMatches.length; 
-
 
     // Functions
     const handleFilterMatches = (e) =>{
@@ -69,7 +68,7 @@ export default function PlayerStats() {
                     </Col>
                     <Col md={6} className="d-flex justify-content-end align-items-end">
                         <div >
-                            <YearSelector  matches={ playerMatches } handleFilterMatches={handleFilterMatches} />
+                            <YearSelector matches={ playerMatches } handleFilterMatches={handleFilterMatches} />
                         </div>
                     </Col>
                 </Row>
@@ -79,7 +78,7 @@ export default function PlayerStats() {
             <Col md={3} className="d-flex justify-content-center pe-0">
                 <div className="p-2 border border-white border-3 rounded-4 bg-light text-center my-2 w-100">
                     <h3>Here there will be facts:</h3>
-                    <PlayerInfoBox commanderData={ fullCommanderData } loading={ loading } />
+                    <PlayerInfoBox commanderData={ fullCommanderData } loading={ loading } year={ year } matchResultsForPlayer={ matchResultsForPlayer }/>
                 </div>
             </Col>
 
@@ -91,13 +90,13 @@ export default function PlayerStats() {
                     <Col className="pe-0">
                         <div className="d-flex flex-column h-100">
                             <p className="border border-white rounded-4 rounded bg-light">Total amount of games so far: {playerMatches.length}</p>
-                            <EntityScore matchResultsForEntity={ matchResultsForPlayer } totalGames={ totalGamesFiltered } />
+                            <EntityScore matchResultsForEntity={ matchResultsForPlayer } totalGames={ totalGamesFiltered } year={ year } />
                         </div>
                     </Col>
 
                     {/* DOUGHNUT */}
                     <Col md={7} style={{height:"22rem"}}>
-                        <DoughnutChart results={ matchResultsForPlayer } /> 
+                        <DoughnutChart results={ matchResultsForPlayer } year={ year } /> 
                     </Col>
                 </Row>
                 
@@ -111,7 +110,7 @@ export default function PlayerStats() {
             <Col md={12} className="mb-3">
                 <Accordion defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
-                        <Accordion.Header>Facts about your decks:</Accordion.Header>
+                        <Accordion.Header>Facts about your decks: (UNDER CONSTRUCTION)</Accordion.Header>
                         <Accordion.Body className="py-0">
 
                             <Row className="border border-black">
@@ -138,7 +137,7 @@ export default function PlayerStats() {
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="1">
-                        <Accordion.Header>Other facts about your deck:</Accordion.Header>
+                        <Accordion.Header>Other facts about your deck: (UNDER CONSTRUCTION)</Accordion.Header>
                         <Accordion.Body>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

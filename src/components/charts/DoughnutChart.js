@@ -8,7 +8,10 @@ import "./Charts.css";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
-export default function DoughnutChart( { results } ) {
+export default function DoughnutChart( { results, year } ) {
+
+
+  results = Object.values(results[year]).slice(0,4)
 
   const options ={
     responsive: true,

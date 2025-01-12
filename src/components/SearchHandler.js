@@ -112,6 +112,29 @@ const SearchHandler = {
     },
 
     getEntityResults: (entityName, playerMatches) => {
+
+        const entityMatchResults = {"allMatches":{ 1:0, 2:0, 3:0, 4:0, "games":0 }};
+        playerMatches.forEach(match => {
+            match.players.forEach(player => {
+                // Iterate over players and find the commander or player we are looking for.
+                if (player.nickName === entityName || player.commander === entityName) {
+                    
+                    // First time finding a year, create it.
+                    if (!entityMatchResults[match.year]) {
+                        entityMatchResults[match.year] = { 1:0, 2:0, 3:0, 4:0, games:0 };
+                    }
+                    // Iterate over placement and year
+                    entityMatchResults[match.year][player.placement] ++;
+                    entityMatchResults[match.year]["games"] ++;
+                    entityMatchResults["allMatches"][player.placement] ++
+                    entityMatchResults["allMatches"]["games"] ++
+                }
+            })
+        })
+        return entityMatchResults;
+
+        /*  Old code I keep for now?
+
         const entityResults = [0,0,0,0];
         playerMatches.forEach(match => {
             match.players.forEach(player => {
@@ -121,6 +144,7 @@ const SearchHandler = {
             })
         })
         return entityResults;
+        */
     },
 
     getGroupInfo: (group) => {
@@ -301,6 +325,7 @@ const SearchHandler = {
 
             // Add match history for the card:
             cardData.matchHistory = cardToFind[cardData.name];
+            //cardData.matchHistory = Object.entries(cardData.matchHistory)
 
             // Add a boolean if the Card is found by Scryfall
             cardData.cardFound = true;

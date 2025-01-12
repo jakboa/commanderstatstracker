@@ -22,10 +22,10 @@ ChartJS.register(
 
 export default function ColorBarchart({ filteredCommanderCards, loading }) {
 
-    console.log(filteredCommanderCards);
-    const labels = Array(new Set(filteredCommanderCards.map(commander => commander.colorIdentity)));
-    console.log(labels)
-    const labels3 = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    //console.log(filteredCommanderCards);
+    const labels = filteredCommanderCards.map(commander => commander.colorIdentity);
+    //console.log(labels)
+    //const labels3 = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
     const options = {
         responsive: true,
