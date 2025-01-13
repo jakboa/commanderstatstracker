@@ -16,7 +16,7 @@ export default function SingleCommanderInfoWindow( { cardData } ) {
                         <p>...loading</p>
                     ) : 
                     (
-                        <Image src={ cardData.image_uris.normal } alt="Commander Card" fluid />
+                        <Image src={ cardData.image_uris.normal } alt="Commander Card" fluid className="rounded" />
                     )
                 }
                 <p>Hello</p>

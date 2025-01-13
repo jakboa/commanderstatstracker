@@ -113,7 +113,7 @@ const SearchHandler = {
 
     getEntityResults: (entityName, playerMatches) => {
 
-        const entityMatchResults = {"allMatches":{ 1:0, 2:0, 3:0, 4:0, "games":0 }};
+        const entityMatchResults = { "allMatches":{ 1:0, 2:0, 3:0, 4:0, "games":0 , },"groups":new Set() };
         playerMatches.forEach(match => {
             match.players.forEach(player => {
                 // Iterate over players and find the commander or player we are looking for.
@@ -123,11 +123,15 @@ const SearchHandler = {
                     if (!entityMatchResults[match.year]) {
                         entityMatchResults[match.year] = { 1:0, 2:0, 3:0, 4:0, games:0 };
                     }
+
+
+
                     // Iterate over placement and year
                     entityMatchResults[match.year][player.placement] ++;
                     entityMatchResults[match.year]["games"] ++;
                     entityMatchResults["allMatches"][player.placement] ++
                     entityMatchResults["allMatches"]["games"] ++
+                    entityMatchResults["groups"].add(match.Group_name);
                 }
             })
         })

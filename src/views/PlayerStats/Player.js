@@ -77,8 +77,8 @@ export default function PlayerStats() {
             {/* INFO */}
             <Col md={3} className="d-flex justify-content-center pe-0">
                 <div className="p-2 border border-white border-3 rounded-4 bg-light text-center my-2 w-100">
-                    <h3>Here there will be facts:</h3>
-                    <PlayerInfoBox commanderData={ fullCommanderData } loading={ loading } year={ year } matchResultsForPlayer={ matchResultsForPlayer }/>
+                    <h2 className="rounded-3 pb-1" style={{background:"#5C6ED1"}}>Fun Facts:</h2>
+                    <PlayerInfoBox commanderData={ filteredCommanderCards } loading={ loading } year={ year } matchResultsForPlayer={ matchResultsForPlayer }/>
                 </div>
             </Col>
 
@@ -108,7 +108,7 @@ export default function PlayerStats() {
                 </Row>
             </Col>
             <Col md={12} className="mb-3">
-                <Accordion defaultActiveKey="0">
+                <Accordion defaultActiveKey="Accordion">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Facts about your decks: (UNDER CONSTRUCTION)</Accordion.Header>
                         <Accordion.Body className="py-0">

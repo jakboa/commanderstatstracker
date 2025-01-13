@@ -72,10 +72,10 @@ export default function SingleCommanderStats() {
                 <Row className="m-3">
                     <Col md={4} className="d-flex flex-column text-center">
                         <p className="bg-light border rounded">Played a total of { totalGames } times!</p>
-                        <EntityScore matchResultsForEntity={ matchResultsForCommander } totalGames={ totalGames } />
+                        <EntityScore matchResultsForEntity={ matchResultsForCommander } totalGames={ totalGames } year={ year } />
                     </Col>
                     <Col md={8} style={{height:"20rem"}} >
-                        <DoughnutChart results={ matchResultsForCommander } />
+                        <DoughnutChart results={ matchResultsForCommander } year={ year }/>
                     </Col>
                 </Row>
 
