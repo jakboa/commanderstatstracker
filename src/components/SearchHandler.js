@@ -135,6 +135,10 @@ const SearchHandler = {
                 }
             })
         })
+
+        // After using set to filter duplicates we make it an array for easier use in the frontend.
+        entityMatchResults["groups"] = Array.from(entityMatchResults["groups"])
+
         return entityMatchResults;
 
         /*  Old code I keep for now?
@@ -346,7 +350,7 @@ const SearchHandler = {
             cardData.cmc = null;
             cardData.colorIdentity = [];
             cardData.types = [];
-            cardData.matchHistory = cardToFind[commander];
+            cardData.matchHistory = cardToFind[commander.name];
             cardData.cardFound = false;
             cardData.image = "https://cards.scryfall.io/art_crop/front/0/3/036ef8c9-72ac-46ce-af07-83b79d736538.jpg?1562730661"
 

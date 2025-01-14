@@ -32,6 +32,8 @@ export default function SingleCommanderStats() {
    
     const totalGames = filteredMatches.length; 
 
+    console.log(matchResultsForCommander)
+
     // Functions
     const handleFilterMatches = (e) =>{
         setYear(e);
@@ -64,17 +66,17 @@ export default function SingleCommanderStats() {
 
             {/* Small InfoBox */}
             <Col md={3} className="d-flex justify-content-center text-center ">
-                <SingleCommanderInfoWindow cardData={ cardData } />
+                <SingleCommanderInfoWindow cardData={ cardData } matchResultsForCommander={ matchResultsForCommander } />
             </Col>
 
             {/* Graphs and Info */}
             <Col md={9}>
                 <Row className="m-3">
-                    <Col md={4} className="d-flex flex-column text-center">
+                    <Col md={5} className="d-flex flex-column text-center">
                         <p className="bg-light border rounded">Played a total of { totalGames } times!</p>
                         <EntityScore matchResultsForEntity={ matchResultsForCommander } totalGames={ totalGames } year={ year } />
                     </Col>
-                    <Col md={8} style={{height:"20rem"}} >
+                    <Col md={7} style={{height:"20rem"}} >
                         <DoughnutChart results={ matchResultsForCommander } year={ year }/>
                     </Col>
                 </Row>

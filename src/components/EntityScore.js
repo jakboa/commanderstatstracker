@@ -7,10 +7,6 @@ import "./components.css";
 
 export default function EntityScore( { matchResultsForEntity, totalGames, year } ) {
 
-    console.log(matchResultsForEntity)
-    console.log(totalGames)
-    console.log(year)
-
     return (
         <div className="d-flex flex-column h-100 bg-light-subtle border border-white rounded-5 ">
             <h3 className="mt-3">Match Results:</h3>

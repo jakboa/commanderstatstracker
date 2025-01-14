@@ -1,20 +1,22 @@
 import React from "react";
 
+import { useNavigate } from "react-router-dom";
 
+import Button from "react-bootstrap/Button";
 
 export default function PlayerInfoBox( { commanderData, loading, year, matchResultsForPlayer } ) {
 
+    const navigate = useNavigate();
 
-    console.log(commanderData);
+    const goToGroup = (e) => {
+        navigate(`/groupstats/${e.target.value}`)
+    }
 
     const bestYear = Object.entries(matchResultsForPlayer).slice(0,-1).map(year => {
         return [year[0], year[1][1], year[1]["games"], Math.round((year[1][1]/year[1]["games"])*100)]
     }).sort((a,b) => b[3] - a[3]);
 
-    const groups = Array.from(matchResultsForPlayer.groups);
-
     const commanderMostWins = commanderData.toSorted((a,b)=> b.matchHistory[year][1] - a.matchHistory[year][1]).slice(0,1);
-
     const commanderMostPlayed = commanderData.toSorted((a,b)=> b.matchHistory[year].games - a.matchHistory[year].games).slice(0,1);
 
     return (
@@ -27,9 +29,9 @@ export default function PlayerInfoBox( { commanderData, loading, year, matchResu
                         <h5 className="rounded-top pb-1" style={{background:"#6698D1"}}>Part of these groups:</h5>
                         <div className="d-flex justify-content-center">
                         {
-                            groups.map((group,index) => {
+                            matchResultsForPlayer.groups.map((group,index) => {
                                 return (
-                                    <p key={index} className="border px-2 bg-light rounded px-2 py-1">{group}</p>
+                                    <Button key={index} onClick={ goToGroup } value={ group } className="px-2 rounded px-2 py-1 m-1 mb-2">{group}</Button>
                                 )
                             })
                         }
