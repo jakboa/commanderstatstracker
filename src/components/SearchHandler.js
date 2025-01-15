@@ -113,7 +113,7 @@ const SearchHandler = {
 
     getEntityResults: (entityName, playerMatches) => {
 
-        const entityMatchResults = { "allMatches":{ 1:0, 2:0, 3:0, 4:0, "games":0 , },"groups":new Set() };
+        const entityMatchResults = { "allMatches":{ 1:0, 2:0, 3:0, 4:0, "games":0 , },"groups": new Set(),"players": new Set() };
         playerMatches.forEach(match => {
             match.players.forEach(player => {
                 // Iterate over players and find the commander or player we are looking for.
@@ -132,12 +132,14 @@ const SearchHandler = {
                     entityMatchResults["allMatches"][player.placement] ++
                     entityMatchResults["allMatches"]["games"] ++
                     entityMatchResults["groups"].add(match.Group_name);
+                    entityMatchResults["players"].add(player.nickName);
                 }
             })
         })
 
         // After using set to filter duplicates we make it an array for easier use in the frontend.
-        entityMatchResults["groups"] = Array.from(entityMatchResults["groups"])
+        entityMatchResults["groups"] = Array.from(entityMatchResults["groups"]);
+        entityMatchResults["players"] = Array.from(entityMatchResults["players"])
 
         return entityMatchResults;
 

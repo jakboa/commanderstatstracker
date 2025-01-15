@@ -11,8 +11,12 @@ import Button from "react-bootstrap/Button";
 export default function SingleCommanderInfoWindow( { cardData, matchResultsForCommander } ) {
 
     const navigate = useNavigate();
+    
     const goToGroup = (e) => {
         navigate(`/groupstats/${e.target.value}`);
+    };
+    const goToPlayer = (e) => {
+        navigate(`/playerstats/${e.target.value}`);
     };
 
 
@@ -28,11 +32,18 @@ export default function SingleCommanderInfoWindow( { cardData, matchResultsForCo
                     )
                 }
                 <h4>Played By:</h4>
+                {
+                    matchResultsForCommander.players.map((player,index) => {
+                        return (
+                            <Button key={ index } onClick={ goToPlayer } value={ player }>{player}</Button>
+                        )
+                    })
+                }
                 <h4>Played in these Group(s):</h4>
                 {
-                    matchResultsForCommander.groups.map(group => {
+                    matchResultsForCommander.groups.map((group,index) => {
                         return (
-                            <Button onClick={ goToGroup } value={ group }>{group}</Button>
+                            <Button key={ index } onClick={ goToGroup } value={ group }>{group}</Button>
                         )
                     })
                 }
