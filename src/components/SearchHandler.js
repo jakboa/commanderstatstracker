@@ -124,8 +124,6 @@ const SearchHandler = {
                         entityMatchResults[match.year] = { 1:0, 2:0, 3:0, 4:0, games:0 };
                     }
 
-
-
                     // Iterate over placement and year
                     entityMatchResults[match.year][player.placement] ++;
                     entityMatchResults[match.year]["games"] ++;
@@ -207,6 +205,27 @@ const SearchHandler = {
         return yearGames;
     },
 
+    getEntityMatchesForYearAndPlayer: (matches, year, playerToFind, commanderFocus) =>{
+        const showAllYears =  year === "allMatches";
+        const showAllPlayers =  playerToFind === "allPlayers";
+
+        const yearAndPlayerGames = matches.filter((match) => {
+            const yearFilter = showAllYears || match.year.toString() === year.toString();
+            console.log("This is yearfilter");
+            console.log(yearFilter);
+            
+            const playerFilter = showAllPlayers || match.players.some(
+                player=> player.nickName === playerToFind && player.commander === commanderFocus);
+            console.log("This is playerfilter");
+            console.log(playerFilter);
+            
+            return yearFilter && playerFilter
+            }
+        );
+        return yearAndPlayerGames;
+        
+    },
+
     getLineChartData: (entityName, matches) =>{
         const entityResults = matches.map(match => {
             const player = match.players.find(player => player.nickName === entityName || player.commander === entityName);
@@ -215,6 +234,7 @@ const SearchHandler = {
         )
         return entityResults;
     },
+
     getGroupLineChartData:(group) => {
         const groupStatsLineData = {};
         
@@ -245,6 +265,7 @@ const SearchHandler = {
             )));
         return years; 
     },
+
     getEntityCardInfo: () =>{
         const entityResults = {};
         gameInfo.forEach(match=> {
@@ -368,7 +389,7 @@ export default SearchHandler;
 
 
 
-//console.log(SearchHandler.getEntityCardInfo());
+//console.log(SearchHandler.getEntityMatchesForYearAndPlayer(gameInfo,"2021","Token Tyrant"));
 
 
 

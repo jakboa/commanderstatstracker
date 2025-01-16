@@ -28,14 +28,14 @@ export default function SingleCommanderInfoWindow( { cardData, matchResultsForCo
                         <p>...loading</p>
                     ) : 
                     (
-                        <Image src={ cardData.image_uris.normal } alt="Commander Card" fluid className="rounded" />
+                        <Image src={ cardData.image_uris.normal } alt="Commander Card" fluid className="rounded mt-2" />
                     )
                 }
                 <h4>Played By:</h4>
                 {
                     matchResultsForCommander.players.map((player,index) => {
                         return (
-                            <Button key={ index } onClick={ goToPlayer } value={ player }>{player}</Button>
+                            <Button className="mb-3" key={ index } onClick={ goToPlayer } value={ player }>{player}</Button>
                         )
                     })
                 }
@@ -43,7 +43,7 @@ export default function SingleCommanderInfoWindow( { cardData, matchResultsForCo
                 {
                     matchResultsForCommander.groups.map((group,index) => {
                         return (
-                            <Button key={ index } onClick={ goToGroup } value={ group }>{group}</Button>
+                            <Button  className="mb-3" key={ index } onClick={ goToGroup } value={ group }>{group}</Button>
                         )
                     })
                 }

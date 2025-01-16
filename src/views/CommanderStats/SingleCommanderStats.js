@@ -15,12 +15,14 @@ import "./CommanderStats.css"
 
 import Col  from "react-bootstrap/Col";
 import Row  from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 
 
 export default function SingleCommanderStats() {
 
     // useStates 
     const [year, setYear] = useState("allMatches");
+    const [player, setPlayer] = useState("allPlayers");
     const [cardData, setCardData] = useState({});
 
     // Derived Values
@@ -29,14 +31,19 @@ export default function SingleCommanderStats() {
     const commanderInfo = SearchHandler.getSingleCommanderStats(commanderName);
     const filteredMatches = SearchHandler.getEntityMatchesForYear(commanderInfo,year);
     const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,commanderInfo);
+    const testFilter = SearchHandler.getEntityMatchesForYearAndPlayer(commanderInfo,year,player,commanderName);
+    console.log(testFilter);
    
     const totalGames = filteredMatches.length; 
 
-    console.log(matchResultsForCommander)
 
     // Functions
     const handleFilterMatches = (e) =>{
         setYear(e);
+    };
+
+    const handleFilterMatchesPlayer  = (e) =>{
+        setPlayer(e.target.value);
     };
 
     useEffect(()=> {
@@ -64,7 +71,7 @@ export default function SingleCommanderStats() {
                 </Row>
             </Col>
 
-            {/* Small InfoBox */}
+            {/* Picture of Commander and InfoBox */}
             <Col md={3} className="d-flex justify-content-center text-center ">
                 <SingleCommanderInfoWindow cardData={ cardData } matchResultsForCommander={ matchResultsForCommander } />
             </Col>
@@ -87,12 +94,26 @@ export default function SingleCommanderStats() {
                         <LineChart entityName={ commanderName } entityMatches={ commanderInfo } />
                     </Col>
                 </Row>
+                <Row className="m-3" >
+                    <Col>
+                        <Button onClick={ handleFilterMatchesPlayer } value={ "allPlayers" } >All Players</Button>
+                    </Col>
+                    { matchResultsForCommander.players.map((player, index) => {
+                        return (
+                            <Col key={index}>
+                                <Button onClick={ handleFilterMatchesPlayer } value={ player } >{player}</Button>
+                            </Col>
+                    )})
+
+                    }
+                </Row>
             </Col>
 
             {/* Games Played and Results */}
             <Col md={12} className="border border-5 border-black round-end">
-                <MatchInfoBox matchDetails={ commanderInfo } focus={ commanderName } />
+                <MatchInfoBox matchDetails={ testFilter } focus={ commanderName } />
             </Col>
+            
         </Row>
 
     )
