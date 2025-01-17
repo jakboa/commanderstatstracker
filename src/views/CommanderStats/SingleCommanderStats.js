@@ -24,17 +24,16 @@ export default function SingleCommanderStats() {
     const [year, setYear] = useState("allMatches");
     const [player, setPlayer] = useState("allPlayers");
     const [cardData, setCardData] = useState({});
+    const [loading, setLoading] = useState(true);
 
     // Derived Values
     const { commanderName } = useParams();
 
     const commanderInfo = SearchHandler.getSingleCommanderStats(commanderName);
-    const filteredMatches = SearchHandler.getEntityMatchesForYear(commanderInfo,year);
     const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,commanderInfo);
-    const testFilter = SearchHandler.getEntityMatchesForYearAndPlayer(commanderInfo,year,player,commanderName);
-    console.log(testFilter);
-   
+    const filteredMatches = SearchHandler.getEntityMatchesForYearAndPlayer(commanderInfo,year,player,commanderName);
     const totalGames = filteredMatches.length; 
+
 
 
     // Functions
@@ -50,6 +49,7 @@ export default function SingleCommanderStats() {
         const fetchCommanderData = async () => {
             const data = await ScryFallAPIConnector.getSingleCommanderData(commanderName);
             setCardData(data);
+            setLoading(false);
         };
         fetchCommanderData();
     }
@@ -58,7 +58,11 @@ export default function SingleCommanderStats() {
     return (
         <Row className="singleCommanderPage">
             {/* Name and Banner */}
-            <Col md={12} className="bg-info-subtle" style={{height:"5rem"}}  >
+            <Col md={12} className={`${loading ? "bg-info-subtle": "" } `} 
+                style={{
+                    backgroundImage: loading ? "": `url(${cardData.image_uris.art_crop})`, 
+                    height:"5rem"  
+                    }}  >
                 <Row className="h-100">
                     <Col>
                         <h1>{commanderName}</h1>
@@ -111,7 +115,7 @@ export default function SingleCommanderStats() {
 
             {/* Games Played and Results */}
             <Col md={12} className="border border-5 border-black round-end">
-                <MatchInfoBox matchDetails={ testFilter } focus={ commanderName } />
+                <MatchInfoBox matchDetails={ filteredMatches } focus={ commanderName } />
             </Col>
             
         </Row>

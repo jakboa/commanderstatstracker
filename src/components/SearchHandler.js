@@ -211,13 +211,9 @@ const SearchHandler = {
 
         const yearAndPlayerGames = matches.filter((match) => {
             const yearFilter = showAllYears || match.year.toString() === year.toString();
-            console.log("This is yearfilter");
-            console.log(yearFilter);
             
             const playerFilter = showAllPlayers || match.players.some(
                 player=> player.nickName === playerToFind && player.commander === commanderFocus);
-            console.log("This is playerfilter");
-            console.log(playerFilter);
             
             return yearFilter && playerFilter
             }
