@@ -24,6 +24,7 @@ export default function SingleCommanderStats() {
     const [year, setYear] = useState("allMatches");
     const [player, setPlayer] = useState("allPlayers");
     const [cardData, setCardData] = useState({});
+    const [cardImages, setCardImages] = useState({});
     const [loading, setLoading] = useState(true);
 
     // Derived Values
@@ -33,6 +34,7 @@ export default function SingleCommanderStats() {
     const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,commanderInfo);
     const filteredMatches = SearchHandler.getEntityMatchesForYearAndPlayer(commanderInfo,year,player,commanderName);
     const totalGames = filteredMatches.length; 
+
 
 
 
@@ -50,17 +52,22 @@ export default function SingleCommanderStats() {
             const data = await ScryFallAPIConnector.getSingleCommanderData(commanderName);
             setCardData(data);
             setLoading(false);
+            setCardImages(SearchHandler.getCardImage(data, commanderName))
+
         };
         fetchCommanderData();
     }
+    // eslint-disable-next-line
     ,[commanderName])
+
+
 
     return (
         <Row className="singleCommanderPage">
             {/* Name and Banner */}
             <Col md={12} className={`${loading ? "bg-info-subtle": "" } `} 
                 style={{
-                    backgroundImage: loading ? "": `url(${cardData.image_uris.art_crop})`, 
+                    backgroundImage: loading ? "": `url(${cardImages.art})`, 
                     height:"5rem"  
                     }}  >
                 <Row className="h-100">
@@ -77,7 +84,7 @@ export default function SingleCommanderStats() {
 
             {/* Picture of Commander and InfoBox */}
             <Col md={3} className="d-flex justify-content-center text-center ">
-                <SingleCommanderInfoWindow cardData={ cardData } matchResultsForCommander={ matchResultsForCommander } />
+                <SingleCommanderInfoWindow cardImages={ cardImages } cardData={ cardData } matchResultsForCommander={ matchResultsForCommander } />
             </Col>
 
             {/* Graphs and Info */}

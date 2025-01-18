@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 
-export default function SingleCommanderInfoWindow( { cardData, matchResultsForCommander } ) {
+export default function SingleCommanderInfoWindow( {cardImages, cardData, matchResultsForCommander } ) {
 
     const navigate = useNavigate();
     
@@ -19,6 +19,7 @@ export default function SingleCommanderInfoWindow( { cardData, matchResultsForCo
         navigate(`/playerstats/${e.target.value}`);
     };
 
+    console.log(cardImages)
 
     return (
         <Row className=" border border-white border-3 rounded my-3 ms-2 bg-light"> 
@@ -28,7 +29,7 @@ export default function SingleCommanderInfoWindow( { cardData, matchResultsForCo
                         <p>...loading</p>
                     ) : 
                     (
-                        <Image src={ cardData.image_uris.normal } alt="Commander Card" fluid className="rounded mt-2" />
+                        <Image src={ cardImages.cardImage } alt="Commander Card" fluid className="rounded mt-2" />
                     )
                 }
                 <h4>Played By:</h4>

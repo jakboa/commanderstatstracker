@@ -377,6 +377,13 @@ const SearchHandler = {
         });
         console.log(commanderFacts)
         return commanderFacts;
+    },
+    getCardImage: (data, name) => {
+        if (!data["image_uris"]) {
+            const rightSide = data.card_faces.filter((face) => face.name === name);
+            return {art: rightSide[0].image_uris.art_crop, cardImage: rightSide[0].image_uris.normal};
+        } else { return {art: data.image_uris.art_crop, cardImage: data.image_uris.normal} }
+
     }
 
 }
