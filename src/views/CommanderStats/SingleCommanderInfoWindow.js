@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 
-export default function SingleCommanderInfoWindow( {cardImages, cardData, matchResultsForCommander } ) {
+export default function SingleCommanderInfoWindow( {cardData, cardImages, loading, error, matchResultsForCommander } ) {
 
     const navigate = useNavigate();
     
@@ -24,12 +24,19 @@ export default function SingleCommanderInfoWindow( {cardImages, cardData, matchR
     return (
         <Row className=" border border-white border-3 rounded my-3 ms-2 bg-light"> 
             <Col className="d-flex flex-column ">
-                { Object.keys(cardData).length === 0 ? 
+                { loading ? 
                     (
                         <p>...loading</p>
-                    ) : 
-                    (
+                    ) : error.status ? (
+                        <>
+                            <Image src={ cardImages.cardImage } alt="Commander Card" fluid className="rounded mt-2" />
+                            <p>{error.message}</p>
+                        </>
+                    ) :
+                    (   <>
                         <Image src={ cardImages.cardImage } alt="Commander Card" fluid className="rounded mt-2" />
+                        <p>{cardData.name}</p>
+                        </>
                     )
                 }
                 <h4>Played By:</h4>

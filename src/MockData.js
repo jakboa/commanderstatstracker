@@ -135,7 +135,7 @@ export const gameInfo = [
         year: "2024"
     },
     {
-        Match_id: 5,
+        Match_id: 5.0,
 
         Group_name: 'A_Boys',
 
@@ -167,7 +167,7 @@ export const gameInfo = [
         year: "2024"
     },
     {
-        Match_id: 5.5,
+        Match_id: 5.1,
 
         Group_name: 'A_Boys',
 
@@ -197,6 +197,38 @@ export const gameInfo = [
         ],
 
         year: "2024"
+    },
+    {
+        Match_id: 5.2,
+
+        Group_name: 'A_Boys',
+
+        players: [  
+            { 
+                nickName: 'Mr. DudeBro',
+                commander: 'Potato Monster',
+                placement: 3
+            },
+
+            {
+                nickName: 'Mr. Macho',
+                commander:"Yusri, Fortune's Flame",
+                placement: 2
+            },
+
+            {
+                nickName: 'Mr. Winner',
+                commander: 'The Gitrog Monster',
+                placement: 1
+            },
+            {
+                nickName: 'Mr. Tryhard',
+                commander: 'Storm Crow',
+                placement: 2,
+            }
+        ],
+
+        year: "2022"
     },
 
 

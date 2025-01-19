@@ -379,6 +379,10 @@ const SearchHandler = {
         return commanderFacts;
     },
     getCardImage: (data, name) => {
+        if (data["message"]) {
+            return {art: "https://cards.scryfall.io/art_crop/front/0/3/036ef8c9-72ac-46ce-af07-83b79d736538.jpg?1562730661", 
+            cardImage: "https://cards.scryfall.io/normal/front/0/3/036ef8c9-72ac-46ce-af07-83b79d736538.jpg?1562730661"} 
+        }
         if (!data["image_uris"]) {
             const rightSide = data.card_faces.filter((face) => face.name === name);
             return {art: rightSide[0].image_uris.art_crop, cardImage: rightSide[0].image_uris.normal};

@@ -51,6 +51,7 @@ const ScryFallAPIConnector = {
 
             } catch (error) {
                 console.log(error);
+                return error;
             }
             console.log(result);
             return result
@@ -71,7 +72,7 @@ const ScryFallAPIConnector = {
                 });
     
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 };                
                 result = await response.json();
 

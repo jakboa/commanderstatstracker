@@ -26,6 +26,7 @@ export default function SingleCommanderStats() {
     const [cardData, setCardData] = useState({});
     const [cardImages, setCardImages] = useState({});
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState({status: false});
 
     // Derived Values
     const { commanderName } = useParams();
@@ -50,6 +51,9 @@ export default function SingleCommanderStats() {
     useEffect(()=> {
         const fetchCommanderData = async () => {
             const data = await ScryFallAPIConnector.getSingleCommanderData(commanderName);
+            if (data.message){
+                setError({status: true, message: data.message});
+            };
             setCardData(data);
             setLoading(false);
             setCardImages(SearchHandler.getCardImage(data, commanderName))
@@ -84,7 +88,7 @@ export default function SingleCommanderStats() {
 
             {/* Picture of Commander and InfoBox */}
             <Col md={3} className="d-flex justify-content-center text-center ">
-                <SingleCommanderInfoWindow cardImages={ cardImages } cardData={ cardData } matchResultsForCommander={ matchResultsForCommander } />
+                <SingleCommanderInfoWindow cardData={ cardData } cardImages={ cardImages } error={ error } loading={ loading } matchResultsForCommander={ matchResultsForCommander } />
             </Col>
 
             {/* Graphs and Info */}
