@@ -65,7 +65,7 @@ export default function SingleCommanderStats() {
     ,[commanderName])
 
 
-
+    console.log(cardData)
     return (
         <Row className="singleCommanderPage">
             {/* Name and Banner */}

@@ -10,7 +10,13 @@ export default function PlayerInfoBox( { commanderData, loading, year, matchResu
 
     const goToGroup = (e) => {
         navigate(`/groupstats/${e.target.value}`)
-    }
+    };
+
+
+    const combineEur = commanderData.map(commanderPrice => Number(commanderPrice.price)).reduce(
+        (accumulator, currentValue) => accumulator + currentValue,0,).toFixed(2);
+
+  
 
     const bestYear = Object.entries(matchResultsForPlayer).slice(0,-1).map(year => {
         return [year[0], year[1][1], year[1]["games"], Math.round((year[1][1]/year[1]["games"])*100)]
@@ -48,6 +54,10 @@ export default function PlayerInfoBox( { commanderData, loading, year, matchResu
                     <div className="rounded-3 pb-1 mb-2" style={{background:"#78B2F4"}}>
                         <h5 className="rounded-top pb-1" style={{background:"#6698D1"}}>Best year:</h5>
                         <p>Your best year was {bestYear[0][0]} with {bestYear[0][3]}% winrate!</p>
+                    </div>
+                    <div className="rounded-3 pb-1 mb-2" style={{background:"#78B2F4"}}>
+                        <h5 className="rounded-top pb-1" style={{background:"#6698D1"}}>Combined Commander Cost:</h5>
+                        <p>Your Commanders combined are currently worth: {combineEur}€!</p>
                     </div>
                 </>
             )}

@@ -1726,40 +1726,7 @@ export const gameInfo = [
         ],
 
         year: "2025"
-    },
-    {
-        Match_id: 52,
-
-        Group_name: 'C_Boys',
-
-        players: [  
-            { 
-                nickName: 'Token Tyrant',
-                commander: 'Ulalek, Fused Atrocity',
-                placement: 3
-            },
-
-            {
-                nickName: 'Graveyard Guru',
-                commander:'Millicent, Restless Revenant',
-                placement: 2
-            },
-
-            {
-                nickName: 'Mana Manipulator',
-                commander: "Chromium, the Mutable",
-                placement: 1
-            },
-            {
-                nickName: 'Planeswalker Pete',
-                commander: 'Hazezon, Shaper of Sand',
-                placement: 4
-            }
-        ],
-
-        year: "2025"
     }
-
 
 ];
 

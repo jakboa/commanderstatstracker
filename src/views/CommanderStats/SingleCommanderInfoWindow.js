@@ -36,6 +36,7 @@ export default function SingleCommanderInfoWindow( {cardData, cardImages, loadin
                     (   <>
                         <Image src={ cardImages.cardImage } alt="Commander Card" fluid className="rounded mt-2" />
                         <p>{cardData.name}</p>
+                        <p>Current price: {cardData.prices.eur}€</p>
                         </>
                     )
                 }

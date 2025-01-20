@@ -357,6 +357,9 @@ const SearchHandler = {
             // Add a boolean if the Card is found by Scryfall
             cardData.cardFound = true;
 
+            // Current price in euro
+            cardData.price = commander.prices.eur;
+
             // Add the combined info about the card to the array
             commanderFacts.push(cardData);
         })
