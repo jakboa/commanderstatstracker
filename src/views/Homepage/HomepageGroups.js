@@ -62,7 +62,7 @@ export default function HomepageGroups( { commanderGroups, handleGroupSearch, se
                     displayGroup.length > 0 ?
                     displayGroup.map(group => {
                         return (
-                            <Col className="border">
+                            <Col className="d-flex justify-content-center">
                                 <HomepageGroupSingle groupName={group[0]} groupPlayers={group[1]} />
                             </Col>
                     )})
