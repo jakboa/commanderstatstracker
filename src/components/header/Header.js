@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 export default function Header() {
 
     return (
-        <Row className="header">
+        <Row className="header position-fixed w-100 z-1">
             <Col>
                 <h1 className="d-inline-flex">C</h1>
                 <p className="d-inline-flex pe-2">ommander </p>

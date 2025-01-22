@@ -22,6 +22,7 @@ export default function Root() {
                     <Header />
                 </Col>
             </Row>
+            <div style={{ height:"3.8rem" }}></div>
             <Outlet />
             <Footer />
         </Container>
