@@ -1,7 +1,7 @@
 import React from "react";
 import './Root.css';
 import { Outlet } from "react-router-dom";
-import Footer from "./Footer";
+import Navigation from "./Navigation";
 import Header from "./header/Header";
 
 import Container  from "react-bootstrap/Container";
@@ -24,7 +24,7 @@ export default function Root() {
             </Row>
             <div style={{ height:"3.8rem" }}></div>
             <Outlet />
-            <Footer />
+            <Navigation />
         </Container>
     ) 
 } 

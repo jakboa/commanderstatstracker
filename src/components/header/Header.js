@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "../Footer";
+import Navigation from "../Navigation";
 import '../Root.css';
 
 import Row from "react-bootstrap/Row";
@@ -18,7 +18,7 @@ export default function Header() {
                 <p className="d-inline-flex">racker</p>
             </Col>
             <Col className="d-flex justify-content-center">
-                <Footer />
+                <Navigation />
             </Col>
         </Row>
     )
