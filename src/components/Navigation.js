@@ -29,10 +29,10 @@ export default function Navigation() {
 
     return (
         <Row >
-            <Col className="footer d-flex justify-content-center">
-                <Button onClick={ goBack } className="m-1"> <img src={Arrow1} alt="HomeButton" /></Button>
-                <Button onClick={ goHome } className="m-1"><img src={homeSvg} alt="HomeButton" /></Button>
-                <Button onClick={ goForward } className="m-1" ><img src={Arrow2} alt="HomeButton" /></Button>
+            <Col className="footer d-flex justify-content-center align-items-center">
+                <Button onClick={ goBack } className="m-1 border border-2 pb-2"> <img src={Arrow1} alt="HomeButton" /></Button>
+                <Button onClick={ goHome } className="m-1 border border-2 pb-2"><img src={homeSvg} alt="HomeButton" /></Button>
+                <Button onClick={ goForward } className="m-1 border border-2 pb-2"><img src={Arrow2} alt="HomeButton" /></Button>
             </Col>
         </Row>
     )
