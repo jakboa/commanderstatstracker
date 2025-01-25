@@ -25,29 +25,11 @@ export default function HomepageGroups( { commanderGroups, handleGroupSearch, se
     },
     [])
 
+    console.log(loading);
+    console.log(randoCard);
 
     return (
-        <>
-            <Row>
-                <Col>
-                
-                    <p>API TESTING ZONE:</p>
-                    { loading ? 
-                        (<p>...loading</p>)
-                        :
-                        (
-                            <>        
-                            <p>{randoCard.name}</p>
-                            <p>{randoCard.color_identity}</p>
-                            <p>{randoCard.full_art}</p>
-                            </>
-                        )
-                    }
-                    <p>API TESTING ZONE:</p>
-                </Col>
-            </Row>
-            
-            
+        <>            
             <Row className="pb-3 text-center">
                 <Col md={12}> <h1>Information about Groups!</h1> </Col>
                 <Col md={12} className="d-flex justify-content-center">
@@ -60,9 +42,9 @@ export default function HomepageGroups( { commanderGroups, handleGroupSearch, se
             <Row className="pb-3 text-center">
                 {
                     displayGroup.length > 0 ?
-                    displayGroup.map(group => {
+                    displayGroup.map((group, index) => {
                         return (
-                            <Col className="d-flex justify-content-center">
+                            <Col key={index} className="d-flex justify-content-center">
                                 <HomepageGroupSingle groupName={group[0]} groupPlayers={group[1]} />
                             </Col>
                     )})

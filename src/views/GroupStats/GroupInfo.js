@@ -38,9 +38,9 @@ export default function GroupInfo( { groupname, group } ) {
                     style={{background:"#78B2F4"}}>
                     <h4 className="vw-100 pb-2" style={{background:"#6698D1"}}>Players:</h4>
                     <Row className="">
-                    {groupInfo.arrayPlayerNicks.sort().map(nick => {
+                    {groupInfo.arrayPlayerNicks.sort().map((nick, index) => {
                         return (
-                            <Col md={6} className="d-flex h-50">
+                            <Col key={index} md={6} className="d-flex h-50">
                                 <Button onClick={ goToPlayer } value={nick}
                                 className="d-flex justify-content-center align-items-center m-1 w-100">
                                     {nick}</Button>

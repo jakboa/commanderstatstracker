@@ -28,9 +28,9 @@ export default function HomepageCommanders( { commanders, searchCommanders, hand
             <Row className="flex-nowrap overflow-x-scroll text-center" >
                 {
                     displayCommanders.length > 0 ?
-                    displayCommanders.map(commander => {
+                    displayCommanders.map((commander, index) => {
                         return (
-                            <Col md={3} sm={4} className="d-flex justify-content-center ">
+                            <Col key={index} md={3} sm={4} className="d-flex justify-content-center ">
                                 <HomepageCommanderSingle name={ commander } results={ results[commander] } />
                             </Col>
                         )}) 

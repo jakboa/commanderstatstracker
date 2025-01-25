@@ -27,9 +27,9 @@ export default function HomepagePlayers( { players, handlePlayerSearch, searchPl
             <Row className="flex-nowrap overflow-x-scroll text-center">
                 {
                     displayPlayers.length > 0 ?
-                    displayPlayers.map(player => {
+                    displayPlayers.map((player, index) => {
                         return (
-                            <Col md={3} sm={4} className="p-5">
+                            <Col key={index} md={3} sm={4} className="p-5">
                                 <HomepagePlayersSingle name={player} results={ results[player] } />
                             </Col>
                         )})

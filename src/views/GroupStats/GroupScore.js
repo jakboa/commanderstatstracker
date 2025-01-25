@@ -24,7 +24,7 @@ export default function GroupScore( { scoreInfo, totalGames } ) {
             <div className="px-3">
                 { Object.entries(groupStats).sort(sortByWins).map(([key,value], index) => {
                     return (
-                            <Stack direction="horizontal" className={`place${index}`}>
+                            <Stack key={index} direction="horizontal" className={`place${index}`}>
                                 <p className="scoreText border-end fw-bold">{`${key}`}</p> 
                                 <p className="scoreText border-end fw-semibold">{`First: ${value[1]}`}</p> 
                                 <p className="scoreText border-end fw-medium">{`Second: ${value[2]}`}</p> 
