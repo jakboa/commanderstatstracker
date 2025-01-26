@@ -41,7 +41,7 @@ export default function GroupStats() {
                 </Col>
                 <Col className="d-flex justify-content-end align-items-end">
                     <div >
-                        <YearSelector matches={ group } handleFilterMatches={handleFilterMatches} />
+                        <YearSelector yearChoice={ true } matches={ group } handleFilterMatches={handleFilterMatches} />
                     </div>
                 </Col>
                 

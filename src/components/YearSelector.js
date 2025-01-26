@@ -7,31 +7,45 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
 
-export default function YearSelector( { matches, handleFilterMatches } ) {
+export default function YearSelector( { yearChoice,  matches, handleFilterMatches } ) {
 
 
-    const activeButtons = SearchHandler.getYears(matches);
+    let activeButtons = null;
+
+    if (yearChoice) {
+
+        activeButtons = SearchHandler.getYears(matches);
+    };
 
     // This is hardcoded now, I will change this when the structure is more clearer.
     const yearDisplay = ["2021","2022","2023","2024","2025"];
 
     return(
-        <Tabs 
-            defaultActiveKey="allMatches"
-            onSelect={(e)=>{handleFilterMatches(e)}}
-            id="YearResults">
+        <>
+            {yearChoice ? (
+                
+                <Tabs 
+                defaultActiveKey="allMatches"
+                onSelect={(e)=>{handleFilterMatches(e)}}
+                id="YearResults">
 
-            <Tab eventKey="allMatches" title="All Results"></Tab>
-            
-            {yearDisplay.map((yearButton, index) => {
-                if(activeButtons.includes(yearButton)) {
-                    return <Tab eventKey={yearButton} title={yearButton} key={index}></Tab>
-                } else {
-                    return (
-                        <Tab eventKey={yearButton} title={yearButton} key={index} disabled></Tab>
-                    )
-                }
-            })}
-        </Tabs>
-    );
+                    <Tab eventKey="allMatches" title="All Results"></Tab>
+                
+                {yearDisplay.map((yearButton, index) => {
+                    if(activeButtons.includes(yearButton)) {
+                        return <Tab eventKey={yearButton} title={yearButton} key={index}></Tab>
+                    } else {
+                        return (
+                            <Tab eventKey={yearButton} title={yearButton} key={index} disabled></Tab>
+                        )
+                    }
+                })}
+                </Tabs>
+            ) : (
+                <p>Loading...</p>
+                ) 
+            }
+        </>        
+        );
+    
 };

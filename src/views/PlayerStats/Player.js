@@ -68,7 +68,7 @@ export default function PlayerStats() {
                     </Col>
                     <Col md={6} className="d-flex justify-content-end align-items-end">
                         <div >
-                            <YearSelector matches={ playerMatches } handleFilterMatches={handleFilterMatches} />
+                            <YearSelector yearChoice={ true } matches={ playerMatches } handleFilterMatches={handleFilterMatches} />
                         </div>
                     </Col>
                 </Row>

@@ -1,6 +1,7 @@
 import React from "react";
 import Navigation from "../Navigation";
 import '../Root.css';
+import YearSelector from "../YearSelector";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -16,6 +17,9 @@ export default function Header() {
                 <p className="d-inline-flex pe-2">tats  </p>
                 <h1 className="d-inline-flex">T</h1>
                 <p className="d-inline-flex">racker</p>
+            </Col>
+            <Col>
+                <YearSelector />
             </Col>
             <Col className="d-flex justify-content-end">
                 <Navigation />

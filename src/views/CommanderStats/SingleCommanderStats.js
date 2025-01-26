@@ -80,7 +80,7 @@ export default function SingleCommanderStats() {
                     </Col>
                     <Col className="d-flex justify-content-end align-items-end">
                         <div>
-                        <YearSelector matches={ commanderInfo } handleFilterMatches={handleFilterMatches} />
+                        <YearSelector yearChoice={ true } matches={ commanderInfo } handleFilterMatches={handleFilterMatches} />
                         </div>
                     </Col>
                 </Row>
