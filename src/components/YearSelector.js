@@ -42,7 +42,7 @@ export default function YearSelector( { yearChoice,  matches, handleFilterMatche
                 })}
                 </Tabs>
             ) : (
-                <p>Loading...</p>
+                <></>
                 ) 
             }
         </>        

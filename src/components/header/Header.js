@@ -6,7 +6,7 @@ import YearSelector from "../YearSelector";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export default function Header() {
+export default function Header( { yearChoice, matches, handleFilterMatches }) {
 
     return (
         <Row className="header position-fixed w-100 z-1">
@@ -19,7 +19,7 @@ export default function Header() {
                 <p className="d-inline-flex">racker</p>
             </Col>
             <Col>
-                <YearSelector />
+                <YearSelector yearChoice={ yearChoice } matches={ matches } handleFilterMatches={handleFilterMatches} />
             </Col>
             <Col className="d-flex justify-content-end">
                 <Navigation />

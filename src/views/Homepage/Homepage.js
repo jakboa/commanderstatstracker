@@ -4,6 +4,7 @@ import HomepageGroups from "./HomepageGroups";
 import HomepagePlayers from "./HomepagePlayers";
 import HomepageCommanders from "./HomepageCommanders";
 import SearchHandler from '../../components/SearchHandler';
+import Header from "../../components/header/Header";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -112,6 +113,11 @@ export default function Homepage() {
     return (
         
             <Row className="d-flex justify-content-center aling-items-center" >
+                
+                <Col md={12} style={{ height:"3.8rem" }}>
+                    <Header />
+                </Col>
+
                 <Col md={12} className="homepageGroups">
                 <button onClick={handleClearSearch}>Clear Searches</button>
                     <HomepageGroups 

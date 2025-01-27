@@ -6,7 +6,7 @@ import GroupScore from "./GroupScore";
 import GroupInfo from "./GroupInfo";
 import GroupLineChart from "./GroupLineChart";
 import GroupDoughnutChart from "./GroupDoughnutChart";
-import YearSelector from "../../components/YearSelector";
+import Header from "../../components/header/Header";
 
 import "./GroupPage.css";
 
@@ -32,20 +32,17 @@ export default function GroupStats() {
 
     return (
         <Row className="groupPage">
+            <Col md={12} style={{ height:"3.8rem" }}>
+                <Header yearChoice={ true } matches={ group } handleFilterMatches={handleFilterMatches} />
+            </Col>
 
             {/* BANNER */}
             <Col md={12} className="bg-info-subtle" style={{height:"7rem"}}>
-            <Row className="h-100 border">
-                <Col>
-                    <h1>{groupname}</h1>
-                </Col>
-                <Col className="d-flex justify-content-end align-items-end">
-                    <div >
-                        <YearSelector yearChoice={ true } matches={ group } handleFilterMatches={handleFilterMatches} />
-                    </div>
-                </Col>
-                
-            </Row>
+                <Row className="h-100 border">
+                    <Col>
+                        <h1>{groupname}</h1>
+                    </Col>
+                </Row>
             </Col>
 
             {/* INFOBOX */}

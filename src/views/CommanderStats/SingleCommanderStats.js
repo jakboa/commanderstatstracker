@@ -9,7 +9,7 @@ import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
 import DoughnutChart from "../../components/charts/DoughnutChart";
 import SingleCommanderInfoWindow from "./SingleCommanderInfoWindow";
-import YearSelector from "../../components/YearSelector";
+import Header from "../../components/header/Header";
 
 import "./CommanderStats.css"
 
@@ -68,6 +68,10 @@ export default function SingleCommanderStats() {
     console.log(cardData)
     return (
         <Row className="singleCommanderPage">
+            <Col md={12} style={{ height:"3.8rem" }}>
+                <Header yearChoice={ true } matches={ commanderInfo } handleFilterMatches={handleFilterMatches} />
+            </Col>
+            
             {/* Name and Banner */}
             <Col md={12} className={`${loading ? "bg-info-subtle": "" } `} 
                 style={{
@@ -77,11 +81,6 @@ export default function SingleCommanderStats() {
                 <Row className="h-100">
                     <Col>
                         <h1>{commanderName}</h1>
-                    </Col>
-                    <Col className="d-flex justify-content-end align-items-end">
-                        <div>
-                        <YearSelector yearChoice={ true } matches={ commanderInfo } handleFilterMatches={handleFilterMatches} />
-                        </div>
                     </Col>
                 </Row>
             </Col>

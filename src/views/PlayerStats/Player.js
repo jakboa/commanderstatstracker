@@ -8,10 +8,10 @@ import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
 import EntityScore from "../../components/EntityScore";
 import LineChart from "../../components/charts/LineChart";
 import DoughnutChart from "../../components/charts/DoughnutChart";
-import YearSelector from "../../components/YearSelector";
 import CommanderCardContainer from "../../components/commanderCard/CommanderCardContainer";
 import PlayerInfoBox from "./PlayerInfoBox";
 import ColorBarchart from "./playerCharts/ColorBarchart";
+import Header from "../../components/header/Header";
 
 import "./PlayerStats.css"
 
@@ -59,17 +59,16 @@ export default function PlayerStats() {
 
     return (
         <Row className="playerstats">
+            <Col md={12} style={{ height:"3.8rem" }}>
+                <Header yearChoice={ true } matches={ playerMatches } handleFilterMatches={handleFilterMatches} />
+            </Col>
+
 
             {/* BANNER */}
             <Col md={12} className="p-0 bg-info-subtle" style={{height:"7rem"}}>
                 <Row className="h-100 w-100">
                     <Col md={6} className="d-flex align-items-center">
                         <h1 className="">Stats for {playerName}</h1>
-                    </Col>
-                    <Col md={6} className="d-flex justify-content-end align-items-end">
-                        <div >
-                            <YearSelector yearChoice={ true } matches={ playerMatches } handleFilterMatches={handleFilterMatches} />
-                        </div>
                     </Col>
                 </Row>
             </Col>
