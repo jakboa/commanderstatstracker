@@ -6,6 +6,9 @@ import SearchHandler from "./SearchHandler";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+
 
 export default function YearSelector( { yearChoice,  matches, handleFilterMatches } ) {
 
@@ -29,7 +32,7 @@ export default function YearSelector( { yearChoice,  matches, handleFilterMatche
                 onSelect={(e)=>{handleFilterMatches(e)}}
                 id="YearResults">
 
-                    <Tab eventKey="allMatches" title="All Results"></Tab>
+                    <Tab eventKey="allMatches" title="All Results" className="border"></Tab>
                 
                 {yearDisplay.map((yearButton, index) => {
                     if(activeButtons.includes(yearButton)) {
@@ -45,6 +48,14 @@ export default function YearSelector( { yearChoice,  matches, handleFilterMatche
                 <></>
                 ) 
             }
+        <ButtonGroup aria-label="Basic example">
+            <Button >All Results</Button>
+            <Button >2021</Button>
+            <Button variant="secondary" disabled>2022</Button>
+            <Button >2023</Button>
+            <Button variant="secondary" disabled>2024</Button>
+            <Button variant="secondary" disabled>2025</Button>
+        </ButtonGroup>
         </>        
         );
     

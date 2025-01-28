@@ -10,7 +10,7 @@ export default function Header( { yearChoice, matches, handleFilterMatches }) {
 
     return (
         <Row className="header position-fixed w-100 z-1">
-            <Col>
+            <Col md={3} className="border">
                 <h1 className="d-inline-flex">C</h1>
                 <p className="d-inline-flex pe-2">ommander </p>
                 <h1 className="d-inline-flex">S</h1>
@@ -18,10 +18,10 @@ export default function Header( { yearChoice, matches, handleFilterMatches }) {
                 <h1 className="d-inline-flex">T</h1>
                 <p className="d-inline-flex">racker</p>
             </Col>
-            <Col>
+            <Col md={7} className="d-flex align-items-end">
                 <YearSelector yearChoice={ yearChoice } matches={ matches } handleFilterMatches={handleFilterMatches} />
             </Col>
-            <Col className="d-flex justify-content-end">
+            <Col md={2} className="d-flex justify-content-end">
                 <Navigation />
             </Col>
         </Row>
