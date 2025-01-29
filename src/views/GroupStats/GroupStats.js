@@ -16,7 +16,7 @@ import Col from 'react-bootstrap/Col';
 export default function GroupStats() {
 
     // useStates
-    const [year, setYear] = useState('allMatches');
+    const [year, setToggleYears] = useState([]);
 
     // Derived Values
     const { groupname } = useParams();
@@ -26,8 +26,10 @@ export default function GroupStats() {
     const totalGames = filteredGroup.length; 
 
     // Functions
-    const handleFilterMatches = (e) =>{
-        setYear(e);
+    const handleFilterMatches = (year) =>{
+        setToggleYears(prev => 
+            prev.includes(year) ? prev.filter(remove => remove !== year) :  [...prev, year]
+        );
     };
 
     return (

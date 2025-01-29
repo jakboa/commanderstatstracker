@@ -6,6 +6,10 @@ import Button from "react-bootstrap/Button";
 
 export default function PlayerInfoBox( { commanderData, loading, year, matchResultsForPlayer } ) {
 
+    if (year.length === 0) {
+        year = "allMatches";
+      }
+
     const navigate = useNavigate();
 
     const goToGroup = (e) => {
@@ -17,7 +21,7 @@ export default function PlayerInfoBox( { commanderData, loading, year, matchResu
         (accumulator, currentValue) => accumulator + currentValue,0,).toFixed(2);
 
   
-
+    
     const bestYear = Object.entries(matchResultsForPlayer).slice(0,-1).map(year => {
         return [year[0], year[1][1], year[1]["games"], Math.round((year[1][1]/year[1]["games"])*100)]
     }).sort((a,b) => b[3] - a[3]);

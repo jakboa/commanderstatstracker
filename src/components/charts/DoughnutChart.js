@@ -11,6 +11,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function DoughnutChart( { results, year } ) {
 
 
+  if (year.length === 0) {
+    year = "allMatches";
+  }
+
   results = Object.values(results[year]).slice(0,4)
 
   const options ={

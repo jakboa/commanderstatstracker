@@ -23,7 +23,7 @@ import Accordion from 'react-bootstrap/Accordion';
 export default function PlayerStats() {
 
     // useStates
-    const [year,setYear] = useState("allMatches");
+    const [year,setToggleYears] = useState([]);
     const [loading, setLoading] = useState(true);
     const [fullCommanderData, setFullCommanderData] = useState([]);
 
@@ -34,12 +34,14 @@ export default function PlayerStats() {
     const filteredMatches = SearchHandler.getEntityMatchesForYear(playerMatches,year);
     const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,playerMatches);
     const databaseCommanderInfo = SearchHandler.getCommanderCardsByPlayer(filteredMatches,playerName);
-    const filteredCommanderCards = fullCommanderData.filter(commander => commander.matchHistory[year]);
+    const filteredCommanderCards = fullCommanderData.filter(commander => commander.matchHistory["allMatches"]);
     const totalGamesFiltered = filteredMatches.length; 
 
     // Functions
-    const handleFilterMatches = (e) =>{
-        setYear(e);
+    const handleFilterMatches = (year) =>{
+        setToggleYears(prev => 
+            prev.includes(year) ? prev.filter(remove => remove !== year) :  [...prev, year]
+        );
     };
 
     useEffect(()=> {
@@ -156,7 +158,7 @@ export default function PlayerStats() {
                     <h1 className="border border-bottom-0 border-black border-4 rounded-top mb-0 px-2 fw-semibold text-uppercase bg-info-subtle">{playerName}`s commanders</h1>
                 </div>
                 <div className="bg-info-subtle border border-black border-4 rounded-4 p-3">
-                    <CommanderCardContainer commanderStatsInfo={ filteredCommanderCards } year={ year } loading= { loading } />
+                    <CommanderCardContainer commanderStatsInfo={ filteredCommanderCards } year={ "allMatches" } loading= { loading } />
                 </div>
             </Col>
 

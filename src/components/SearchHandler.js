@@ -198,10 +198,11 @@ const SearchHandler = {
     }, 
 
     getEntityMatchesForYear: (matches, year) =>{
-        if (year === "allMatches") {
+        if (year.length === 0) {
             return matches;
         };
-        const yearGames = matches.filter((match) => match.year.toString() === year.toString());
+        //const yearGames = matches.filter((match) => match.year.toString() === year.toString());
+        const yearGames = matches.filter((match) => year.includes(match.year));
         return yearGames;
     },
 

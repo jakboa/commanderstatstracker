@@ -1,7 +1,7 @@
 import React from "react";
 import Navigation from "../Navigation";
 import '../Root.css';
-import YearSelector from "../YearSelector";
+import YearSelector from "../yearSelector/YearSelector";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

@@ -1726,6 +1726,233 @@ export const gameInfo = [
         ],
 
         year: "2025"
+    },
+
+
+
+    {
+        Match_id: 52,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Ulalek, Fused Atrocity',
+                placement: 1
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:"Sythis, Harvest's Hand",
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Adrix and Nev, Twincasters",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: "Be'lakor, the Dark Master",
+                placement: 3
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 53,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Clavileño, First of the Blessed',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Wilhelt, the Rotcleaver',
+                placement: 1
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Kykar, Wind's Fury",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Wyll, Blade of Frontiers',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 54,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Fblthp, Lost on the Range',
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Kona, Rescue Beastie",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Minn, Wily Illusionist',
+                placement: 1
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 55,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Isshin, Two Heavens as One',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander: "Sythis, Harvest's Hand",
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "K'rrik, Son of Yawgmoth",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Hazezon, Shaper of Sand',
+                placement: 1
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 56,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Etali, Primal Conqueror',
+                placement: 1
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Winota, Joiner of Forces',
+                placement: 3
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Animar, Soul of Elements",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Krenko, Mob Boss',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 57,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Ulalek, Fused Atrocity',
+                placement: 1
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander: "Sythis, Harvest's Hand",
+                placement: 3
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Rafiq of the Many",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Ayara, First of Locthwain',
+                placement: 3
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 58,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Ulalek, Fused Atrocity',
+                placement: 1
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Wilhelt, the Rotcleaver',
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Thraximundar",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Wyll, Blade of Frontiers',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
     }
 
 ];
