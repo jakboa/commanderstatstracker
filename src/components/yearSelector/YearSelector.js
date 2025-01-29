@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SearchHandler from "../SearchHandler";
 import YearButton from "./YearButton";
 
@@ -10,47 +10,24 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 
-export default function YearSelector( { yearChoice,  matches, handleFilterMatches } ) {
+export default function YearSelector( { yearChoice,  matches, buttonsActive, toggleYearsUpdate, handleAllYears  } ) {
 
-    const [buttonsActive, setButtonsActive] = useState([false,false,false,false,false]);
-    let toggleYears = ["allMatches"];
-
-
-    // This is hardcoded now, I will change this when the structure is more clearer.
     const yearDisplay = ["2021","2022","2023","2024","2025"];
-
+    // if there is no data for that year, find out, 
+    // also if the page does not require filtering, do not filter.
     let activeButtons = null;
     if (yearChoice) {
         activeButtons = SearchHandler.getYears(matches);
     };
 
-    const toggleYearsUpdate = (buttonNr,year) => {
-        setButtonsActive(prev => {
-            const updatedButtons = [...prev];
-            updatedButtons[buttonNr] = !prev[buttonNr];
-            return updatedButtons
-        });
-        if (buttonsActive.every((button) => button === false)) {
-            //setToggleYears(prev => prev = ["allMatches"]);
-            console.log("YARP");
-            toggleYears = ["allMatches"]
-        } else {
-            handleFilterMatches(year);
-            //setToggleYears(prev => prev.includes(year) || prev.includes("allMatches") ? prev.filter(remove => remove !== year) :  [...prev, year]);
-            console.log(toggleYears.includes(year) || toggleYears.includes("allMatches"));
-            toggleYears = toggleYears.includes(year) || toggleYears.includes("allMatches") ? toggleYears.filter(remove => remove !== year) :  [...toggleYears, year];
-        }
 
 
-    }
-
-    console.log(toggleYears);
 
     return(
         <>
             {yearChoice ? (
                         <ButtonGroup >
-                        <Button value={"All Results"} >All Years</Button>
+                        <Button onClick={ handleAllYears } className={ buttonsActive.every(button => button === false) ? "buttonActive" : "buttonDeactive"} >All Years</Button>
                         {yearDisplay.map((year, index) => {
                             return (
                                 <YearButton 

@@ -198,7 +198,8 @@ const SearchHandler = {
     }, 
 
     getEntityMatchesForYear: (matches, year) =>{
-        if (year.length === 0) {
+        console.log(year)
+        if (year[0] === "allMatches") {
             return matches;
         };
         //const yearGames = matches.filter((match) => match.year.toString() === year.toString());
@@ -392,6 +393,18 @@ const SearchHandler = {
             return {art: rightSide[0].image_uris.art_crop, cardImage: rightSide[0].image_uris.normal};
         } else { return {art: data.image_uris.art_crop, cardImage: data.image_uris.normal} }
 
+    },
+    getYearButtons: (buttons) => {
+        // This is hardcoded for now, I will change this when the structure is more clearer.
+        const yearDisplay = ["2021","2022","2023","2024","2025"];
+        
+        let toggleYears = yearDisplay.filter((__,index) => buttons[index]);
+
+        if (buttons.every(button => button === false))  {
+            toggleYears = ["allMatches"];
+        };
+        
+        return toggleYears;
     }
 
 }

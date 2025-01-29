@@ -15,8 +15,11 @@ import Col from 'react-bootstrap/Col';
 
 export default function GroupStats() {
 
+
+
     // useStates
-    const [year, setToggleYears] = useState([]);
+    const [buttonsActive, setButtonsActive] = useState([false,false,false,false,false]);
+    const year  = SearchHandler.getYearButtons(buttonsActive);
 
     // Derived Values
     const { groupname } = useParams();
@@ -26,16 +29,26 @@ export default function GroupStats() {
     const totalGames = filteredGroup.length; 
 
     // Functions
-    const handleFilterMatches = (year) =>{
-        setToggleYears(prev => 
-            prev.includes(year) ? prev.filter(remove => remove !== year) :  [...prev, year]
-        );
+    
+    const toggleYearsUpdate = (buttonNr) => {
+        setButtonsActive(prev => {
+            const updatedButtons = [...prev];
+            updatedButtons[buttonNr] = !prev[buttonNr];
+            return updatedButtons
+        });
     };
+
+    const handleAllYears = () => {
+        setButtonsActive([false,false,false,false,false]);
+    }
 
     return (
         <Row className="groupPage">
             <Col md={12} style={{ height:"3.8rem" }}>
-                <Header yearChoice={ true } matches={ group } handleFilterMatches={handleFilterMatches} />
+                <Header yearChoice={ true } matches={ group } 
+                    buttonsActive={ buttonsActive }
+                    toggleYearsUpdate={ toggleYearsUpdate }
+                    handleAllYears={ handleAllYears } />
             </Col>
 
             {/* BANNER */}
