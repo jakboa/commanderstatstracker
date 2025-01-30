@@ -4,11 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 
-export default function PlayerInfoBox( { commanderData, loading, year, matchResultsForPlayer } ) {
-
-    if (year.length === 0) {
-        year = "allMatches";
-      }
+export default function PlayerInfoBox( { commanderData, loading, years, matchResultsForPlayer } ) {
 
     const navigate = useNavigate();
 
@@ -26,8 +22,49 @@ export default function PlayerInfoBox( { commanderData, loading, year, matchResu
         return [year[0], year[1][1], year[1]["games"], Math.round((year[1][1]/year[1]["games"])*100)]
     }).sort((a,b) => b[3] - a[3]);
 
-    const commanderMostWins = commanderData.toSorted((a,b)=> b.matchHistory[year][1] - a.matchHistory[year][1]).slice(0,1);
-    const commanderMostPlayed = commanderData.toSorted((a,b)=> b.matchHistory[year].games - a.matchHistory[year].games).slice(0,1);
+    
+    const getCardMostInfo = () => {
+        let highestWin = 0;
+        let highestWinCommander = undefined;
+
+        let mostPlayed = 0;
+        let mostPlayedCommander = undefined;
+
+        commanderData.forEach((commander) => {
+            let allWins = 0;
+            let allGames = 0;
+            years.forEach(year => {
+                if (commander.matchHistory[year]){
+                    allWins += commander.matchHistory[year][1];
+                    allGames += commander.matchHistory[year]["games"];
+                }
+            });
+
+            if (allWins >= highestWin ) {
+                    highestWin = allWins;
+                    highestWinCommander = commander;
+                    commander.matchHistory.allWins = allWins;
+            };
+
+            if (allGames >= mostPlayed ) {
+                    mostPlayed = allGames;
+                    // This mutates the original, but unsure if I should care.
+                    // Need to do some research.
+                    mostPlayedCommander = commander;
+                    commander.matchHistory.mostPlayed = mostPlayed;
+            };
+
+        })
+        
+
+        return [highestWinCommander,mostPlayedCommander]
+    }
+
+    const [commanderMostWins, commanderMostPlayed] = getCardMostInfo();
+
+
+    //const commanderMostWins = commanderData.toSorted((a,b)=> b.matchHistory[year][1] - a.matchHistory[year][1]).slice(0,1);
+    //const commanderMostPlayed = commanderData.toSorted((a,b)=> b.matchHistory[year].games - a.matchHistory[year].games).slice(0,1);
 
     return (
         <div>
@@ -49,11 +86,11 @@ export default function PlayerInfoBox( { commanderData, loading, year, matchResu
                     </div>
                     <div className="rounded-3 pb-1 mb-2" style={{background:"#78B2F4"}}>
                         <h5 className="rounded-top pb-1" style={{background:"#6698D1"}}>Commander with most wins:</h5>
-                        <p>{commanderMostWins[0].name} with {commanderMostWins[0].matchHistory[year][1]} wins!</p>
+                        <p>{commanderMostWins.name} with {commanderMostWins.matchHistory.allWins} wins!</p>
                     </div>
                     <div className="rounded-3 pb-1 mb-2" style={{background:"#78B2F4"}}>
                         <h5 className="rounded-top pb-1" style={{background:"#6698D1"}}>Most played commander:</h5>
-                        <p>{commanderMostPlayed[0].name} with {commanderMostPlayed[0].matchHistory[year].games} games!</p>
+                        <p>{commanderMostPlayed.name} with {commanderMostPlayed.matchHistory.allGames} games!</p>
                     </div>
                     <div className="rounded-3 pb-1 mb-2" style={{background:"#78B2F4"}}>
                         <h5 className="rounded-top pb-1" style={{background:"#6698D1"}}>Best year:</h5>

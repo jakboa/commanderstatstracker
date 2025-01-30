@@ -198,7 +198,6 @@ const SearchHandler = {
     }, 
 
     getEntityMatchesForYear: (matches, year) =>{
-        console.log(year)
         if (year[0] === "allMatches") {
             return matches;
         };

@@ -5,20 +5,25 @@ import "./components.css";
 
 //"d-flex flex-column align-items-center bg-light-subtle border border-white border-5 rounded-5"
 
-export default function EntityScore( { matchResultsForEntity, totalGames, year } ) {
+export default function EntityScore( { matchResultsForEntity, totalGames, years } ) {
 
-
-    if (year.length === 0 ) {
-        year = "allMatches"
+    console.log(matchResultsForEntity);
+    const getAllResults = () => {
+        const combineAllResults = {1:0,2:0,3:0,4:0};
+        years.forEach(year =>  {
+            combineAllResults[1] += matchResultsForEntity[year][1];
+            combineAllResults[2] += matchResultsForEntity[year][2];
+            combineAllResults[3] += matchResultsForEntity[year][3];
+            combineAllResults[4] += matchResultsForEntity[year][4];
+        });
+        return combineAllResults;
     };
-
-    console.log(matchResultsForEntity)
-
+    const allResults = getAllResults();
     return (
         <div className="d-flex flex-column h-100 bg-light-subtle border border-white rounded-5 ">
             <h3 className="mt-3">Match Results:</h3>
             <div className="d-flex flex-column mx-5">
-            { Object.values(matchResultsForEntity[year]).slice(0,4).map((results, placement) => {
+            { Object.values(allResults).map((results, placement) => {
                 return (
                     <div key={placement} className={`entityScore${placement+1} d-flex justify-content-center align-items-center`}>
                         {placement === 0 ? (

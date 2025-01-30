@@ -23,7 +23,8 @@ import Accordion from 'react-bootstrap/Accordion';
 export default function PlayerStats() {
 
     // useStates
-    const [year,setToggleYears] = useState([]);
+    const [buttonsActive, setButtonsActive] = useState([false,false,false,false,false]);
+    const year  = SearchHandler.getYearButtons(buttonsActive);
     const [loading, setLoading] = useState(true);
     const [fullCommanderData, setFullCommanderData] = useState([]);
 
@@ -38,12 +39,6 @@ export default function PlayerStats() {
     const totalGamesFiltered = filteredMatches.length; 
 
     // Functions
-    const handleFilterMatches = (year) =>{
-        setToggleYears(prev => 
-            prev.includes(year) ? prev.filter(remove => remove !== year) :  [...prev, year]
-        );
-    };
-
     useEffect(()=> {
         const getCommanderInfo = async () => {
             const SrcyfallCommanderData = await ScryFallAPIConnector.getGroupCommanderData(databaseCommanderInfo);
@@ -58,11 +53,27 @@ export default function PlayerStats() {
     // eslint-disable-next-line
     },[]);
 
+    const toggleYearsUpdate = (buttonNr) => {
+        setButtonsActive(prev => {
+            const updatedButtons = [...prev];
+            updatedButtons[buttonNr] = !prev[buttonNr];
+            return updatedButtons
+        });
+    };
+
+    const handleAllYears = () => {
+        setButtonsActive([false,false,false,false,false]);
+    }
+
+
 
     return (
         <Row className="playerstats">
             <Col md={12} style={{ height:"3.8rem" }}>
-                <Header yearChoice={ true } matches={ playerMatches } handleFilterMatches={handleFilterMatches} />
+                <Header yearChoice={ true } matches={ playerMatches } 
+                        buttonsActive={ buttonsActive }
+                        toggleYearsUpdate={ toggleYearsUpdate }
+                        handleAllYears={ handleAllYears } />
             </Col>
 
 
@@ -79,7 +90,7 @@ export default function PlayerStats() {
             <Col md={3} className="d-flex justify-content-center pe-0">
                 <div className="p-2 border border-white border-3 rounded-4 bg-light text-center my-2 w-100">
                     <h2 className="rounded-3 pb-1" style={{background:"#5C6ED1"}}>Fun Facts:</h2>
-                    <PlayerInfoBox commanderData={ filteredCommanderCards } loading={ loading } year={ year } matchResultsForPlayer={ matchResultsForPlayer }/>
+                    <PlayerInfoBox commanderData={ filteredCommanderCards } loading={ loading } years={ year } matchResultsForPlayer={ matchResultsForPlayer }/>
                 </div>
             </Col>
 
@@ -91,7 +102,7 @@ export default function PlayerStats() {
                     <Col className="pe-0">
                         <div className="d-flex flex-column h-100">
                             <p className="border border-white rounded-4 rounded bg-light">Total amount of games so far: {playerMatches.length}</p>
-                            <EntityScore matchResultsForEntity={ matchResultsForPlayer } totalGames={ totalGamesFiltered } year={ year } />
+                            <EntityScore matchResultsForEntity={ matchResultsForPlayer } totalGames={ totalGamesFiltered } years={ year } />
                         </div>
                     </Col>
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 
 
@@ -18,7 +18,7 @@ export default function YearButton( { buttonNr, toggleYearsUpdate, year, activeB
         )
     } else {
         return (
-            <Button disabled>No data</Button>
+            <Button disabled className="fw-light fs-6">No data</Button>
         )
     }
     
