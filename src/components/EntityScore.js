@@ -7,7 +7,19 @@ import "./components.css";
 
 export default function EntityScore( { matchResultsForEntity, totalGames, years } ) {
 
-    console.log(matchResultsForEntity);
+    console.time('filter array');
+    const test = years.reduce((accumulator, year) => {
+        const statsForYear = matchResultsForEntity[year];
+        Object.keys(statsForYear).slice(0,4).forEach(placement => {
+            accumulator[placement] = accumulator[placement] + statsForYear[placement];
+        })
+        return accumulator;
+    },{1:0,2:0,3:0,4:0}); 
+    console.timeEnd('filter array');
+
+
+    console.log("Old one")
+    console.time('filter array');
     const getAllResults = () => {
         const combineAllResults = {1:0,2:0,3:0,4:0};
         years.forEach(year =>  {
@@ -19,6 +31,8 @@ export default function EntityScore( { matchResultsForEntity, totalGames, years 
         return combineAllResults;
     };
     const allResults = getAllResults();
+    console.timeEnd('filter array');
+
     return (
         <div className="d-flex flex-column h-100 bg-light-subtle border border-white rounded-5 ">
             <h3 className="mt-3">Match Results:</h3>
