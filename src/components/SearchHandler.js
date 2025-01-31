@@ -206,12 +206,13 @@ const SearchHandler = {
         return yearGames;
     },
 
-    getEntityMatchesForYearAndPlayer: (matches, year, playerToFind, commanderFocus) =>{
-        const showAllYears =  year === "allMatches";
+    getEntityMatchesForYearAndPlayer: (matches, years, playerToFind, commanderFocus) =>{
+
+        const showAllYears =  years[0] === "allMatches";     
         const showAllPlayers =  playerToFind === "allPlayers";
 
         const yearAndPlayerGames = matches.filter((match) => {
-            const yearFilter = showAllYears || match.year.toString() === year.toString();
+            const yearFilter = showAllYears || years.some(year => year.toString() === match.year.toString());
             
             const playerFilter = showAllPlayers || match.players.some(
                 player=> player.nickName === playerToFind && player.commander === commanderFocus);

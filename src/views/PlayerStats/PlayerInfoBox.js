@@ -56,15 +56,19 @@ export default function PlayerInfoBox( { commanderData, loading, years, matchRes
 
         })
         
-
         return [highestWinCommander,mostPlayedCommander]
     }
+
 
     const [commanderMostWins, commanderMostPlayed] = getCardMostInfo();
 
 
+
+
     //const commanderMostWins = commanderData.toSorted((a,b)=> b.matchHistory[year][1] - a.matchHistory[year][1]).slice(0,1);
     //const commanderMostPlayed = commanderData.toSorted((a,b)=> b.matchHistory[year].games - a.matchHistory[year].games).slice(0,1);
+
+
 
     return (
         <div>
@@ -90,7 +94,7 @@ export default function PlayerInfoBox( { commanderData, loading, years, matchRes
                     </div>
                     <div className="rounded-3 pb-1 mb-2" style={{background:"#78B2F4"}}>
                         <h5 className="rounded-top pb-1" style={{background:"#6698D1"}}>Most played commander:</h5>
-                        <p>{commanderMostPlayed.name} with {commanderMostPlayed.matchHistory.allGames} games!</p>
+                        <p>{commanderMostPlayed.name} with {commanderMostPlayed.matchHistory.mostPlayed} games!</p>
                     </div>
                     <div className="rounded-3 pb-1 mb-2" style={{background:"#78B2F4"}}>
                         <h5 className="rounded-top pb-1" style={{background:"#6698D1"}}>Best year:</h5>

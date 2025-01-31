@@ -35,7 +35,9 @@ export default function PlayerStats() {
     const filteredMatches = SearchHandler.getEntityMatchesForYear(playerMatches,year);
     const matchResultsForPlayer = SearchHandler.getEntityResults(playerName,playerMatches);
     const databaseCommanderInfo = SearchHandler.getCommanderCardsByPlayer(filteredMatches,playerName);
-    const filteredCommanderCards = fullCommanderData.filter(commander => commander.matchHistory["allMatches"]);
+    const filteredCommanderCards = fullCommanderData.filter(commander => Object.keys(commander.matchHistory).some(value => 
+        year.includes(value)
+    ));
     const totalGamesFiltered = filteredMatches.length; 
 
     // Functions
@@ -108,7 +110,7 @@ export default function PlayerStats() {
 
                     {/* DOUGHNUT */}
                     <Col md={7} style={{height:"22rem"}}>
-                        <DoughnutChart results={ matchResultsForPlayer } year={ year } /> 
+                        <DoughnutChart results={ matchResultsForPlayer } years={ year } /> 
                     </Col>
                 </Row>
                 
@@ -169,7 +171,7 @@ export default function PlayerStats() {
                     <h1 className="border border-bottom-0 border-black border-4 rounded-top mb-0 px-2 fw-semibold text-uppercase bg-info-subtle">{playerName}`s commanders</h1>
                 </div>
                 <div className="bg-info-subtle border border-black border-4 rounded-4 p-3">
-                    <CommanderCardContainer commanderStatsInfo={ filteredCommanderCards } year={ "allMatches" } loading= { loading } />
+                    <CommanderCardContainer commanderStatsInfo={ filteredCommanderCards } years={ year } loading= { loading } />
                 </div>
             </Col>
 

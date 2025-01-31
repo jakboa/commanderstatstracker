@@ -27,7 +27,7 @@ Chartjs.register(
 );
 
 
-export default function LineChart( {entityName,entityMatches} ) {
+export default function LineChart( { entityName, entityMatches } ) {
 
     const options = {
         responsive: true,

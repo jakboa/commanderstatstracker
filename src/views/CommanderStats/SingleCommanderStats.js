@@ -21,7 +21,9 @@ import Button from "react-bootstrap/Button";
 export default function SingleCommanderStats() {
 
     // useStates 
-    const [year, setYear] = useState("allMatches");
+    const [buttonsActive, setButtonsActive] = useState([false,false,false,false,false]);
+    const year  = SearchHandler.getYearButtons(buttonsActive);
+    
     const [player, setPlayer] = useState("allPlayers");
     const [cardData, setCardData] = useState({});
     const [cardImages, setCardImages] = useState({});
@@ -40,9 +42,17 @@ export default function SingleCommanderStats() {
 
 
     // Functions
-    const handleFilterMatches = (e) =>{
-        setYear(e);
+    const toggleYearsUpdate = (buttonNr) => {
+        setButtonsActive(prev => {
+            const updatedButtons = [...prev];
+            updatedButtons[buttonNr] = !prev[buttonNr];
+            return updatedButtons
+        });
     };
+
+    const handleAllYears = () => {
+        setButtonsActive([false,false,false,false,false]);
+    }
 
     const handleFilterMatchesPlayer  = (e) =>{
         setPlayer(e.target.value);
@@ -69,7 +79,10 @@ export default function SingleCommanderStats() {
     return (
         <Row className="singleCommanderPage">
             <Col md={12} style={{ height:"3.8rem" }}>
-                <Header yearChoice={ true } matches={ commanderInfo } handleFilterMatches={handleFilterMatches} />
+                <Header yearChoice={ true } matches={ commanderInfo } 
+                        buttonsActive={ buttonsActive }
+                        toggleYearsUpdate={ toggleYearsUpdate }
+                        handleAllYears={ handleAllYears } />
             </Col>
             
             {/* Name and Banner */}
@@ -95,17 +108,17 @@ export default function SingleCommanderStats() {
                 <Row className="m-3">
                     <Col md={5} className="d-flex flex-column text-center">
                         <p className="bg-light border rounded">Played a total of { totalGames } times!</p>
-                        <EntityScore matchResultsForEntity={ matchResultsForCommander } totalGames={ totalGames } year={ year } />
+                        <EntityScore matchResultsForEntity={ matchResultsForCommander } totalGames={ totalGames } years={ year } />
                     </Col>
                     <Col md={7} style={{height:"20rem"}} >
-                        <DoughnutChart results={ matchResultsForCommander } year={ year }/>
+                        <DoughnutChart results={ matchResultsForCommander } years={ year }/>
                     </Col>
                 </Row>
 
                 {/* Line Chart */}
                 <Row className="m-3" >
                     <Col className="d-flex align-items-stretch justify-content-center" style={{height:"13rem"}}  >
-                        <LineChart entityName={ commanderName } entityMatches={ commanderInfo } />
+                        <LineChart entityName={ commanderName } entityMatches={ filteredMatches } />
                     </Col>
                 </Row>
                 <Row className="m-3" >

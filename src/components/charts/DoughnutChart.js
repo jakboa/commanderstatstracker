@@ -8,26 +8,27 @@ import "./Charts.css";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
-export default function DoughnutChart( { results, year } ) {
+export default function DoughnutChart( { results, years } ) {
 
-
-  if (year.length === 0) {
-    year = "allMatches";
-  }
-
-  results = Object.values(results[year]).slice(0,4)
+  const doughnutData = years.reduce((accumulator, year) =>{
+    const yearData = results[year];
+    Object.keys(yearData).slice(0,4).forEach(placement => {
+      accumulator[placement-1] +=  yearData[placement];
+    })
+    return accumulator;
+  },[0,0,0,0]);
 
   const options ={
     responsive: true,
     maintainAspectRatio: false,
-  } 
+  };
 
 const data = {
   labels: ['First', 'Second', 'Third', 'Fourth'],
   datasets: [
     {
       label: '# of Results',
-      data: results,
+      data: doughnutData,
       backgroundColor: [
         'rgba(236, 239, 55, 0.72)',
         'rgba(169, 169, 158, 0.72)',
