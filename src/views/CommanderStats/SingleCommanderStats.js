@@ -15,8 +15,6 @@ import "./CommanderStats.css"
 
 import Col  from "react-bootstrap/Col";
 import Row  from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-
 
 export default function SingleCommanderStats() {
 
@@ -82,7 +80,13 @@ export default function SingleCommanderStats() {
                 <Header yearChoice={ true } matches={ commanderInfo } 
                         buttonsActive={ buttonsActive }
                         toggleYearsUpdate={ toggleYearsUpdate }
-                        handleAllYears={ handleAllYears } />
+                        handleAllYears={ handleAllYears }
+
+                        active={ true }
+                        handleFilterMatchesPlayer={ handleFilterMatchesPlayer }
+                        matchResultsForCommander={ matchResultsForCommander }
+
+                        />
             </Col>
             
             {/* Name and Banner */}
@@ -120,19 +124,6 @@ export default function SingleCommanderStats() {
                     <Col className="d-flex align-items-stretch justify-content-center" style={{height:"13rem"}}  >
                         <LineChart entityName={ commanderName } entityMatches={ filteredMatches } />
                     </Col>
-                </Row>
-                <Row className="m-3" >
-                    <Col>
-                        <Button onClick={ handleFilterMatchesPlayer } value={ "allPlayers" } >All Players</Button>
-                    </Col>
-                    { matchResultsForCommander.players.map((player, index) => {
-                        return (
-                            <Col key={index}>
-                                <Button onClick={ handleFilterMatchesPlayer } value={ player } >{player}</Button>
-                            </Col>
-                    )})
-
-                    }
                 </Row>
             </Col>
 

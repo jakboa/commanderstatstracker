@@ -5,8 +5,9 @@ import YearSelector from "../yearSelector/YearSelector";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import PlayerSelector from "../playerSelector/PlayerSelector";
 
-export default function Header( { yearChoice, matches, buttonsActive, toggleYearsUpdate, handleAllYears }) {
+export default function Header( {active, yearChoice, matches, buttonsActive, toggleYearsUpdate, handleAllYears, handleFilterMatchesPlayer, matchResultsForCommander }) {
 
     return (
         <Row className="header position-fixed w-100 z-1">
@@ -19,6 +20,7 @@ export default function Header( { yearChoice, matches, buttonsActive, toggleYear
                 <p className="d-inline-flex">racker</p>
             </Col>
             <Col md={6} className="d-flex justify-content-center align-items-end ">
+                <PlayerSelector active={ active } handleFilterMatchesPlayer={ handleFilterMatchesPlayer } matchResultsForCommander={ matchResultsForCommander }  />
                 <h4 className="pe-2">Filter:</h4>
                 <YearSelector yearChoice={ yearChoice } matches={ matches } buttonsActive= { buttonsActive } toggleYearsUpdate={ toggleYearsUpdate }  handleAllYears= { handleAllYears } />
             </Col>
