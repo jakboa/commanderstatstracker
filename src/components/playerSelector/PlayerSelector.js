@@ -2,24 +2,24 @@ import React from "react";
 
 
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 export default function PlayerSelector({ active, handleFilterMatchesPlayer, matchResultsForCommander }) {
 
     return (
         <>
         { active ? (
-            <>
-                <p>Filter Players:</p>
+            <div>
+                <h4 className="d-inline-flex pe-2">Filter Players:</h4>
+                <ButtonGroup className="">
                 <Button onClick={ handleFilterMatchesPlayer } value={ "allPlayers" } >All Players</Button>
                 { matchResultsForCommander.players.map((player, index) => {
                     return (
-                        <Col key={index}>
-                            <Button onClick={ handleFilterMatchesPlayer } value={ player } >{player}</Button>
-                        </Col>
+                        <Button key={index} onClick={ handleFilterMatchesPlayer } value={ player } >{player}</Button>
                     )})
                 }
-            </> 
+                </ButtonGroup>
+            </div> 
         ) : (
             <></>
         )

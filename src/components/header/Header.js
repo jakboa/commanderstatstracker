@@ -19,9 +19,8 @@ export default function Header( {active, yearChoice, matches, buttonsActive, tog
                 <h1 className="d-inline-flex">T</h1>
                 <p className="d-inline-flex">racker</p>
             </Col>
-            <Col md={6} className="d-flex justify-content-center align-items-end ">
+            <Col md={6} className="d-flex flex-column justify-content-center align-items-center ">
                 <PlayerSelector active={ active } handleFilterMatchesPlayer={ handleFilterMatchesPlayer } matchResultsForCommander={ matchResultsForCommander }  />
-                <h4 className="pe-2">Filter:</h4>
                 <YearSelector yearChoice={ yearChoice } matches={ matches } buttonsActive= { buttonsActive } toggleYearsUpdate={ toggleYearsUpdate }  handleAllYears= { handleAllYears } />
             </Col>
             <Col md={3} className="d-flex justify-content-end">

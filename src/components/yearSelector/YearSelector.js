@@ -26,7 +26,9 @@ export default function YearSelector( { yearChoice,  matches, buttonsActive, tog
     return(
         <>
             {yearChoice ? (
-                        <ButtonGroup >
+                    <div>
+                        <h4 className="pe-2 d-inline-flex">Filter:</h4>
+                        <ButtonGroup className="my-2">
                         <Button onClick={ handleAllYears } className={ buttonsActive.every(button => button === false) ? "buttonActive" : "buttonDeactive"} >All Years</Button>
                         {yearDisplay.map((year, index) => {
                             return (
@@ -37,11 +39,12 @@ export default function YearSelector( { yearChoice,  matches, buttonsActive, tog
                                     year={ year } 
                                     activeButtons = { activeButtons }
                                     isActive = { buttonsActive[index] } />
-                            )
-                        }
+                                )
+                            }
                             
-                        )}
-                    </ButtonGroup>
+                            )}
+                        </ButtonGroup>
+                    </div>
             ) : (
                 <></>
                 ) 
