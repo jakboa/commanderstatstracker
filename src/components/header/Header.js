@@ -11,7 +11,7 @@ export default function Header( {active, yearChoice, matches, buttonsActive, tog
 
     return (
         <Row className="header position-fixed w-100 z-1">
-            <Col md={3} className="border">
+            <Col md={3} className="">
                 <h1 className="d-inline-flex">C</h1>
                 <p className="d-inline-flex pe-2">ommander </p>
                 <h1 className="d-inline-flex">S</h1>

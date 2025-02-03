@@ -18,7 +18,8 @@ import Row  from "react-bootstrap/Row";
 
 export default function SingleCommanderStats() {
 
-    // useStates 
+    // useStates
+    const [filters,setFilters] = useState([["allPlayers"],["allGroups"],["allYears"]]);
     const [buttonsActive, setButtonsActive] = useState([false,false,false,false,false]);
     const year  = SearchHandler.getYearButtons(buttonsActive);
     
@@ -35,7 +36,8 @@ export default function SingleCommanderStats() {
     const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,commanderInfo);
     const filteredMatches = SearchHandler.getEntityMatchesForYearAndPlayer(commanderInfo,year,player,commanderName);
     const totalGames = filteredMatches.length; 
-
+    const allFilteredGames = SearchHandler.setFilter(commanderInfo,filters);
+    console.log(allFilteredGames);
 
 
 

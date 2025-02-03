@@ -405,6 +405,12 @@ const SearchHandler = {
         };
         
         return toggleYears;
+    },
+    setFilter: (matches,filters) => {
+        const filteredPlayer = matches.filter((match) => 
+            filters[1].some(match.Group_name) && 
+            filters[2].some(match.year) && 
+            true );
     }
 
 }
