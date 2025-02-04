@@ -1953,6 +1953,102 @@ export const gameInfo = [
         ],
 
         year: "2025"
+    },
+    {
+        Match_id: 59,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Myrel, Shield of Argive',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Disa the Restless',
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Muldrotha, the Gravetide",
+                placement: 1
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Davros, Dalek Creator',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 60,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Myrel, Shield of Argive',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Disa the Restless',
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Muldrotha, the Gravetide",
+                placement: 1
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Hazezon, Shaper of Sand',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 61,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Kokusho, the Evening Star',
+                placement: 1
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Disa the Restless',
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Muldrotha, the Gravetide",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Ayara, First of Locthwain',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
     }
 
 ];
