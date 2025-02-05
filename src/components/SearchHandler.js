@@ -407,10 +407,30 @@ const SearchHandler = {
         return toggleYears;
     },
     setFilter: (matches,filters) => {
-        const filteredPlayer = matches.filter((match) => 
-            filters[1].some(match.Group_name) && 
-            filters[2].some(match.year) && 
-            true );
+        console.log(matches);
+        console.log(filters.groupFilter);
+        console.log(filters.playerFilter);
+
+
+        const allGroups = filters.groupFilter[0] === "allGroups";
+        const allPlayers = filters.playerFilter[0] === "allPlayers";
+        const allYears = filters.yearFilter[0] === "allYears";
+        
+
+        const filteredPlayer = matches.filter((match) => {
+
+            const groupFilter = allGroups || filters.groupFilter.some((groupName) => groupName === match.Group_name);
+
+            const playerFilter = allPlayers || filters.playerFilter.some(playerName => match.players.includes(playerName));
+            
+            const yearFilter = allYears || filters.yearFilter.some((matchYear) => matchYear.toString() === match.year.toString()); 
+
+            console.log(playerFilter);
+            return groupFilter && playerFilter && yearFilter;
+        });
+
+        return filteredPlayer;
+
     }
 
 }
