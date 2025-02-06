@@ -6,6 +6,10 @@ import "./components.css";
 //"d-flex flex-column align-items-center bg-light-subtle border border-white border-5 rounded-5"
 
 export default function EntityScore( { matchResultsForEntity, totalGames, years } ) {
+
+    console.log(matchResultsForEntity);
+    console.log(totalGames);
+    console.log(years);
     
     const allResults = years.reduce((accumulator, year) => {
         const statsForYear = matchResultsForEntity[year];

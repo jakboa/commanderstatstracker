@@ -35,6 +35,7 @@ export default function SingleCommanderStats() {
     const commanderInfo = SearchHandler.getSingleCommanderStats(commanderName);
     const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,commanderInfo);
     const filteredMatches = SearchHandler.getEntityMatchesForYearAndPlayer(commanderInfo,year,player,commanderName);
+    //const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,filteredMatches);
     const totalGames = filteredMatches.length; 
     const allFilteredGames = SearchHandler.setFilter(commanderInfo,filters);
     console.log(allFilteredGames);

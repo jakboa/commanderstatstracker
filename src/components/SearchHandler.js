@@ -407,9 +407,9 @@ const SearchHandler = {
         return toggleYears;
     },
     setFilter: (matches,filters) => {
-        console.log(matches);
-        console.log(filters.groupFilter);
-        console.log(filters.playerFilter);
+        //console.log(matches);
+        //console.log(filters.groupFilter);
+        //console.log(filters.playerFilter);
 
 
         const allGroups = filters.groupFilter[0] === "allGroups";
