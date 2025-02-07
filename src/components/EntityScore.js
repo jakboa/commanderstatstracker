@@ -7,10 +7,6 @@ import "./components.css";
 
 export default function EntityScore( { matchResultsForEntity, totalGames, years } ) {
 
-    console.log(matchResultsForEntity);
-    console.log(totalGames);
-    console.log(years);
-    
     const allResults = years.reduce((accumulator, year) => {
         const statsForYear = matchResultsForEntity[year];
         Object.keys(statsForYear).slice(0,4).forEach(placement => {

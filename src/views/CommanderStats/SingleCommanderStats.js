@@ -83,7 +83,7 @@ export default function SingleCommanderStats() {
     console.log(cardData)
     return (
         <Row className="singleCommanderPage">
-            <Col md={12} style={{ height:"3.8rem" }}>
+            <Col md={12} style={{ height:"5.8rem" }}>
                 <Header yearChoice={ true } matches={ commanderInfo } 
                         buttonsActive={ buttonsActive }
                         toggleYearsUpdate={ toggleYearsUpdate }

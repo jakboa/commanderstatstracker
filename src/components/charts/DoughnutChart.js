@@ -44,6 +44,7 @@ const data = {
       borderWidth: 2,
     },
   ],
+  
 };
 
   return <Doughnut options={ options } data={data} className="doughnutChart bg-light-subtle" />;
