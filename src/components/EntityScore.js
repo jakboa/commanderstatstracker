@@ -17,8 +17,8 @@ export default function EntityScore( { matchResultsForEntity, totalGames, years 
 
     return (
         <div className="d-flex flex-column h-100 bg-light-subtle border border-white rounded-5 ">
-            <h3 className="mt-3">Match Results:</h3>
-            <div className="d-flex flex-column mx-5">
+            <h4 className="mt-3">Match Results:</h4>
+            <div className="d-flex flex-column mx-2">
             { Object.values(allResults).map((results, placement) => {
                 return (
                     <div key={placement} className={`entityScore${placement+1} d-flex justify-content-center align-items-center`}>
