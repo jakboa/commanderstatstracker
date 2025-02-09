@@ -13,18 +13,18 @@ export default function HomepageSingleGroup( {groupName, groupPlayers} ) {
         navigate(`/groupstats/${groupName}`);
     };
 
+    console.log(groupPlayers);
+
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card bg="light"  border="dark" className="border border-3 "  style={{ width: '18rem' }}>
+            <Card.Header className="fs-5 fw-bold">{groupName}</Card.Header>
             <Card.Body>
-                <Card.Title>{groupName}</Card.Title>
-                {groupPlayers.map((player,index) => {
+                {groupPlayers[0].map((player,index) => {
                     return( 
-                        <div key={index}>
-                            <Card.Text>{player}</Card.Text>
-                            <Button variant="primary" onClick={handleGroupClick}>Check Group Stats!</Button>
-                        </div>
+                        <Card.Text key={index} className="fw-bold py-0 my-0">-- {player} --</Card.Text>
                     )
                 })}
+                <Button className="mt-3 fw-bold" variant="info" onClick={handleGroupClick}>Click for Group Stats!</Button>
             </Card.Body>
         </Card>
 
