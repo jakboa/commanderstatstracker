@@ -15,10 +15,11 @@ export default function HomepagePlayersSingle( { name, results } ) {
 
     return (
         <Card className="mb-2">
-            <Card.Body>
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>{results.first} Wins {results.games} Games</Card.Text>
-                <Button onClick={ handlePlayerClick }>Check Player</Button>
+            <Card.Header className="fs-3 fw-bold">{name}</Card.Header>
+            <Card.Body className="fs-5 fw-medium">
+                <Card.Text className="mb-0">{results.first} Wins</Card.Text>
+                <Card.Text>{results.games} Games</Card.Text>
+                <Button variant="info" onClick={ handlePlayerClick }>Check Player</Button>
             </Card.Body>
         </Card>
     );
