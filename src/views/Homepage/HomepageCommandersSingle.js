@@ -16,9 +16,10 @@ export default function HomepageCommandersSingle( { name, results } ) {
 
     return (
         <Card className="mb-2" style={{ width:"15rem" }}>
-            <Card.Body>
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>{results.first} Wins {results.games} Games </Card.Text>
+            <Card.Header className="d-flex justify-content-center align-items-center fs-5 fw-bold h-50">{name}</Card.Header>
+            <Card.Body className="d-flex fs-5 fw-medium flex-column justify-content-end">
+                <Card.Text className="mb-1">{results.first} Wins</Card.Text>
+                <Card.Text>{results.games} Games </Card.Text>
                 <Button onClick={handleCommanderClick}>Check Commander</Button>
             </Card.Body>
         </Card>

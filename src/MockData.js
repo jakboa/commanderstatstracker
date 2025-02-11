@@ -2049,6 +2049,70 @@ export const gameInfo = [
         ],
 
         year: "2025"
+    },
+    {
+        Match_id: 62,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Hinata, Dawn-Crowned',
+                placement: 4
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Disa the Restless',
+                placement: 3
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Rafiq of the Many",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Minn, Wily Illusionist',
+                placement: 1
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 63,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Shelob, Child of Ungoliant',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Disa the Restless',
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Muldrotha, the Gravetide",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Hazezon, Shaper of Sand',
+                placement: 1
+            }
+        ],
+
+        year: "2025"
     }
 
 ];
