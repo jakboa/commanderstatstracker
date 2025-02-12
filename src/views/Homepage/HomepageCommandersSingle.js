@@ -20,7 +20,7 @@ export default function HomepageCommandersSingle( { name, results } ) {
             <Card.Body className="d-flex fs-5 fw-medium flex-column justify-content-end">
                 <Card.Text className="mb-1">{results.first} Wins</Card.Text>
                 <Card.Text>{results.games} Games </Card.Text>
-                <Button onClick={handleCommanderClick}>Check Commander</Button>
+                <Button className="fw-bold" variant="info" onClick={handleCommanderClick}>Check Commander</Button>
             </Card.Body>
         </Card>
 

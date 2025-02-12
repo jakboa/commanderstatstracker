@@ -68,10 +68,9 @@ export default function GroupStats() {
             {/* STATS AND GRAPHS */}
             <Col ms={9} className="text-center">
                 <Row>
-                    
                     {/* STATS */}
                     <Col md={7} className="d-flex flex-column">
-                        <p className="border bg-light rounded m-2">Total games: {group.length}</p>
+                        <p className="border bg-light rounded m-2">Total games: {totalGames}</p>
                         <GroupScore scoreInfo={ filteredGroup } totalGames={totalGames} />
                     </Col>
 

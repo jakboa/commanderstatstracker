@@ -19,24 +19,21 @@ export default function GroupScore( { scoreInfo, totalGames } ) {
 
 
     return (
-        <div className="d-flex-inline flex-grow-1 border border-white rounded m-2 bg-light">
+        <div className="d-flex flex-column flex-grow-1 border border-white rounded m-2 bg-light">
             <h1>Match Results:</h1>
-            <div className="px-3">
+            <div className="px-2 pb-2 flex-grow-1">
                 { Object.entries(groupStats).sort(sortByWins).map(([key,value], index) => {
                     return (
-                            <Stack key={index} direction="horizontal" className={`place${index}`}>
+                            <Stack key={index} direction="horizontal" className={`h-25 place${index}`}>
                                 <p className="scoreText border-end fw-bold">{`${key}`}</p> 
                                 <p className="scoreText border-end fw-semibold">{`First: ${value[1]}`}</p> 
                                 <p className="scoreText border-end fw-medium">{`Second: ${value[2]}`}</p> 
                                 <p className="scoreText border-end">{`Third: ${value[3]}`}</p> 
                                 <p className="scoreText">{`Fourth: ${value[4]}`}</p>   
                             </Stack>
-
                     );
                 })} 
             </div>
-            <p>Games Played: {totalGames}</p>
-
         </div>
     );
 };
