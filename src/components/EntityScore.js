@@ -17,13 +17,13 @@ export default function EntityScore( { matchResultsForEntity, totalGames, years 
 
     return (
         <div className="d-flex flex-column h-100 bg-light-subtle border border-white rounded-5 ">
-            <h4 className="mt-3">Match Results:</h4>
-            <div className="d-flex flex-column mx-2 fw-bold">
+            <h2 className="mt-1">Match Results:</h2>
+            <div className="d-flex flex-column flex-grow-1 mx-2 mb-3  fs-4 fw-medium">
             { Object.values(allResults).map((results, placement) => {
                 return (
-                    <div key={placement} className={`entityScore${placement+1} d-flex justify-content-center align-items-center`}>
+                    <div key={placement} className={`entityScore${placement+1} flex-grow-1 d-flex justify-content-center align-items-center`}>
                         {placement === 0 ? (
-                            <p className={`entityScore${placement+1} mb-0 w-50 d-flex justify-content-end`}>First:</p>
+                            <p className={`entityScore${placement+1} mb-0 w-50 d-flex justify-content-end`}>FIRST:</p>
                         ): placement === 1 ? (
                             <p className={`entityScore${placement+1} mb-0 w-50 d-flex justify-content-end`}>Second:</p>
                         ): placement === 2 ?(
@@ -37,9 +37,6 @@ export default function EntityScore( { matchResultsForEntity, totalGames, years 
                     </div>
                 );
             })}
-            </div>
-            <div className="d-flex justify-content-center">
-                <p className=" rounded-bottom  px-2" style={{ backgroundColor: "#8183a6" }} >Of {totalGames} games played.</p>
             </div>
         </div>
     );

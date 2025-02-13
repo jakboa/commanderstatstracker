@@ -103,7 +103,7 @@ export default function PlayerStats() {
                     {/* STATS */}
                     <Col className="pe-0">
                         <div className="d-flex flex-column h-100">
-                            <p className="border border-white rounded-4 rounded bg-light">Total amount of games so far: {playerMatches.length}</p>
+                            <p className="border border-white rounded-4 rounded bg-light">Games Played: {totalGamesFiltered}</p>
                             <EntityScore matchResultsForEntity={ matchResultsForPlayer } totalGames={ totalGamesFiltered } years={ year } />
                         </div>
                     </Col>
