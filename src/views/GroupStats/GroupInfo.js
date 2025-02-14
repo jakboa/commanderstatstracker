@@ -54,7 +54,7 @@ export default function GroupInfo( { groupname, group } ) {
                 <Col className="p-0 rounded overflow-hidden flex-fill">
                     <h4 style={{background:"#6698D1"}} className="d-flex justify-content-center align-items-center m-0 h-25">Fun facts:</h4>
 
-                    <div style={{background:"#C7D4F5"}} className="m-0 h-25">
+                    <div style={{background:"#C7D4F5"}} className="m-0 pt-2 h-25">
                         <h6>Highest commander count:</h6>
                         <p>{groupInfo.countCommanders[0][0]} with {groupInfo.countCommanders[0][1]} unique commanders.</p>
                     </div>
