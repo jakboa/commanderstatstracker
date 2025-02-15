@@ -9,6 +9,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export default function DoughnutChart( { results, years } ) {
+  console.log(results);
 
   const doughnutData = years.reduce((accumulator, year) =>{
     const yearData = results[year];
@@ -21,13 +22,30 @@ export default function DoughnutChart( { results, years } ) {
   const options ={
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+    legend: {
+          display: true,
+      },
+    tooltip: {
+      enabled: true,
+      callbacks: {
+        label: function(context) {
+          let label = context.parsed || '';
+          if (label) { 
+            const summedValues = context.dataset.data.reduce((accumulator, currentValue) => accumulator + currentValue,0);
+            label = `${Math.round(context.parsed/summedValues*100)}%`
+          }
+          return label
+        },},
+      },
+    },
+    events:['click'],
   };
 
 const data = {
   labels: ['First', 'Second', 'Third', 'Fourth'],
   datasets: [
     {
-      label: '# of Results',
       data: doughnutData,
       backgroundColor: [
         'rgba(236, 239, 55, 0.72)',
