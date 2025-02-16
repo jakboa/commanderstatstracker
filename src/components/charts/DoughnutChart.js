@@ -39,7 +39,7 @@ export default function DoughnutChart( { results, years } ) {
         },},
       },
     },
-    events:['click'],
+    
   };
 
 const data = {
