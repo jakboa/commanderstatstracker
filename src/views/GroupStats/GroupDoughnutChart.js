@@ -24,13 +24,30 @@ export default function GroupDoughnutChart( { results } ) {
   const options ={
     responsive: true,
     maintainAspectRatio: false,
-  } 
+    plugins: {
+    legend: {
+          display: true,
+      },
+    tooltip: {
+      enabled: true,
+      callbacks: {
+        label: function(context) {
+          let label = context.parsed || '';
+          if (label) { 
+            const summedValues = context.dataset.data.reduce((accumulator, currentValue) => accumulator + currentValue,0);
+            label = ` ${Math.round(context.parsed/summedValues*100)}%`
+          }
+          return label
+        },},
+      },
+    },
+    
+  };
 
 const data = {
   labels: players.sort(),
   datasets: [
     {
-      label: '# of Results',
       data: placements,
       backgroundColor: [
         '#EBA7A4',
