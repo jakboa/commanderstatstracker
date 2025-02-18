@@ -2113,6 +2113,70 @@ export const gameInfo = [
         ],
 
         year: "2025"
+    },
+    {
+        Match_id: 64,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Jodah, the Unifier',
+                placement: 3
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Samut, the Driving Force',
+                placement: 1
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Satoru Umezawa",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Esika, God of the Tree',
+                placement: 3
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 65,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Samut, the Driving Force',
+                placement: 3
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Satoru Umezawa",
+                placement: 1
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Davros, Dalek Creator',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
     }
 
 ];

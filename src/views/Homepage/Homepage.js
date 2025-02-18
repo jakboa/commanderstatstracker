@@ -3,6 +3,7 @@ import React, { useReducer } from "react";
 import HomepageGroups from "./HomepageGroups";
 import HomepagePlayers from "./HomepagePlayers";
 import HomepageCommanders from "./HomepageCommanders";
+import HomepageIntro from "./HomepageIntro";
 import SearchHandler from '../../components/SearchHandler';
 import Header from "../../components/header/Header";
 
@@ -116,6 +117,10 @@ export default function Homepage() {
                 
                 <Col md={12} style={{ height:"3.8rem" }}>
                     <Header />
+                </Col>
+
+                <Col className="bg-black">
+                    <HomepageIntro />
                 </Col>
 
                 <Col md={12} className="homepageGroups">
