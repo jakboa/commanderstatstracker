@@ -19,7 +19,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from 'react-bootstrap/Accordion';
 
-
 export default function PlayerStats() {
 
     // useStates
@@ -65,9 +64,7 @@ export default function PlayerStats() {
 
     const handleAllYears = () => {
         setButtonsActive([false,false,false,false,false]);
-    }
-
-
+    };
 
     return (
         <Row className="playerstats">
@@ -167,12 +164,7 @@ export default function PlayerStats() {
 
             {/* COMMANDERS */}
             <Col md={12} className="border-top border-5 border-black py-3 bg-light ">
-                <div className="d-flex justify-content-center align-items-center mt-2">
-                    <h1 className="border border-bottom-0 border-black border-4 rounded-top mb-0 px-2 fw-semibold text-uppercase bg-info-subtle">{playerName}`s commanders</h1>
-                </div>
-                <div className="bg-info-subtle border border-black border-4 rounded-4 p-3">
-                    <CommanderCardContainer commanderStatsInfo={ filteredCommanderCards } years={ year } loading= { loading } />
-                </div>
+                    <CommanderCardContainer playerName={ playerName } commanderStatsInfo={ filteredCommanderCards } years={ year } loading= { loading } />
             </Col>
 
             {/* MATCHES */}

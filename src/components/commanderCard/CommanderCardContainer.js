@@ -1,29 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 
 import CommanderCard from "./CommanderCard";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
-export default function CommanderCardContainer( { commanderStatsInfo, years, loading  } ) {
+export default function CommanderCardContainer( { playerName, commanderStatsInfo, years, loading  } ) {
 
+    const [sort, setSort] = useState("default");
     console.log(commanderStatsInfo);
 
-    return (
-        <Row>
+    const sortCommanders = (e) => {
+        
+        const sortings = { "1":"matches", "games":"matches" };
 
-            { loading ? (
-                <p>...loading</p>
-            ) : (
-                commanderStatsInfo.map( (commander,index) => {
-                    return (
-                        <Col key={index} md={2} className=" d-flex p-2">
-                            <CommanderCard commander={ commander } years={ years } />
-                        </Col>
-                )
-            }))
-        }
-        </Row>
+        if (e.target.value === "name") {
+            commanderStatsInfo.sort((a,b)=> a[e.target.value].localeCompare(b[e.target.value]));
+        } else if (sortings[e.target.value] === "matches") {
+            commanderStatsInfo.sort((a,b)=> b.matchHistory.allMatches[e.target.value] - a.matchHistory.allMatches[e.target.value]);
+        } else {
+            commanderStatsInfo.sort((a,b)=> b[e.target.value] - a[e.target.value]);
+        };
+
+        setSort(e.target.value);
+
+    };
+
+
+    return (
+        <>
+            <div className="d-flex justify-content-center align-items-center mt-2">
+                <h1 className="border border-bottom-0 border-black border-4 rounded-top mb-0 px-2 fw-semibold text-uppercase bg-info-subtle">{playerName}`s commanders</h1>
+            </div>
+            <div className="bg-info-subtle border border-black border-4 rounded-4 p-3">
+                <Row>
+                    <div>
+                        <p className="">Sort by:</p>
+                        <Button onClick={ sortCommanders } value={"name"}>Default</Button>
+                        <Button onClick={ sortCommanders } value={"1"}>Wins</Button>
+                        <Button onClick={ sortCommanders } value={"games"}>Played</Button>
+                        <Button onClick={ sortCommanders } value={"price"}>Price</Button>
+                        <p>Sorted by: {sort}.</p>
+                    </div>
+                    { loading ? (
+                        <p>...loading</p>
+                    ) : (
+                        commanderStatsInfo.map( (commander,index) => {
+                            return (
+                                <Col key={index} md={2} className=" d-flex p-2">
+                                    <CommanderCard commander={ commander } years={ years } />
+                                </Col>
+                        )
+                    }))
+                }
+                </Row>
+            </div>
+        </>
     )
 
 }

@@ -360,7 +360,10 @@ const SearchHandler = {
             cardData.cardFound = true;
 
             // Current price in euro
-            cardData.price = commander.prices.eur;
+            if (commander.prices.eur) {
+                cardData.price = commander.prices.eur;
+            } else cardData.price = "0.00";
+            
 
             // Add the combined info about the card to the array
             commanderFacts.push(cardData);
