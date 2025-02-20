@@ -35,13 +35,13 @@ export default function CommanderCardContainer( { playerName, commanderStatsInfo
             </div>
             <div className="bg-info-subtle border border-black border-4 rounded-4 p-3">
                 <Row>
-                    <div>
-                        <p className="">Sort by:</p>
-                        <Button onClick={ sortCommanders } value={"name"}>Default</Button>
-                        <Button onClick={ sortCommanders } value={"1"}>Wins</Button>
-                        <Button onClick={ sortCommanders } value={"games"}>Played</Button>
-                        <Button onClick={ sortCommanders } value={"price"}>Price</Button>
-                        <p>Sorted by: {sort}.</p>
+                    <div className="d-flex">
+                        <p className="pt-2 pe-1 mb-0 fw-bolder">Sort by: </p>
+                        <Button variant="success" className="m-1" onClick={ sortCommanders } value={"name"}>Default</Button>
+                        <Button variant="success" className="m-1" onClick={ sortCommanders } value={"1"}>Wins</Button>
+                        <Button variant="success" className="m-1" onClick={ sortCommanders } value={"games"}>Played</Button>
+                        <Button variant="success" className="m-1" onClick={ sortCommanders } value={"price"}>Price</Button>
+                        <p className="pt-2 pe-1 mb-0 fw-bolder">Sorted by: {sort}.</p>
                     </div>
                     { loading ? (
                         <p>...loading</p>
