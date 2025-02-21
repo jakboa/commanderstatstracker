@@ -16,7 +16,7 @@ export default function HomepageSingleGroup( {groupName, groupPlayers} ) {
     console.log(groupPlayers);
 
     return (
-        <Card bg="light"  border="dark" className="border border-3 "  style={{ width: '18rem' }}>
+        <Card bg="light" className="border border-3  border-primary border-black"  style={{ width: '18rem' }}>
             <Card.Header className="fs-5 fw-bold">{groupName}</Card.Header>
             <Card.Body>
                 {groupPlayers[0].map((player,index) => {

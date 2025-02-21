@@ -13,7 +13,7 @@ export default function YearButton( { buttonNr, toggleYearsUpdate, year, activeB
         return (
             <Button value={year} 
                 onClick={() =>toggleYearsUpdate(buttonNr,year)} 
-                className={isActive ? "buttonActive" : "buttonDeactive"} 
+                className={isActive ? "bg-success border-success" : "bg-danger border-danger"} 
                 >{year}</Button>
         )
     } else {

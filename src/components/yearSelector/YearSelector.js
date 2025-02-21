@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchHandler from "../SearchHandler";
 import YearButton from "./YearButton";
 
@@ -8,9 +8,12 @@ import "./YearSelector.css";
 
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 
 
 export default function YearSelector( { yearChoice,  matches, buttonsActive, toggleYearsUpdate, handleAllYears  } ) {
+
+    const [toggleYear, setToggleYear] = useState(true);
 
     const yearDisplay = ["2021","2022","2023","2024","2025"];
     // if there is no data for that year, find out, 
@@ -20,7 +23,9 @@ export default function YearSelector( { yearChoice,  matches, buttonsActive, tog
         activeButtons = SearchHandler.getYears(matches);
     };
 
-
+    const toggleFilter = (e) => {
+        setToggleYear( () => !toggleYear)
+    };
 
 
     return(
@@ -29,7 +34,7 @@ export default function YearSelector( { yearChoice,  matches, buttonsActive, tog
                     <div>
                         <h4 className="pe-2 d-inline-flex">Filter:</h4>
                         <ButtonGroup className="my-2">
-                        <Button onClick={ handleAllYears } className={ buttonsActive.every(button => button === false) ? "buttonActive" : "buttonDeactive"} >All Years</Button>
+                        <Button onClick={ handleAllYears } className={ buttonsActive.every(button => button === false) ? "bg-success border-success" : "bg-danger border-danger"} >All Years</Button>
                         {yearDisplay.map((year, index) => {
                             return (
                                 <YearButton 
@@ -44,6 +49,14 @@ export default function YearSelector( { yearChoice,  matches, buttonsActive, tog
                             
                             )}
                         </ButtonGroup>
+                        
+                        <ToggleButton 
+                            className={`ms-2 ${toggleYear ? "bg-success border-success" : "bg-danger border-danger"}`} 
+                            id="radio-1" 
+                            value={3}
+                            onClick={ toggleFilter }>
+                            Toggle Year (Not done)
+                        </ToggleButton>
                     </div>
             ) : (
                 <></>

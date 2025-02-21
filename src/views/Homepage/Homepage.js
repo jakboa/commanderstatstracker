@@ -119,11 +119,11 @@ export default function Homepage() {
                     <Header />
                 </Col>
 
-                <Col className="bg-black">
+                <Col className="bg-primary bg-gradient">
                     <HomepageIntro />
                 </Col>
 
-                <Col md={12} className="homepageGroups">
+                <Col md={12} className="bg-white">
                 <button onClick={handleClearSearch}>Clear Searches</button>
                     <HomepageGroups 
                         commanderGroups={ homepage.group.playGroups }
@@ -132,7 +132,7 @@ export default function Homepage() {
                         searchTextGroups={ homepage.group.searchTextGroups } />
                 </Col>
 
-                <Col md={12} className="homepagePlayers">
+                <Col md={12} className="bg-info bg-gradient">
                     <HomepagePlayers 
                         players={homepage.player.players}
                         handlePlayerSearch={ handlePlayerSearch }
@@ -140,7 +140,7 @@ export default function Homepage() {
                         searchTextPlayers={ homepage.player.searchTextPlayers }
                         results={ homepage.results } />
                 </Col>
-                <Col md={12} className="homepageCommanders">
+                <Col md={12} className="bg-white">
                     <HomepageCommanders  
                         commanders={ homepage.commander.commanders } 
                         handleCommanderSearch={ handleCommanderSearch } 
