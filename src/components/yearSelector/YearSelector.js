@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SearchHandler from "../SearchHandler";
 import YearButton from "./YearButton";
 
@@ -11,9 +11,11 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
 
-export default function YearSelector( { yearChoice,  matches, buttonsActive, toggleYearsUpdate, handleAllYears  } ) {
+export default function YearSelector( { toggleYear, toggleFilter, yearChoice,  matches, buttonsActive, toggleYearsUpdate, handleAllYears  } ) {
 
-    const [toggleYear, setToggleYear] = useState(true);
+
+    console.log(toggleYear)
+    console.log(toggleFilter)
 
     const yearDisplay = ["2021","2022","2023","2024","2025"];
     // if there is no data for that year, find out, 
@@ -22,11 +24,6 @@ export default function YearSelector( { yearChoice,  matches, buttonsActive, tog
     if (yearChoice) {
         activeButtons = SearchHandler.getYears(matches);
     };
-
-    const toggleFilter = (e) => {
-        setToggleYear( () => !toggleYear)
-    };
-
 
     return(
         <>
@@ -52,10 +49,8 @@ export default function YearSelector( { yearChoice,  matches, buttonsActive, tog
                         
                         <ToggleButton 
                             className={`ms-2 ${toggleYear ? "bg-success border-success" : "bg-danger border-danger"}`} 
-                            id="radio-1" 
-                            value={3}
                             onClick={ toggleFilter }>
-                            Toggle Year (Not done)
+                            Toggle Year
                         </ToggleButton>
                     </div>
             ) : (
