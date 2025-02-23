@@ -21,6 +21,7 @@ export default function SingleCommanderStats() {
     // useStates
     const [filters,setFilters] = useState({groupFilter: ["allGroups"], playerFilter: ["allPlayers"], yearFilter:["allYears"]});
     const [buttonsActive, setButtonsActive] = useState([false,false,false,false,false]);
+    const [toggleYear, setToggleYear] = useState(true);
     const year  = SearchHandler.getYearButtons(buttonsActive);
     
     const [player, setPlayer] = useState("allPlayers");
@@ -43,12 +44,25 @@ export default function SingleCommanderStats() {
 
 
     // Functions
+    const toggleFilter = () => {
+        console.log(toggleYear)
+        setToggleYear( () => !toggleYear)
+    };
+
     const toggleYearsUpdate = (buttonNr) => {
-        setButtonsActive(prev => {
-            const updatedButtons = [...prev];
-            updatedButtons[buttonNr] = !prev[buttonNr];
-            return updatedButtons
-        });
+        if (toggleYear) {
+            setButtonsActive(prev => {
+                const updatedButtons = [false,false,false,false,false];
+                updatedButtons[buttonNr] = !prev[buttonNr];
+                return updatedButtons
+            });
+        } else  {
+            setButtonsActive(prev => {
+                const updatedButtons = [...prev];
+                updatedButtons[buttonNr] = !prev[buttonNr];
+                return updatedButtons
+            })
+        };
     };
 
     const handleAllYears = () => {
@@ -84,7 +98,8 @@ export default function SingleCommanderStats() {
     return (
         <Row className="singleCommanderPage">
             <Col md={12} style={{ height:"5.8rem" }}>
-                <Header yearChoice={ true } matches={ commanderInfo } 
+                <Header toggleYear={ toggleYear } toggleFilter={ toggleFilter }
+                        yearChoice={ true } matches={ commanderInfo } 
                         buttonsActive={ buttonsActive }
                         toggleYearsUpdate={ toggleYearsUpdate }
                         handleAllYears={ handleAllYears }

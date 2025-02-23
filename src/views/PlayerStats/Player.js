@@ -75,7 +75,6 @@ export default function PlayerStats() {
                 return updatedButtons
             })
         };
-;
     };
 
     const handleAllYears = () => {

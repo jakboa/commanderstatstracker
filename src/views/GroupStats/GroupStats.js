@@ -20,6 +20,7 @@ export default function GroupStats() {
     // useStates
     const [buttonsActive, setButtonsActive] = useState([false,false,false,false,false]);
     const year  = SearchHandler.getYearButtons(buttonsActive);
+    const [toggleYear, setToggleYear] = useState(true);
 
     // Derived Values
     const { groupname } = useParams();
@@ -30,12 +31,26 @@ export default function GroupStats() {
 
     // Functions
     
+    const toggleFilter = () => {
+        console.log(toggleYear)
+        setToggleYear( () => !toggleYear)
+    };
+
     const toggleYearsUpdate = (buttonNr) => {
-        setButtonsActive(prev => {
-            const updatedButtons = [...prev];
-            updatedButtons[buttonNr] = !prev[buttonNr];
-            return updatedButtons
-        });
+        if (toggleYear) {
+            setButtonsActive(prev => {
+                const updatedButtons = [false,false,false,false,false];
+                updatedButtons[buttonNr] = !prev[buttonNr];
+                return updatedButtons
+            });
+        } else  {
+            setButtonsActive(prev => {
+                const updatedButtons = [...prev];
+                updatedButtons[buttonNr] = !prev[buttonNr];
+                return updatedButtons
+            })
+        };
+;
     };
 
     const handleAllYears = () => {
@@ -45,7 +60,8 @@ export default function GroupStats() {
     return (
         <Row className="groupPage">
             <Col md={12} style={{ height:"3.8rem" }}>
-                <Header yearChoice={ true } matches={ group } 
+                <Header toggleYear={ toggleYear } toggleFilter={ toggleFilter }
+                    yearChoice={ true } matches={ group } 
                     buttonsActive={ buttonsActive }
                     toggleYearsUpdate={ toggleYearsUpdate }
                     handleAllYears={ handleAllYears } />
