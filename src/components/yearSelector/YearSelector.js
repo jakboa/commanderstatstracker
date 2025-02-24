@@ -13,10 +13,6 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 
 export default function YearSelector( { toggleYear, toggleFilter, yearChoice,  matches, buttonsActive, toggleYearsUpdate, handleAllYears  } ) {
 
-
-    console.log(toggleYear)
-    console.log(toggleFilter)
-
     const yearDisplay = ["2021","2022","2023","2024","2025"];
     // if there is no data for that year, find out, 
     // also if the page does not require filtering, do not filter.

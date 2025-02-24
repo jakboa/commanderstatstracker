@@ -434,6 +434,13 @@ const SearchHandler = {
 
         return filteredPlayer;
 
+    },
+    getPlayerFilterButtons: (active, commanderPlayers) => {
+        if (!active) return [];
+        
+        const filters = Array(commanderPlayers.players.length + (commanderPlayers.players.length > 1 ? 1 : 0)).fill(false);
+        filters[0] = true;
+        return filters;
     }
 
 }
