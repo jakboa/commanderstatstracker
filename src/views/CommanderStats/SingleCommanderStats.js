@@ -69,11 +69,11 @@ export default function SingleCommanderStats() {
         setButtonsActive([false,false,false,false,false]);
     }
 
-    const handleFilterMatchesPlayer = (e) => {
-        setPlayer(e.target.value);
+    const handleFilterMatchesPlayer = (player) => {
+        setPlayer(player);
         setFilters({
             ...filters,
-            playerFilter: [e.target.value]            
+            playerFilter: [player]            
         })
     };
 
