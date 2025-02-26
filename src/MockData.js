@@ -2177,6 +2177,198 @@ export const gameInfo = [
         ],
 
         year: "2025"
+    },
+    {
+        Match_id: 66,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 3
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Samut, the Driving Force',
+                placement: 4
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Satoru Umezawa",
+                placement: 1
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Imoti, Celebrant of Bounty',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 67,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Samut, the Driving Force',
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Kona, Rescue Beastie",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Codie, Vociferous Codex',
+                placement: 1
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 68,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Disa the Restless',
+                placement: 3
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "The Necrobloom",
+                placement: 3
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Hazezon, Shaper of Sand',
+                placement: 1
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 69,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Millicent, Restless Revenant',
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Satoru Umezawa",
+                placement: 1
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Wyll, Blade of Frontiers',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 70,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Ulalek, Fused Atrocity',
+                placement: 1
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Samut, the Driving Force',
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Satoru Umezawa",
+                placement: 3
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Minn, Wily Illusionist',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 71,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:'Tivit, Seller of Secrets',
+                placement: 1
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "Satoru Umezawa",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Krenko, Mob Boss',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
     }
 
 ];
