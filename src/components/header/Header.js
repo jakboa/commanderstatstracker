@@ -20,7 +20,7 @@ export default function Header( {toggleYear, toggleFilter, active, yearChoice, m
                 <p className="d-inline-flex">racker</p>
             </Col>
             <Col md={6} className="d-flex flex-column justify-content-center align-items-center ">
-                <PlayerSelector active={ active } handleFilterMatchesPlayer={ handleFilterMatchesPlayer } matchResultsForCommander={ matchResultsForCommander }  />
+                <PlayerSelector active={ active } handleFilterMatchesPlayer={ handleFilterMatchesPlayer } handleAllYears= { handleAllYears } matchResultsForCommander={ matchResultsForCommander }  />
                 <YearSelector toggleYear={ toggleYear } toggleFilter={ toggleFilter } yearChoice={ yearChoice } matches={ matches } buttonsActive= { buttonsActive } toggleYearsUpdate={ toggleYearsUpdate }  handleAllYears= { handleAllYears } />
             </Col>
             <Col md={3} className="d-flex justify-content-end">

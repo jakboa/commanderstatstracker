@@ -107,7 +107,6 @@ export default function SingleCommanderStats() {
                         active={ true }
                         handleFilterMatchesPlayer={ handleFilterMatchesPlayer }
                         matchResultsForCommander={ matchResultsForCommander }
-
                         />
             </Col>
             

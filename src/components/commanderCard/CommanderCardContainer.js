@@ -41,7 +41,7 @@ export default function CommanderCardContainer( { playerName, commanderStatsInfo
                         <Button variant="success" className="m-1" onClick={ sortCommanders } value={"1"}>Wins</Button>
                         <Button variant="success" className="m-1" onClick={ sortCommanders } value={"games"}>Played</Button>
                         <Button variant="success" className="m-1" onClick={ sortCommanders } value={"price"}>Price</Button>
-                        <p className="pt-2 pe-1 mb-0 fw-bolder">Sorted by: {sort}.</p>
+                        <p className="pt-2 pe-1 mb-0 fw-bolder">Sorted by: {sort.toUpperCase()}.</p>
                     </div>
                     { loading ? (
                         <p>...loading</p>

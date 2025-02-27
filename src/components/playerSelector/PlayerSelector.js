@@ -1,10 +1,10 @@
-import React, {act, useState} from "react";
+import React, {useState} from "react";
 import SearchHandler from "../SearchHandler";
 
 import Button from "react-bootstrap/Button";
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-export default function PlayerSelector({ active, handleFilterMatchesPlayer, matchResultsForCommander }) {
+export default function PlayerSelector({ active, handleFilterMatchesPlayer, matchResultsForCommander, handleAllYears }) {
 
     const [activeFilter, setActiveFilter] = useState(SearchHandler.getPlayerFilterButtons(active, matchResultsForCommander));
 
@@ -16,7 +16,8 @@ export default function PlayerSelector({ active, handleFilterMatchesPlayer, matc
             const updateToggle = prev.fill(false); 
             updateToggle[index] = !prev[index];
             return updateToggle;
-        })
+        });
+        handleAllYears();
     };
 
     return (
