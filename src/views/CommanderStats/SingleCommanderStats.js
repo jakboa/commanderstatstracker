@@ -34,12 +34,13 @@ export default function SingleCommanderStats() {
     const { commanderName } = useParams();
 
     const commanderInfo = SearchHandler.getSingleCommanderStats(commanderName);
-    const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,commanderInfo);
     const filteredMatches = SearchHandler.getEntityMatchesForYearAndPlayer(commanderInfo,year,player,commanderName);
+    const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,commanderInfo);
     //const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,filteredMatches);
     const totalGames = filteredMatches.length; 
     const allFilteredGames = SearchHandler.setFilter(commanderInfo,filters);
     console.log(allFilteredGames);
+    console.log(commanderInfo);
 
 
 
@@ -93,13 +94,11 @@ export default function SingleCommanderStats() {
     // eslint-disable-next-line
     ,[commanderName])
 
-
-    console.log(cardData)
     return (
         <Row className="singleCommanderPage">
             <Col md={12} style={{ height:"5.8rem" }}>
                 <Header toggleYear={ toggleYear } toggleFilter={ toggleFilter }
-                        yearChoice={ true } matches={ commanderInfo } 
+                        yearChoice={ true } matches={ filteredMatches } 
                         buttonsActive={ buttonsActive }
                         toggleYearsUpdate={ toggleYearsUpdate }
                         handleAllYears={ handleAllYears }

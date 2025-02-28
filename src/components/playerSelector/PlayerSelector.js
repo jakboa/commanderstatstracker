@@ -8,8 +8,6 @@ export default function PlayerSelector({ active, handleFilterMatchesPlayer, matc
 
     const [activeFilter, setActiveFilter] = useState(SearchHandler.getPlayerFilterButtons(active, matchResultsForCommander));
 
-    console.log(activeFilter);
-
     const handlePlayerClick = (player,index) => {
         handleFilterMatchesPlayer(player);
         setActiveFilter(prev => {

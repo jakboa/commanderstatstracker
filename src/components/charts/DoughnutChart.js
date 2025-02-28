@@ -9,7 +9,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export default function DoughnutChart( { results, years } ) {
-  console.log(results);
 
   const doughnutData = years.reduce((accumulator, year) =>{
     const yearData = results[year];

@@ -410,9 +410,6 @@ const SearchHandler = {
         return toggleYears;
     },
     setFilter: (matches,filters) => {
-        //console.log(matches);
-        //console.log(filters.groupFilter);
-        //console.log(filters.playerFilter);
 
 
         const allGroups = filters.groupFilter[0] === "allGroups";
@@ -428,7 +425,6 @@ const SearchHandler = {
             
             const yearFilter = allYears || filters.yearFilter.some((matchYear) => matchYear.toString() === match.year.toString()); 
 
-            console.log(playerFilter);
             return groupFilter && playerFilter && yearFilter;
         });
 
