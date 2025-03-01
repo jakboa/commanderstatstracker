@@ -437,6 +437,11 @@ const SearchHandler = {
         const filters = Array(commanderPlayers.players.length + (commanderPlayers.players.length > 1 ? 1 : 0)).fill(false);
         filters[0] = true;
         return filters;
+    },
+    getFilteredPlayer: (matches,playerToFind) => {
+        if (playerToFind === "allPlayers") {return matches};
+        const playerMatches = matches.filter( match => match.players.some(player => player.nickName  === playerToFind));
+        return playerMatches;
     }
 
 }

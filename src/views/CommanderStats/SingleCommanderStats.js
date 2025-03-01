@@ -33,14 +33,28 @@ export default function SingleCommanderStats() {
     // Derived Values
     const { commanderName } = useParams();
 
+    // All the games with that commander, static
     const commanderInfo = SearchHandler.getSingleCommanderStats(commanderName);
+    
+    // A filtered list based on a string from player usestate:
+    const filteredMatchesByPlayer = SearchHandler.getFilteredPlayer(commanderInfo,player);
+    console.log(filteredMatchesByPlayer);
+
+    // A filtered list of games.
     const filteredMatches = SearchHandler.getEntityMatchesForYearAndPlayer(commanderInfo,year,player,commanderName);
+    
+    // Stats for years, which players and so on for that commander.
     const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,commanderInfo);
-    //const matchResultsForCommander= SearchHandler.getEntityResults(commanderName,filteredMatches);
-    const totalGames = filteredMatches.length; 
+    
+    // Filtered stats for that commander
+    const matchResultsForCommmanderFILTERED= SearchHandler.getEntityResults(commanderName,filteredMatches);
+
+    const totalGames = filteredMatches.length;
+
+    // Currently not in use, will be used once filter logic is done.
     const allFilteredGames = SearchHandler.setFilter(commanderInfo,filters);
     console.log(allFilteredGames);
-    console.log(commanderInfo);
+
 
 
 
@@ -98,7 +112,7 @@ export default function SingleCommanderStats() {
         <Row className="singleCommanderPage">
             <Col md={12} style={{ height:"5.8rem" }}>
                 <Header toggleYear={ toggleYear } toggleFilter={ toggleFilter }
-                        yearChoice={ true } matches={ filteredMatches } 
+                        yearChoice={ true } matches={ filteredMatchesByPlayer } 
                         buttonsActive={ buttonsActive }
                         toggleYearsUpdate={ toggleYearsUpdate }
                         handleAllYears={ handleAllYears }
@@ -132,10 +146,10 @@ export default function SingleCommanderStats() {
                 <Row className="m-3">
                     <Col md={5} className="d-flex flex-column text-center">
                         <p className="bg-light border rounded">Played a total of { totalGames } times!</p>
-                        <EntityScore matchResultsForEntity={ matchResultsForCommander } totalGames={ totalGames } years={ year } />
+                        <EntityScore matchResultsForEntity={ matchResultsForCommmanderFILTERED } totalGames={ totalGames } years={ year } />
                     </Col>
                     <Col md={7} style={{height:"20rem"}} >
-                        <DoughnutChart results={ matchResultsForCommander } years={ year }/>
+                        <DoughnutChart results={ matchResultsForCommmanderFILTERED } years={ year }/>
                     </Col>
                 </Row>
 
