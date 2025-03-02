@@ -22,13 +22,14 @@ export default function CommanderCard( { commander, years } ) {
       },{1:0,2:0,3:0,4:0,games:0});
 
     return (
-        <Card >
+        <Card>
             <Card.Img variant="top" src={commander.image} />
-            <Card.Body>
+            <Card.Body className="pb-1">
                 <Card.Title className="h-25 mb-3">{commander.name}</Card.Title>
                 <Card.Text>Victories: {summedStats[1]} <br />
                 Times played: {summedStats.games}</Card.Text>
                 <Button onClick={ commanderClick } value={commander.name}>Check Stats</Button>
+                <Card.Text className="fst-italic text-end mb-0">Price: {commander.price}€</Card.Text>
             </Card.Body>
         </Card>
     )

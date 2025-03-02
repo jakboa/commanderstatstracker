@@ -23,6 +23,29 @@ export default function CommanderCardContainer( { playerName, commanderStatsInfo
             commanderStatsInfo.sort((a,b)=> b[e.target.value] - a[e.target.value]);
         };
 
+        if (true) {
+            commanderStatsInfo.sort((a,b)=> {
+                const a_SummedStats = years.reduce((accumulator, year) =>{
+                    const yearData = a.matchHistory[year] || {};
+                    Object.keys(yearData).slice(0,5).forEach(placement => {
+                      accumulator[placement] +=  yearData[placement];
+                    })
+                    return accumulator;
+                  },{1:0,2:0,3:0,4:0,games:0});
+                const b_SummedStats = years.reduce((accumulator, year) =>{
+                    const yearData = b.matchHistory[year] || {};
+                    Object.keys(yearData).slice(0,5).forEach(placement => {
+                      accumulator[placement] +=  yearData[placement];
+                    })
+                    return accumulator;
+                  },{1:0,2:0,3:0,4:0,games:0});
+
+                return b_SummedStats[e.target.value] - a_SummedStats[e.target.value]
+            });
+
+
+        };
+
         setSort(e.target.value);
 
     };
