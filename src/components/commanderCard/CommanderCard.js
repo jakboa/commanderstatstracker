@@ -29,7 +29,7 @@ export default function CommanderCard( { commander, years } ) {
                 <Card.Text>Victories: {summedStats[1]} <br />
                 Times played: {summedStats.games}</Card.Text>
                 <Button onClick={ commanderClick } value={commander.name}>Check Stats</Button>
-                <Card.Text className="fst-italic text-end mb-0">Price: {commander.price}€</Card.Text>
+                <Card.Text className="fst-italic text-end">Price: {commander.price}€</Card.Text>
             </Card.Body>
         </Card>
     )
