@@ -15,7 +15,7 @@ export default function HomepageCommandersSingle( { name, results } ) {
 
 
     return (
-        <Card className="mb-2" style={{ width:"15rem" }}>
+        <Card className="mb-2 rounded-0 shadow" style={{ width:"15rem" }}>
             <Card.Header className="d-flex justify-content-center align-items-center fs-5 fw-bold h-50">{name}</Card.Header>
             <Card.Body className="d-flex fs-5 fw-medium flex-column justify-content-end">
                 <Card.Text className="mb-1">{results.first} Wins</Card.Text>

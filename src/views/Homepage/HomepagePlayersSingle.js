@@ -14,7 +14,7 @@ export default function HomepagePlayersSingle( { name, results } ) {
     };
 
     return (
-        <Card className="mb-2">
+        <Card className="mb-2 rounded-0 shadow-lg">
             <Card.Header className="fs-3 fw-bold">{name}</Card.Header>
             <Card.Body className="fs-5 fw-medium">
                 <Card.Text className="mb-0">{results.first} Wins</Card.Text>

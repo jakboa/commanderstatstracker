@@ -123,7 +123,7 @@ export default function Homepage() {
                     <HomepageIntro />
                 </Col>
 
-                <Col md={12} className="bg-white">
+                <Col md={12} className="bg-light">
                 <button onClick={handleClearSearch}>Clear Searches</button>
                     <HomepageGroups 
                         commanderGroups={ homepage.group.playGroups }

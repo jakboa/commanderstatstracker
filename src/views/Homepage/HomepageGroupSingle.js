@@ -16,12 +16,13 @@ export default function HomepageSingleGroup( {groupName, groupPlayers} ) {
     console.log(groupPlayers);
 
     return (
-        <Card bg="light" className="border border-3  border-primary border-black"  style={{ width: '18rem' }}>
-            <Card.Header className="fs-5 fw-bold">{groupName}</Card.Header>
-            <Card.Body>
+        <Card className="rounded-0 shadow" style={{ width: '18rem' }}>
+            <Card.Header className="fs-5 fw-bold rounded-0">{groupName}</Card.Header>
+            <Card.Body className="">
+                <Card.Text className="fw-bold py-0 my-0">Players:</Card.Text>
                 {groupPlayers[0].map((player,index) => {
                     return( 
-                        <Card.Text key={index} className="fw-bold py-0 my-0">-- {player} --</Card.Text>
+                        <Card.Text key={index} className="py-0 my-0">{player}</Card.Text>
                     )
                 })}
                 <Button className="mt-3 fw-bold" variant="info" onClick={handleGroupClick}>Click for Group Stats!</Button>
