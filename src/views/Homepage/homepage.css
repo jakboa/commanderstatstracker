@@ -11,3 +11,8 @@
 .homepageCommanders {
     background-color: whitesmoke;
 }
+
+.cardCSS {
+    cursor: pointer;
+    text-overflow: ellipsis;
+}

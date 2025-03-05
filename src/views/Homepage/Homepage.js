@@ -118,11 +118,13 @@ export default function Homepage() {
                 <Col md={12} style={{ height:"3.8rem" }}>
                     <Header />
                 </Col>
-
+                {
+                /*
                 <Col className="bg-primary bg-gradient">
                     <HomepageIntro />
                 </Col>
-
+                */
+                }
                 <Col md={12} className="bg-light">
                 <button onClick={handleClearSearch}>Clear Searches</button>
                     <HomepageGroups 
