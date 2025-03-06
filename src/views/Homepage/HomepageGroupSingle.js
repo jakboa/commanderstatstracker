@@ -26,7 +26,7 @@ export default function HomepageSingleGroup( {groupName, groupPlayers} ) {
                 <Row>
                 {groupPlayers[0].map((player,index) => {
                     return( 
-                        <Col md={6} key={index} className="border">
+                        <Col md={6} key={index} className="border rounded border-5 bg-success fw-bold">
                             <Card.Text className="py-0 my-0">{player}</Card.Text>
                         </Col>
                     )
