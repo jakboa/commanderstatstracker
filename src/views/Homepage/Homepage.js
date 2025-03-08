@@ -3,7 +3,7 @@ import React, { useReducer } from "react";
 import HomepageGroups from "./HomepageGroups";
 import HomepagePlayers from "./HomepagePlayers";
 import HomepageCommanders from "./HomepageCommanders";
-import HomepageIntro from "./HomepageIntro";
+//import HomepageIntro from "./HomepageIntro";
 import SearchHandler from '../../components/SearchHandler';
 import Header from "../../components/header/Header";
 
