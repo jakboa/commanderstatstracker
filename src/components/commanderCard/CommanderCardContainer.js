@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-import CommanderCard from "./CommanderCard";
+//import CommanderCard from "./CommanderCard";
+import CommanderCardAlt from "./CommanderCardAlt";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -54,9 +55,9 @@ export default function CommanderCardContainer( { playerName, commanderStatsInfo
     return (
         <>
             <div className="d-flex justify-content-center align-items-center mt-2">
-                <h1 className="border border-bottom-0 border-black border-4 rounded-top mb-0 px-2 fw-semibold text-uppercase bg-info-subtle">{playerName}`s commanders</h1>
+                <h1 className="border border-bottom-0 border-black border-3 rounded-top mb-0 px-2 fw-semibold text-uppercase bg-info-subtle">{playerName}`s commanders</h1>
             </div>
-            <div className="bg-info-subtle border border-black border-4 rounded-4 p-3">
+            <div className="bg-info-subtle border border-black border-3 rounded-4 p-3">
                 <Row>
                     <div className="d-flex">
                         <p className="pt-2 pe-1 mb-0 fw-bolder">Sort by: </p>
@@ -71,8 +72,9 @@ export default function CommanderCardContainer( { playerName, commanderStatsInfo
                     ) : (
                         commanderStatsInfo.map( (commander,index) => {
                             return (
-                                <Col key={index} md={2} className=" d-flex p-2">
-                                    <CommanderCard commander={ commander } years={ years } />
+                                <Col key={index} md={3} className=" d-flex p-2">
+                                    {/*<CommanderCard commander={ commander } years={ years } />*/}
+                                    <CommanderCardAlt commander={ commander } years={ years } />
                                 </Col>
                         )
                     }))
