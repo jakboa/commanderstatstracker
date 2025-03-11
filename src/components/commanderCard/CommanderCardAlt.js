@@ -23,8 +23,6 @@ export default function CommanderCardAlt( { commander, years } ) {
         return accumulator;
       },{1:0,2:0,3:0,4:0,games:0});
 
-    console.log(hovered)
-
     return (
         <Card className="bg-dark text-white shadow" onClick={ () => commanderClick(commander.name)} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
             <Card.Img  src={commander.image} />

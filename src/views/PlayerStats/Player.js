@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import SearchHandler from "../../components/SearchHandler";
 import ScryFallAPIConnector from "../../utils/api/ScryFallAPIConnector";
+import DatabaseAPIConnector from "../../utils/api/DatabaseAPIConnector";
 
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
 import EntityScore from "../../components/EntityScore";
@@ -28,6 +29,7 @@ export default function PlayerStats() {
     const year  = SearchHandler.getYearButtons(buttonsActive);
     const [loading, setLoading] = useState(true);
     const [fullCommanderData, setFullCommanderData] = useState([]);
+    const [testDatabase, setTestDatabase] = useState("No connection.")
 
     // Derived Values
     const { playerName } = useParams(); 
@@ -48,6 +50,8 @@ export default function PlayerStats() {
             const combinedDatabaseAndApiData = SearchHandler.getCommanderFactsForPlayer(SrcyfallCommanderData, databaseCommanderInfo);
             setLoading(false);
             setFullCommanderData(combinedDatabaseAndApiData);
+            const dataBaseTest = await DatabaseAPIConnector.testConnection();
+            setTestDatabase(dataBaseTest);
         };
 
         getCommanderInfo();
@@ -97,6 +101,7 @@ export default function PlayerStats() {
                 <Row className="h-100 w-100">
                     <Col md={6} className="d-flex align-items-center">
                         <h1 className="">Stats for {playerName}</h1>
+                        <p>Here is testdata: {testDatabase}</p>
                     </Col>
                 </Row>
             </Col>
