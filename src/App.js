@@ -44,7 +44,7 @@ const routes = [
       },
       {
         path: 'groupstats/:groupname',
-        element: <GroupStats />
+        element: <GroupStats />,
       },
       {
         path: 'playerstats/:playerName',

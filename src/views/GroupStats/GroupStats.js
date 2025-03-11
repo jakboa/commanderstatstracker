@@ -12,6 +12,8 @@ import "./GroupPage.css";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from "react-bootstrap/Button";
+import AddGroupMatch from "./AddGroupMatch";
 
 export default function GroupStats() {
 
@@ -21,11 +23,13 @@ export default function GroupStats() {
     const [buttonsActive, setButtonsActive] = useState([false,false,false,false,false]);
     const year  = SearchHandler.getYearButtons(buttonsActive);
     const [toggleYear, setToggleYear] = useState(true);
+    const [showAddMatch, setShowAddMatch] = useState(false);
 
     // Derived Values
     const { groupname } = useParams();
     const group = SearchHandler.getOneGroup(groupname);
     const filteredGroup = SearchHandler.getEntityMatchesForYear(group, year);
+    const groupInfo = SearchHandler.getGroupInfo(filteredGroup);
 
     const totalGames = filteredGroup.length; 
 
@@ -73,12 +77,16 @@ export default function GroupStats() {
                     <Col>
                         <h1>{groupname}</h1>
                     </Col>
+                    <Col>
+                        <Button onClick={() => setShowAddMatch(true)}>Add a new match to the group!</Button>
+                        <AddGroupMatch groupname={ groupname } group={ groupInfo } show={showAddMatch} onHide={()=> setShowAddMatch(false)}/>
+                    </Col>
                 </Row>
             </Col>
 
             {/* INFOBOX */}
             <Col md={3} className="d-flex text-center">
-                <GroupInfo groupname={ groupname } group={ filteredGroup }  />
+                <GroupInfo groupname={ groupname } groupInfo={ groupInfo }  />
             </Col>
 
             {/* STATS AND GRAPHS */}

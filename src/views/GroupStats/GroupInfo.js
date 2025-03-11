@@ -1,5 +1,4 @@
 import React from "react";
-import SearchHandler from "../../components/SearchHandler";
 
 import { useNavigate } from "react-router-dom";
 
@@ -10,16 +9,13 @@ import Button from "react-bootstrap/Button";
 import "./GroupPage.css"
 
 
-export default function GroupInfo( { groupname, group } ) {
+export default function GroupInfo( { groupname, groupInfo } ) {
 
     const navigate = useNavigate();
 
     const goToPlayer = (e) => {
-        console.log(e.target.value)
         navigate(`/playerstats/${e.target.value}`)
     };
-
-    const groupInfo = SearchHandler.getGroupInfo(group);
 
     console.log(groupInfo)
 
