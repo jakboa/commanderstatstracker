@@ -103,7 +103,7 @@ export default function PlayerStats() {
                 <Row className="h-100 w-100">
                     <Col md={6} className="d-flex align-items-center">
                         <h1 className="">Stats for {playerName}</h1>
-                        <p>Here is testdata: </p>
+                        <p>Here is testdata: {testDatabase} </p>
                     </Col>
                 </Row>
             </Col>

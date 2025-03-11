@@ -14,7 +14,7 @@ const DatabaseAPIConnector = {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            result = response.body;
+            result = response.text();
 
         } catch(error) {
             console.log(error)
