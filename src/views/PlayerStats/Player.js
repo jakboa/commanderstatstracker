@@ -85,6 +85,8 @@ export default function PlayerStats() {
         setButtonsActive([false,false,false,false,false]);
     };
 
+    console.log(testDatabase);
+
     return (
         <Row className="playerstats">
             <Col md={12} style={{ height:"3.8rem" }}>
@@ -101,7 +103,7 @@ export default function PlayerStats() {
                 <Row className="h-100 w-100">
                     <Col md={6} className="d-flex align-items-center">
                         <h1 className="">Stats for {playerName}</h1>
-                        <p>Here is testdata: {testDatabase}</p>
+                        <p>Here is testdata: </p>
                     </Col>
                 </Row>
             </Col>
