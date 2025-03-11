@@ -1,5 +1,5 @@
 
-const BASE_URL = "http://cstkotlin.azurewebsites.net/api";
+const BASE_URL = "https://cstkotlin.azurewebsites.net/api";
 
 
 
