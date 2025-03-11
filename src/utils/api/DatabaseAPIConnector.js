@@ -5,12 +5,12 @@ const BASE_URL = "https://cstkotlin.azurewebsites.net/api";
 
 const DatabaseAPIConnector = {
 
-    testConnection: async() => {
+    testConnection: async(playerName) => {
         let result = "";
 
         try {
 
-            const response = await fetch(`${BASE_URL}/hello`);
+            const response = await fetch(`${BASE_URL}/hello?name=${playerName}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

@@ -50,7 +50,7 @@ export default function PlayerStats() {
             const combinedDatabaseAndApiData = SearchHandler.getCommanderFactsForPlayer(SrcyfallCommanderData, databaseCommanderInfo);
             setLoading(false);
             setFullCommanderData(combinedDatabaseAndApiData);
-            const dataBaseTest = await DatabaseAPIConnector.testConnection();
+            const dataBaseTest = await DatabaseAPIConnector.testConnection(playerName);
             setTestDatabase(dataBaseTest);
         };
 
