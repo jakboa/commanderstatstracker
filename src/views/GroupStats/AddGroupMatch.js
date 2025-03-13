@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Modal  from "react-bootstrap/Modal";
 import Button  from "react-bootstrap/Button";
+import Select from 'react-select';
 
 
 
 export default function AddGroupMatch(props) {
 
+    const [searchCommander,setSearchCommander] = useState("")
+
     console.log(props);
+
+
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ]
+      console.log(searchCommander);
+
+    const commanderSearch = (e) => {
+        console.log('handleChange', e)
+    }
 
     return (
         <Modal {...props} centered>
@@ -18,7 +33,10 @@ export default function AddGroupMatch(props) {
                 <h4>{props.groupname}</h4>
                 {props.group.arrayPlayerNicks.map(player => {
                     return (
-                        <p>{player}</p>
+                        <div>
+                            <p>{player}</p>
+                            <Select options={options} onChange={ commanderSearch }/>
+                        </div>
                     )
                 })}
             </Modal.Body>

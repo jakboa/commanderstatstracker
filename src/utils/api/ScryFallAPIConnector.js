@@ -81,6 +81,24 @@ const ScryFallAPIConnector = {
             }
             console.log(result);
             return result
+        },
+        getAutoCompleteCommander: async (searchWord) => {
+            let result = {};
+
+            try {
+                const response = await fetch(`${BASE_URL}/cards/autocomplete?q=${searchWord}`);
+
+                if(!response.ok){
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                };
+                result = await response.json();
+
+            } catch (error) {
+                console.log(error);
+            }
+            console.log(result)
+            return result
+            
         }
 
 };

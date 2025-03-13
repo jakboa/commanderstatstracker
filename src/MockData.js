@@ -2369,6 +2369,70 @@ export const gameInfo = [
         ],
 
         year: "2025"
+    },
+    {
+        Match_id: 72,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 2
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:"Sythis, Harvest's Hand",
+                placement: 3
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "The Mindskinner",
+                placement: 2
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Hazezon, Shaper of Sand',
+                placement: 1
+            }
+        ],
+
+        year: "2025"
+    },
+    {
+        Match_id: 71,
+
+        Group_name: 'B_Boys',
+
+        players: [  
+            { 
+                nickName: 'Token Tyrant',
+                commander: 'Eladamri, Korvecdal',
+                placement: 1
+            },
+
+            {
+                nickName: 'Graveyard Guru',
+                commander:"Sythis, Harvest's Hand",
+                placement: 2
+            },
+
+            {
+                nickName: 'Lifegain Legend',
+                commander: "The Mindskinner",
+                placement: 3
+            },
+            {
+                nickName: 'Planeswalker Pete',
+                commander: 'Esika, God of the Tree',
+                placement: 2
+            }
+        ],
+
+        year: "2025"
     }
 
 ];
