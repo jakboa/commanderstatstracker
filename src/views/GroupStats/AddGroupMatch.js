@@ -1,28 +1,56 @@
-import React, { useState } from "react";
+import React from "react";
+
+import ScryFallAPIConnector from "../../utils/api/ScryFallAPIConnector";
 
 import Modal  from "react-bootstrap/Modal";
 import Button  from "react-bootstrap/Button";
-import Select from 'react-select';
+import AysncSelect from 'react-select/async';
 
 
 
 export default function AddGroupMatch(props) {
 
-    const [searchCommander,setSearchCommander] = useState("")
+
 
     console.log(props);
 
 
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-      ]
-      console.log(searchCommander);
+    const getOptions = async (searchValue, callback) => {
 
-    const commanderSearch = (e) => {
-        console.log('handleChange', e)
-    }
+        // First get all cards that fitt the name.
+        const cardOptions = await ScryFallAPIConnector.getAutoCompleteCommander(searchValue);
+
+        if (!cardOptions?.length) return callback([]);
+
+        // Make the result fitt the get bulk card API call. 
+        //Personal note: () in map is used to say its a object + name will be the key and the string the value.
+        const formatedCardSearch = cardOptions.flatMap(name => {
+            if (name.includes("//")) {
+                return name.split(" // ").map(doubleSided => ({ name:doubleSided }))
+            };
+            return [{ name }]
+        });
+        // Get info about the cards that fitt.
+        const cardInfo = await ScryFallAPIConnector.getGroupCommanderData(formatedCardSearch);
+        const filterRegex = /Legendary(?:.*Creature| Plainswalker)/
+        const filteredCommanders = cardInfo.data.filter(card => filterRegex.test(card.type_line));
+
+        const check = filteredCommanders.flatMap( commander =>  {
+            if (commander.card_faces) {
+                commander.card_faces.forEach(card_face => {
+                    console.log("HERE",card_face)
+                    if (card_face.name.includes(searchValue)) return { value: card_face.name, label: card_face.name }
+                })} else return { value: commander.name, label: commander.name }
+        });
+
+        const finalShow = filteredCommanders.map(card => ({ value: card.name, label: card.name }))
+
+        
+        console.log("getOptions", searchValue,cardOptions,formatedCardSearch,cardInfo,filteredCommanders, check);
+
+        callback(finalShow);
+          
+    };
 
     return (
         <Modal {...props} centered>
@@ -31,11 +59,11 @@ export default function AddGroupMatch(props) {
             </Modal.Header>
             <Modal.Body>
                 <h4>{props.groupname}</h4>
-                {props.group.arrayPlayerNicks.map(player => {
+                {props.group.arrayPlayerNicks.map((player, index) => {
                     return (
-                        <div>
+                        <div key={index}>
                             <p>{player}</p>
-                            <Select options={options} onChange={ commanderSearch }/>
+                            <AysncSelect loadOptions={getOptions}/>
                         </div>
                     )
                 })}

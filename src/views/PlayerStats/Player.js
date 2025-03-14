@@ -46,7 +46,11 @@ export default function PlayerStats() {
     // Functions
     useEffect(()=> {
         const getCommanderInfo = async () => {
-            const SrcyfallCommanderData = await ScryFallAPIConnector.getGroupCommanderData(databaseCommanderInfo);
+            const commandersToSearch = Object.keys(databaseCommanderInfo).map(commander => {
+                return {"name":commander}
+            })
+
+            const SrcyfallCommanderData = await ScryFallAPIConnector.getGroupCommanderData(commandersToSearch);
             const combinedDatabaseAndApiData = SearchHandler.getCommanderFactsForPlayer(SrcyfallCommanderData, databaseCommanderInfo);
             setLoading(false);
             setFullCommanderData(combinedDatabaseAndApiData);

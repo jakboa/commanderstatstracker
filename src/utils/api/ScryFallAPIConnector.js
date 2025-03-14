@@ -58,13 +58,13 @@ const ScryFallAPIConnector = {
         },
         getGroupCommanderData: async (commanderList) => {
             let result ={}
-            const commandersToSearch = Object.keys(commanderList).map(commander => {
-                return {"name":commander}
-            })
+
+            // The format for commanderList NEEDS to be: [ {name:"PreciseCardName"}, {name:"PreciseCardName"} ]
+
             try {
                 const response = await fetch(`${BASE_URL}/cards/collection`,{
                     method: "POST",
-                    body: JSON.stringify({"identifiers":commandersToSearch}),
+                    body: JSON.stringify({"identifiers":commanderList}),
                     headers: {
                         "Accept": "*/*",
                         "Content-Type": "application/json"
@@ -96,8 +96,8 @@ const ScryFallAPIConnector = {
             } catch (error) {
                 console.log(error);
             }
-            console.log(result)
-            return result
+            console.log(result);
+            return result.data;
             
         }
 
