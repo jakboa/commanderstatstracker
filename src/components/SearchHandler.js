@@ -442,6 +442,25 @@ const SearchHandler = {
         if (playerToFind === "allPlayers") {return matches};
         const playerMatches = matches.filter( match => match.players.some(player => player.nickName  === playerToFind));
         return playerMatches;
+    },
+    makeNewMatchResults: (groupName,groupInfo) => {
+        const names = groupInfo.arrayPlayerNicks;
+        
+
+        const matchResults =  {
+            groupName: groupName,
+            year:"2025",
+            results: [ 
+                { placement:1, playerNick:"Not Set", commander:"Select Commander" },
+                { placement:2, playerNick:"Not Set", commander:"Select Commander" },
+                { placement:2, playerNick:"Not Set", commander:"Select Commander" },
+                { placement:2, playerNick:"Not Set", commander:"Select Commander" }
+                ]
+        };
+
+        matchResults.results.forEach((player,index) => player.playerNick = names[index] || "Unkown Player");
+
+        return matchResults;
     }
 
 }
