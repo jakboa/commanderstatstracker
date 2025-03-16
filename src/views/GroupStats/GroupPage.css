@@ -53,5 +53,8 @@ Other:
     background-color: #8183a6;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    
+}
+
+.addBackground {
+    background-color: #c9cad6;
 }
