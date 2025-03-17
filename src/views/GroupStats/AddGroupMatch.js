@@ -24,6 +24,20 @@ export default function AddGroupMatch(props) {
     let timeOutId;
     const timeOutTime = 800;
 
+    const commanderFilters = (card) => {
+        const findLegendaryCreatures = /Legendary.*Creature/i;
+        const uniqueCommanders = ["Grist, the Hunger Tide"];
+        const plainswalkerCommanders = "can be your commander";
+        const backgroundEnchantments = "Background";
+         
+        return findLegendaryCreatures.test(card.type_line) ||
+            card.name.includes(uniqueCommanders) ||
+            card.oracle_text?.includes(plainswalkerCommanders) ||
+            card.type_line.includes(backgroundEnchantments) 
+    }
+
+    //isMulti
+
     console.log(matchResults);
 
 
@@ -42,16 +56,21 @@ export default function AddGroupMatch(props) {
             const frontFace = name.includes("//") ? name.split(" // ")[0] : name;
             return { name:frontFace };
         });
-        //console.log("HERE",formatedCardSearch)
+
         // Get info about the cards that fit.
         const cardInfo = await ScryFallAPIConnector.getGroupCommanderData(formatedCardSearch);
-        const filterRegex = /Legendary.*(Creature|Planeswalker)/i
-        const filteredCommanders = cardInfo.data.filter(card => filterRegex.test(card.type_line));
 
-        const finalShow = filteredCommanders.map( commander =>  {
+        const filteredCommanders = cardInfo.data.filter(card => 
+            commanderFilters(card)
+        );
+
+        const finalShow = filteredCommanders.flatMap( commander =>  {
             if (commander.card_faces) {
-                const cardSide = commander.card_faces.find(cardFace => cardFace.name.includes(searchValue));
-                return { value: cardSide.name, label: cardSide.name }
+                return commander.card_faces.map(face => (
+                     { value: face.name, label: face.name }
+                ))
+                //const cardSide = commander.card_faces.find(cardFace => cardFace.name.includes(searchValue));
+                //return { value: cardSide.name, label: cardSide.name }
                 
             } else return { value: commander.name, label: commander.name }
         });
@@ -159,6 +178,7 @@ export default function AddGroupMatch(props) {
                                                      label:matchResults.results[index].commander
                                                     }
                                                 }
+                                        
                                                 onChange={(selectedOption) =>handleCommanderChange(selectedOption,index)}/>
                                         </td>
                                     </tr>
