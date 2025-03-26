@@ -31,7 +31,7 @@ export default function AddGroupMatch(props) {
         const backgroundEnchantments = "Background";
          
         return findLegendaryCreatures.test(card.type_line) ||
-            card.name.includes(uniqueCommanders) ||
+            uniqueCommanders.includes(card.name) ||
             card.oracle_text?.includes(plainswalkerCommanders) ||
             card.type_line.includes(backgroundEnchantments) 
     }

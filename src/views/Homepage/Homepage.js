@@ -10,6 +10,8 @@ import Header from "../../components/header/Header";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import { motion } from "motion/react"
+
 
 
 const initalHomepage = {
@@ -110,6 +112,13 @@ export default function Homepage() {
         dispatch( { type:"removeSearch", search: "" } );
     };
 
+    const box = {
+        width: 100,
+        height: 100,
+        backgroundColor: "#9911ff",
+        borderRadius: 5,
+    }
+
 
     return (
         
@@ -125,6 +134,14 @@ export default function Homepage() {
                 </Col>
                 */
                 }
+                <Col className="my-3">
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onHoverStart={() => console.log('hover started!')}
+                    style={box}
+                />
+                </Col>
                 <Col md={12} className="bg-light">
                 <button onClick={handleClearSearch}>Clear Searches</button>
                     <HomepageGroups 
