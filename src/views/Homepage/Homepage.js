@@ -1,4 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState, useEffect } from "react";
+import * as d3 from "d3";
+import { motion, animate } from "framer-motion";
+
+
 //import './homepage.css';
 import HomepageGroups from "./HomepageGroups";
 import HomepagePlayers from "./HomepagePlayers";
@@ -10,7 +14,19 @@ import Header from "../../components/header/Header";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { motion } from "motion/react"
+
+
+const data = [
+    { name: "A", value: 40, color: "#FF5733" },
+    { name: "B", value: 30, color: "#33FF57" },
+    { name: "C", value: 20, color: "#3357FF" },
+    { name: "D", value: 10, color: "#F0C808" },
+  ];
+  
+  const width = 300;
+  const height = 300;
+  const radius = Math.min(width, height) / 2;
+
 
 
 
@@ -94,7 +110,27 @@ const reducer = (state, action) =>  {
 export default function Homepage() {
 
     const [homepage, dispatch] = useReducer(reducer, initalHomepage);
+    const [arcs, setArcs] = useState([]);
 
+    useEffect(() => {
+
+        const pie = d3.pie().value((d) => d.value);
+        const arcData = pie(data);
+    
+
+        const arcGenerator = d3.arc().innerRadius(0).outerRadius(radius);
+    
+
+        const calculatedArcs = arcData.map((d, i) => ({
+          path: arcGenerator(d),
+          labelPos: arcGenerator.centroid(d),
+          value: d.data.value,
+          percentage: ((d.data.value / d3.sum(data, (d) => d.value)) * 100).toFixed(1) + "%",
+          color: d.data.color,
+        }));
+    
+        setArcs(calculatedArcs);
+      }, []);
 
     const handleGroupSearch = (e) => {
         dispatch( { type:"searchGroup", search: e.target.value } );
@@ -141,6 +177,35 @@ export default function Homepage() {
                     onHoverStart={() => console.log('hover started!')}
                     style={box}
                 />
+                    <svg width={width} height={height} viewBox="-150 -150 300 300">
+      {arcs.map((arc, i) => (
+        <g key={i}>
+          {/* Animert wedge */}
+          <motion.path
+            d={arc.path}
+            fill={arc.color}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: i * 0.2 }}
+          />
+          {/* Prosenttekst midt i wedge */}
+          <motion.text
+            x={arc.labelPos[0]}
+            y={arc.labelPos[1]}
+            textAnchor="middle"
+            alignmentBaseline="middle"
+            fill="white"
+            fontSize="14"
+            fontWeight="bold"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: i * 0.5 }}
+          >
+            {arc.percentage}
+          </motion.text>
+        </g>
+      ))}
+    </svg>
                 </Col>
                 <Col md={12} className="bg-light">
                 <button onClick={handleClearSearch}>Clear Searches</button>
