@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { AnimatePresence, motion } from "motion/react"
+
 //import CommanderCard from "./CommanderCard";
 import CommanderCardAlt from "./CommanderCardAlt";
 
@@ -72,10 +74,18 @@ export default function CommanderCardContainer( { playerName, commanderStatsInfo
                     ) : (
                         commanderStatsInfo.map( (commander,index) => {
                             return (
-                                <Col key={index} md={3} className=" d-flex p-2">
-                                    {/*<CommanderCard commander={ commander } years={ years } />*/}
-                                    <CommanderCardAlt commander={ commander } years={ years } />
-                                </Col>
+                                <motion.div key={index} className="col-md-3 d-flex p-2">
+                                <AnimatePresence>
+                                    <motion.div 
+                                        layout
+                                        transition={{ type:"spring", stiffness:300, damping:20 }}>
+
+                                            {/*<CommanderCard commander={ commander } years={ years } />*/}
+                                            <CommanderCardAlt commander={ commander } years={ years } />
+                                        
+                                    </motion.div>
+                                </AnimatePresence>
+                                </motion.div>
                         )
                     }))
                 }
