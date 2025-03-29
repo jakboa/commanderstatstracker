@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 
 export default function CommanderCardContainer( { playerName, commanderStatsInfo, years, loading  } ) {
 
+    const [commanderCardsInfo, setCommanderCardsInfo] = useState(commanderStatsInfo);
     const [sort, setSort] = useState("Default");
     console.log(commanderStatsInfo);
 
@@ -49,6 +50,7 @@ export default function CommanderCardContainer( { playerName, commanderStatsInfo
 
         };
 
+        setCommanderCardsInfo(commanderStatsInfo)
         setSort(e.target.value);
 
     };
@@ -72,22 +74,27 @@ export default function CommanderCardContainer( { playerName, commanderStatsInfo
                     { loading ? (
                         <p>...loading</p>
                     ) : (
-                        commanderStatsInfo.map( (commander,index) => {
+                        <AnimatePresence >
+                       { commanderStatsInfo.map( (commander) => {
                             return (
-                                <motion.div key={index} className="col-md-3 d-flex p-2">
-                                <AnimatePresence>
-                                    <motion.div 
-                                        layout
-                                        transition={{ type:"spring", stiffness:300, damping:20 }}>
 
-                                            {/*<CommanderCard commander={ commander } years={ years } />*/}
-                                            <CommanderCardAlt commander={ commander } years={ years } />
+                                <motion.div key={commander.name} className="col-md-3 d-flex p-2"
+                                    layout
+                                    transition={{ type:"spring", stiffness:100, damping:20 }}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.8 }}
+                                    >
+
+                                        {/*<CommanderCard commander={ commander } years={ years } />*/}
+                                        <CommanderCardAlt commander={ commander } years={ years } />
                                         
-                                    </motion.div>
-                                </AnimatePresence>
                                 </motion.div>
-                        )
-                    }))
+
+                            )
+                    }) }
+                    </AnimatePresence>
+                    )
                 }
                 </Row>
             </div>
