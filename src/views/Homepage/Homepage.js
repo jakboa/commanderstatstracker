@@ -1,6 +1,6 @@
 import React, { useReducer, useState, useEffect } from "react";
 import * as d3 from "d3";
-import { motion, animate } from "framer-motion";
+import { motion } from "framer-motion";
 
 
 //import './homepage.css';

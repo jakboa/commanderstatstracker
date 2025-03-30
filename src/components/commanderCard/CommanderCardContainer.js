@@ -6,12 +6,11 @@ import { AnimatePresence, motion } from "motion/react"
 import CommanderCardAlt from "./CommanderCardAlt";
 
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 export default function CommanderCardContainer( { playerName, commanderStatsInfo, years, loading  } ) {
 
-    const [commanderCardsInfo, setCommanderCardsInfo] = useState(commanderStatsInfo);
+    //const [commanderCardsInfo, setCommanderCardsInfo] = useState(commanderStatsInfo);
     const [sort, setSort] = useState("Default");
     console.log(commanderStatsInfo);
 
@@ -50,7 +49,7 @@ export default function CommanderCardContainer( { playerName, commanderStatsInfo
 
         };
 
-        setCommanderCardsInfo(commanderStatsInfo)
+        //setCommanderCardsInfo(commanderStatsInfo)
         setSort(e.target.value);
 
     };
