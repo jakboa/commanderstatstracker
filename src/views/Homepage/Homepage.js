@@ -1,7 +1,7 @@
-import React, { useReducer, useState, useEffect } from "react";
-import * as d3 from "d3";
+import React, { useReducer } from "react";
 import { motion } from "framer-motion";
 
+import invasion_of_fiora from "../../utils/invasion_of_fiora.jpg"
 
 //import './homepage.css';
 import HomepageGroups from "./HomepageGroups";
@@ -13,19 +13,8 @@ import Header from "../../components/header/Header";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 
-
-
-const data = [
-    { name: "A", value: 40, color: "#FF5733" },
-    { name: "B", value: 30, color: "#33FF57" },
-    { name: "C", value: 20, color: "#3357FF" },
-    { name: "D", value: 10, color: "#F0C808" },
-  ];
-  
-  const width = 300;
-  const height = 300;
-  const radius = Math.min(width, height) / 2;
 
 
 
@@ -110,27 +99,6 @@ const reducer = (state, action) =>  {
 export default function Homepage() {
 
     const [homepage, dispatch] = useReducer(reducer, initalHomepage);
-    const [arcs, setArcs] = useState([]);
-
-    useEffect(() => {
-
-        const pie = d3.pie().value((d) => d.value);
-        const arcData = pie(data);
-    
-
-        const arcGenerator = d3.arc().innerRadius(0).outerRadius(radius);
-    
-
-        const calculatedArcs = arcData.map((d, i) => ({
-          path: arcGenerator(d),
-          labelPos: arcGenerator.centroid(d),
-          value: d.data.value,
-          percentage: ((d.data.value / d3.sum(data, (d) => d.value)) * 100).toFixed(1) + "%",
-          color: d.data.color,
-        }));
-    
-        setArcs(calculatedArcs);
-      }, []);
 
     const handleGroupSearch = (e) => {
         dispatch( { type:"searchGroup", search: e.target.value } );
@@ -148,12 +116,6 @@ export default function Homepage() {
         dispatch( { type:"removeSearch", search: "" } );
     };
 
-    const box = {
-        width: 100,
-        height: 100,
-        backgroundColor: "#9911ff",
-        borderRadius: 5,
-    }
 
 
     return (
@@ -170,42 +132,27 @@ export default function Homepage() {
                 </Col>
                 */
                 }
-                <Col className="my-3">
-                <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    onHoverStart={() => console.log('hover started!')}
-                    style={box}
-                />
-                    <svg width={width} height={height} viewBox="-150 -150 300 300">
-      {arcs.map((arc, i) => (
-        <g key={i}>
-          {/* Animert wedge */}
-          <motion.path
-            d={arc.path}
-            fill={arc.color}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: i * 0.2 }}
-          />
-          {/* Prosenttekst midt i wedge */}
-          <motion.text
-            x={arc.labelPos[0]}
-            y={arc.labelPos[1]}
-            textAnchor="middle"
-            alignmentBaseline="middle"
-            fill="white"
-            fontSize="14"
-            fontWeight="bold"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: i * 0.5 }}
-          >
-            {arc.percentage}
-          </motion.text>
-        </g>
-      ))}
-    </svg>
+                <Col className="my-3 d-flex justify-content-center">
+
+
+                <Card className="border">
+                    <Card.Img alt="lyev_skyknight" src={invasion_of_fiora} />
+                    <Card.ImgOverlay className="d-flex flex-column justify-content-center align-items-center fw-bold fs-1 text-light">
+                        <motion.div
+                            initial={{ opacity:0, scale:0 }}
+                            animate={{ opacity:2, scale:2 }}
+                            transition={{
+                                duration: 0.4,
+                                scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 }
+                            }}
+                            >
+                            <Card.Text className="">Commander</Card.Text>
+                            <Card.Text className="">Stats Tracker</Card.Text>
+                        </motion.div>
+                    </Card.ImgOverlay>
+                </Card>
+
+
                 </Col>
                 <Col md={12} className="bg-light">
                 <button onClick={handleClearSearch}>Clear Searches</button>

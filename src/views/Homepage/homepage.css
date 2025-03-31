@@ -16,3 +16,23 @@
     cursor: pointer;
     text-overflow: ellipsis;
 }
+
+.captions {
+    position: absolute;
+    color: #FFFFFF;
+    font-size: 4.5em;
+    left: 17%;
+}
+
+.captionsTop {
+    position: absolute;
+    bottom: 55%;
+
+}
+
+.captionsBottom {
+    position: absolute;
+    bottom: 40%;
+
+}
+
