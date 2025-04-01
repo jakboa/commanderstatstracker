@@ -139,16 +139,20 @@ export default function Homepage() {
                     <Card.Img alt="lyev_skyknight" src={invasion_of_fiora} />
                     <Card.ImgOverlay className="d-flex flex-column justify-content-center align-items-center fw-bold fs-1 text-light">
                         <motion.div
-                            initial={{ opacity:0, scale:0 }}
-                            animate={{ opacity:2, scale:2 }}
-                            transition={{
-                                duration: 0.4,
-                                scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 }
-                            }}
+                            initial={{ opacity:1, scale:2,  x:-300 }}
+                            animate={{ opacity:2, scale:2, x:0 }}
+                            transition={{ duration: 1.4, ease: "easeOut" }}
                             >
                             <Card.Text className="">Commander</Card.Text>
+                        </motion.div>
+                        <motion.div className="mt-2"
+                            initial={{ opacity:1, scale:2,  x:300 }}
+                            animate={{ opacity:2, scale:2, x:0 }}
+                            transition={{ duration: 1.4, ease: "easeOut" }}
+                            >
                             <Card.Text className="">Stats Tracker</Card.Text>
                         </motion.div>
+
                     </Card.ImgOverlay>
                 </Card>
 
