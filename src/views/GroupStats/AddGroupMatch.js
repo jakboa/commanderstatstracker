@@ -10,6 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Button  from "react-bootstrap/Button";
 
 import AysncSelect from 'react-select/async';
+import DatabaseAPIConnector from "../../utils/api/DatabaseAPIConnector";
 
 
 
@@ -126,6 +127,20 @@ export default function AddGroupMatch(props) {
     };
 
 
+    const handleAddNewMatch = async () => {
+
+        try {
+            const response = await DatabaseAPIConnector.addMatch(matchResults)
+            console.log(response)
+
+        } catch (e) {
+        console.error("Database Error:", e.response || e.message || e);
+        }
+
+
+    };
+
+
 
     return (
         <Modal {...props} centered size="lg">
@@ -200,8 +215,8 @@ export default function AddGroupMatch(props) {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button className="bg-danger border-danger" onClick={ handResetAddMatch}>Abort!</Button>
-                <Button className="bg-success border-success" onClick={props.onHide}>Ship it!</Button>
+                <Button className="bg-danger border-danger" onClick={ handResetAddMatch }>Abort!</Button>
+                <Button className="bg-success border-success" onClick={ handleAddNewMatch }>Ship it!</Button>
             </Modal.Footer>
 
         </Modal>
