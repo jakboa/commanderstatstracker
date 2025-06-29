@@ -1,6 +1,6 @@
 import React from "react";
-import MatchInfoSingle from "./MatchInfoSingle_copy";
-import "./MatchInfoBox_copy.css";
+import MatchInfoSingle from "./MatchInfoSingleCopy";
+import "./MatchInfoBoxCopy.css";
 
 import Row from 'react-bootstrap/Row';
 import { Col } from "react-bootstrap";

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SearchHandler from "../../components/SearchHandler";
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
-import MatchInfoBox_copy from "../../components/MatchInfo_copy/MatchInfoBox_copy";
+import MatchInfoBoxCopy from "../../components/MatchInfo_copy/MatchInfoBoxCopy";
 import GroupScore from "./GroupScore";
 import GroupInfo from "./GroupInfo";
 import GroupLineChart from "./GroupLineChart";
@@ -148,7 +148,7 @@ export default function GroupStats() {
                 :
             <Col md={12} className="border-top border-3 border-black matchInsert groupMatches">
                 <h1 className="text-center  mt-4">Match Results for {groupname}</h1>                
-                <MatchInfoBox_copy matchDetails={matchData} />
+                <MatchInfoBoxCopy matchDetails={matchData} />
             
             </Col>
             }            

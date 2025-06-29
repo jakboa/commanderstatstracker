@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./MatchInfoBox_copy.css";
+import "./MatchInfoBoxCopy.css";
 
 import Stack from 'react-bootstrap/Stack';
 import Image from 'react-bootstrap/Image';
