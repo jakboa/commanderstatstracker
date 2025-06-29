@@ -451,10 +451,10 @@ const SearchHandler = {
             groupName: groupName,
             year:"2025",
             results: [ 
-                { placement:1, playerNick:"Not Set", commander:"Select Commander" },
-                { placement:2, playerNick:"Not Set", commander:"Select Commander" },
-                { placement:2, playerNick:"Not Set", commander:"Select Commander" },
-                { placement:2, playerNick:"Not Set", commander:"Select Commander" }
+                { placement:1, playerNick:"Not Set", commander:"Select Commander", secondaryCommander:null, companion: null },
+                { placement:2, playerNick:"Not Set", commander:"Select Commander", secondaryCommander:null, companion: null },
+                { placement:2, playerNick:"Not Set", commander:"Select Commander", secondaryCommander:null, companion: null },
+                { placement:2, playerNick:"Not Set", commander:"Select Commander", secondaryCommander:null, companion: null }
                 ]
         };
 

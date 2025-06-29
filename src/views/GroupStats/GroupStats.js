@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SearchHandler from "../../components/SearchHandler";
 import MatchInfoBox from "../../components/MatchInfo/MatchInfoBox";
+import MatchInfoBox_copy from "../../components/MatchInfo_copy/MatchInfoBox_copy";
 import GroupScore from "./GroupScore";
 import GroupInfo from "./GroupInfo";
 import GroupLineChart from "./GroupLineChart";
 import GroupDoughnutChart from "./GroupDoughnutChart";
 import Header from "../../components/header/Header";
+import DatabaseAPIConnector from "../../utils/api/DatabaseAPIConnector";
 
 import "./GroupPage.css";
 
@@ -24,6 +26,8 @@ export default function GroupStats() {
     const year  = SearchHandler.getYearButtons(buttonsActive);
     const [toggleYear, setToggleYear] = useState(true);
     const [showAddMatch, setShowAddMatch] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [matchData, setMatchData] = useState({});
 
     // Derived Values
     const { groupname } = useParams();
@@ -32,6 +36,13 @@ export default function GroupStats() {
     const groupInfo = SearchHandler.getGroupInfo(filteredGroup);
 
     const totalGames = filteredGroup.length; 
+
+    console.log("HER ER OG GROUP:")
+    console.log(filteredGroup)
+
+    console.log("HER ER DATABASE GROUP:")
+    console.log(matchData)
+
 
     // Functions
     
@@ -60,6 +71,17 @@ export default function GroupStats() {
     const handleAllYears = () => {
         setButtonsActive([false,false,false,false,false]);
     }
+
+    useEffect(()=>{
+        const getMatches = async () => {
+            const matchResponse = await DatabaseAPIConnector.getMatches({filter:"group",searchFor:"A_boys"});
+            setMatchData(matchResponse);
+            setLoading(false);
+        };
+
+        getMatches();
+
+    },[]) 
 
     return (
         <Row className="groupPage">
@@ -119,6 +141,17 @@ export default function GroupStats() {
                 <MatchInfoBox matchDetails={filteredGroup} />
             
             </Col>
+
+            {/* GAMES PLAYED FROM DATABASE*/}
+            {loading ? 
+                <p>Loading...</p>
+                :
+            <Col md={12} className="border-top border-3 border-black matchInsert groupMatches">
+                <h1 className="text-center  mt-4">Match Results for {groupname}</h1>                
+                <MatchInfoBox_copy matchDetails={matchData} />
+            
+            </Col>
+            }            
         </Row>
     );
 };

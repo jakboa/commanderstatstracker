@@ -1,0 +1,66 @@
+.MatchBox {
+    border: solid black 3px;
+}
+
+.matchplayerCol {
+    padding: 0;
+
+}
+
+
+.matchplayerStack {
+    padding: 0 !important;
+}
+
+
+.playerBox {
+
+    margin: 0;
+}
+
+.matchPic {
+    /* This makes it so the images do not get fucky with their aspect ratio, I think...*/
+    object-fit: cover;
+    width: 8%;
+}
+
+.matchNickname {
+
+    background-color: grey;
+    width: 40%;
+
+}
+
+.matchCommander {
+    background-color: blanchedalmond;
+    width: 50%;
+
+}
+
+.matchPlacement {
+    background-color: rebeccapurple;
+    width: 5%;
+}
+
+
+.result-1 {
+    background-color: #EFFA82;
+}
+
+.result-2 {
+    background-color: #C5C7FF;
+}
+
+.result-3 {
+    background-color: #9597BF;
+}
+
+.result-4 {
+    background-color: #AAA076;
+}
+
+.getFocus {
+    font-size: large;
+    text-transform: uppercase;
+    text-decoration: underline;
+}

@@ -101,6 +101,30 @@ export default function AddGroupMatch(props) {
         })
     };
 
+    const handleSecondaryCommanderChange = (selectedOption, index) => {
+
+        setMatchResults((prev) => {
+            const updatedCommander = [...prev.results];
+            updatedCommander[index].secondaryCommander = selectedOption.value;
+            return {
+                ...prev,
+                results: updatedCommander
+            };
+        })
+    };
+
+    const handleCompanionChange = (selectedOption, index) => {
+
+        setMatchResults((prev) => {
+            const updatedCommander = [...prev.results];
+            updatedCommander[index].companion = selectedOption.value;
+            return {
+                ...prev,
+                results: updatedCommander
+            };
+        })
+    };
+
     const handlePlacementChange = (e, index) => {
         setMatchResults((prev) => {
             const updatedPlacement = [...matchResults.results];
@@ -153,14 +177,18 @@ export default function AddGroupMatch(props) {
                     <table className="w-100">
                         <colgroup>
                             <col style={{width:'10%'}} />
-                            <col style={{width:'40%'}} />
-                            <col style={{width:'50%'}} />
+                            <col style={{width:'20%'}} />
+                            <col style={{width:'25%'}} />
+                            <col style={{width:'25%'}} />
+                            <col style={{width:'20%'}} />
                         </colgroup>
                         <thead>
                             <tr className="text-center">
                                 <th>Placement</th>
                                 <th>Player</th>
                                 <th>Commander</th>
+                                <th>Partner/Background</th>
+                                <th>companion</th>
                             </tr>
                         </thead>
                         <tbody className="">
@@ -195,6 +223,38 @@ export default function AddGroupMatch(props) {
                                                 }
                                         
                                                 onChange={(selectedOption) =>handleCommanderChange(selectedOption,index)}/>
+                                        </td>
+                                        <td className="pe-2">
+                                            <AysncSelect loadOptions={(inputValue,callback) => {
+                                                clearTimeout(timeOutId);
+                                                timeOutId = setTimeout(async () => {
+                                                    const options = await getOptions(inputValue);
+                                                    callback(options);
+                                                },timeOutTime)
+                                            }}
+                                                value={
+                                                    {value:matchResults.results[index].secondaryCommander,
+                                                     label:matchResults.results[index].secondaryCommander
+                                                    }
+                                                }
+                                        
+                                                onChange={(selectedOption) =>handleSecondaryCommanderChange(selectedOption,index)}/>
+                                        </td>
+                                        <td className="pe-2">
+                                            <AysncSelect loadOptions={(inputValue,callback) => {
+                                                clearTimeout(timeOutId);
+                                                timeOutId = setTimeout(async () => {
+                                                    const options = await getOptions(inputValue);
+                                                    callback(options);
+                                                },timeOutTime)
+                                            }}
+                                                value={
+                                                    {value:matchResults.results[index].companion,
+                                                     label:matchResults.results[index].companion
+                                                    }
+                                                }
+                                        
+                                                onChange={(selectedOption) =>handleCompanionChange(selectedOption,index)}/>
                                         </td>
                                     </tr>
                                 )

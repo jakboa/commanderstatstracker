@@ -30,6 +30,7 @@ export default function PlayerStats() {
     const [loading, setLoading] = useState(true);
     const [fullCommanderData, setFullCommanderData] = useState([]);
     const [testDatabase, setTestDatabase] = useState("No connection.")
+    const [testGetMatches, setTestGetMatches] = useState("Has not recived info yet.")
 
     // Derived Values
     const { playerName } = useParams(); 
@@ -56,6 +57,10 @@ export default function PlayerStats() {
             setFullCommanderData(combinedDatabaseAndApiData);
             const dataBaseTest = await DatabaseAPIConnector.testConnection(playerName);
             setTestDatabase(dataBaseTest);
+
+            const testGetMatches = await DatabaseAPIConnector.getMatches({filter:"group",searchFor:"A_boys"});
+            setTestGetMatches(testGetMatches);
+            console.log(testGetMatches);
         };
 
         getCommanderInfo();
@@ -108,6 +113,7 @@ export default function PlayerStats() {
                     <Col md={6} className="d-flex align-items-center">
                         <h1 className="">Stats for {playerName}</h1>
                         <p>Here is testdata: {testDatabase} </p>
+                        <p>Here is testdata: {testGetMatches[0].matchId} </p>
                     </Col>
                 </Row>
             </Col>
